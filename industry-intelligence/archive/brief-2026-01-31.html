@@ -3,287 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Industry Intelligence Brief — January 24, 2026 to January 31, 2026</title>
+<title>Industry Intelligence — Saturday, January 31, 2026</title>
 <style>
 :root {
-    --bg: #f8f9fa;
-    --surface: #ffffff;
-    --text: #1a1a2e;
-    --text-secondary: #6c757d;
-    --border: #dee2e6;
-    --accent: #4361ee;
-    --accent2: #7c3aed;
-    --accent3: #0891b2;
-    --good: #10b981;
-    --warning: #f59e0b;
-    --shadow: 0 1px 3px rgba(0,0,0,0.08);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-    --radius: 10px;
+    --bg: #f8f9fa; --surface: #ffffff; --text: #1a1a2e; --text-secondary: #6c757d;
+    --border: #dee2e6; --accent: #4361ee; --accent2: #7c3aed;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08); --shadow-md: 0 4px 12px rgba(0,0,0,0.1); --radius: 10px;
 }
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #0f172a;
-        --surface: #1e293b;
-        --text: #e2e8f0;
-        --text-secondary: #94a3b8;
-        --border: #334155;
-        --accent: #818cf8;
-        --accent2: #a78bfa;
-        --accent3: #22d3ee;
-        --shadow: 0 1px 3px rgba(0,0,0,0.3);
-        --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+        --bg: #0f172a; --surface: #1e293b; --text: #e2e8f0; --text-secondary: #94a3b8;
+        --border: #334155; --accent: #818cf8; --accent2: #a78bfa;
+        --shadow: 0 1px 3px rgba(0,0,0,0.3); --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
     }
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+    padding: 2rem; max-width: 900px; margin: 0 auto;
 }
 
-/* Hero */
-.hero {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-    border-radius: var(--radius);
-    padding: 2.5rem;
-    color: #fff;
-    margin-bottom: 2rem;
+/* Header */
+.header {
+    margin-bottom: 1.5rem;
 }
-.hero h1 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
+.header h1 {
+    font-size: 1.5rem; font-weight: 700; margin-bottom: 0.15rem;
 }
-.hero .date-range {
-    font-size: 1rem;
-    opacity: 0.9;
-    margin-bottom: 0.25rem;
-}
-.hero .generated {
-    font-size: 0.85rem;
-    opacity: 0.7;
-}
-.hero-stats {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-}
-.hero-stat {
-    text-align: center;
-}
-.hero-stat .num {
-    font-size: 2rem;
-    font-weight: 700;
-}
-.hero-stat .label {
-    font-size: 0.8rem;
-    opacity: 0.85;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+.header .date {
+    color: var(--text-secondary); font-size: 0.9rem;
 }
 
-/* Executive Summary */
-.exec-summary {
-    background: var(--surface);
-    border-left: 4px solid var(--accent);
-    border-radius: 0 var(--radius) var(--radius) 0;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow);
-}
-.exec-summary h2 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* Executive Summary */
-.exec-highlights {
-    list-style: none;
-    padding: 0;
-}
-.exec-highlights li {
-    padding: 0.6rem 0;
-    border-bottom: 1px solid var(--border);
-}
-.exec-highlights li:last-child { border-bottom: none; }
-.exec-highlights a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-.exec-highlights a:hover { text-decoration: underline; }
-.exec-detail {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-top: 0.2rem;
-    line-height: 1.5;
-}
-
-/* Section Spotlight */
-.section-spotlight {
-    background: var(--surface);
-    border-left: 4px solid var(--accent);
-    border-radius: 0 var(--radius) var(--radius) 0;
-    padding: 1rem 1.25rem;
-    margin-bottom: 1.25rem;
-    box-shadow: var(--shadow);
-}
-.section-spotlight-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-secondary);
-    margin-bottom: 0.4rem;
-}
-.section-spotlight ul {
-    list-style: none;
-    padding: 0;
-}
-.section-spotlight li {
-    padding: 0.3rem 0;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    position: relative;
-    padding-left: 1.25rem;
-}
-.section-spotlight li::before {
-    content: "\2192";
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: bold;
-}
-
-/* Spotlight */
-.spotlight {
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    border: 1px solid #fcd34d;
-}
-@media (prefers-color-scheme: dark) {
-    .spotlight {
-        background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
-        border-color: #b45309;
-    }
-}
-.spotlight-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #92400e;
-    margin-bottom: 0.5rem;
-}
-@media (prefers-color-scheme: dark) {
-    .spotlight-label { color: #fde68a; }
-}
-.spotlight h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-}
-.spotlight h3 a {
-    color: inherit;
-    text-decoration: none;
-}
-.spotlight h3 a:hover { text-decoration: underline; }
-.spotlight p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.5rem;
-}
-
-/* Category Sections */
-.category-section {
-    margin-bottom: 2rem;
-}
-.category-section h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
+/* Tabs */
+.tabs {
+    display: flex; gap: 0; margin-bottom: 1.5rem;
     border-bottom: 2px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
-.cat-icon { font-size: 1.3rem; }
-.cat-count {
-    background: var(--border);
-    color: var(--text-secondary);
-    font-size: 0.75rem;
-    padding: 0.1rem 0.5rem;
-    border-radius: 10px;
-    font-weight: 600;
-    margin-left: auto;
+.tab {
+    padding: 0.6rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 0.9rem;
+    color: var(--text-secondary); border-bottom: 2px solid transparent;
+    margin-bottom: -2px; transition: all 0.15s; background: none; border-top: none;
+    border-left: none; border-right: none;
 }
+.tab:hover { color: var(--text); }
+.tab.active {
+    color: var(--accent); border-bottom-color: var(--accent);
+}
+.tab-count {
+    background: var(--border); color: var(--text-secondary); font-size: 0.7rem;
+    padding: 0.1rem 0.4rem; border-radius: 8px; margin-left: 0.35rem; font-weight: 700;
+}
+.tab.active .tab-count {
+    background: var(--accent); color: #fff;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
 
 /* Item Cards */
 .item-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem 1.25rem;
-    margin-bottom: 0.75rem;
-    box-shadow: var(--shadow);
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1rem 1.25rem; margin-bottom: 0.75rem; box-shadow: var(--shadow);
     transition: box-shadow 0.2s;
 }
-.item-card:hover {
-    box-shadow: var(--shadow-md);
-}
+.item-card:hover { box-shadow: var(--shadow-md); }
 .item-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 0.75rem; margin-bottom: 0.4rem;
 }
 .item-title {
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.95rem;
-    line-height: 1.4;
+    font-weight: 600; color: var(--accent); text-decoration: none;
+    font-size: 0.95rem; line-height: 1.4;
 }
 .item-title:hover { text-decoration: underline; }
 .item-desc {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
+    font-size: 0.875rem; color: var(--text-secondary);
+    margin-bottom: 0.4rem; line-height: 1.5;
 }
 .item-meta {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+    display: flex; gap: 0.75rem; font-size: 0.75rem; color: var(--text-secondary);
+    align-items: center; flex-wrap: wrap;
 }
 .item-source { font-weight: 600; }
+.cat-tag {
+    border: 1px solid; border-radius: 4px; padding: 0.05rem 0.4rem;
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+}
 
 /* Priority Badges */
 .pri-badge {
-    display: inline-block;
-    padding: 0.1rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    white-space: nowrap;
-    flex-shrink: 0;
+    display: inline-block; padding: 0.1rem 0.5rem; border-radius: 4px;
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; white-space: nowrap; flex-shrink: 0;
 }
 .pri-high { background: #fee2e2; color: #991b1b; }
 .pri-medium { background: #dbeafe; color: #1e40af; }
@@ -292,862 +103,161 @@ body {
     .pri-medium { background: #1e3a5f; color: #93c5fd; }
 }
 
-/* Watch List */
-.watch-list {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow);
+/* Weekly category sections */
+.weekly-category {
+    margin-bottom: 1.5rem;
 }
-.watch-list h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
+.weekly-category h3 {
+    font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--border);
+    display: flex; align-items: center; gap: 0.4rem;
 }
-.watch-subtitle {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.75rem;
-}
-.watch-list ul {
-    list-style: none;
-    padding: 0;
-}
-.watch-list li {
-    padding: 0.4rem 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-.watch-list li:last-child { border-bottom: none; }
-.watch-list a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-}
-.watch-list a:hover { text-decoration: underline; }
-.watch-cat {
-    font-size: 0.7rem;
-    background: var(--border);
-    color: var(--text-secondary);
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
+.cat-icon { font-size: 1.1rem; }
+
+.empty-state {
+    color: var(--text-secondary); font-style: italic; padding: 2rem;
+    text-align: center;
 }
 
 /* Footer */
 .footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    text-align: center;
+    margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border);
+    color: var(--text-secondary); font-size: 0.75rem; text-align: center;
 }
+.footer a { color: var(--accent); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
 
-/* Print */
 @media print {
-    body { padding: 1rem; }
-    .hero { background: #4361ee !important; -webkit-print-color-adjust: exact; }
+    .tabs { display: none; }
+    .tab-panel { display: block !important; }
 }
 </style>
 </head>
 <body>
 
-<div class="hero">
-    <h1>Industry Intelligence Brief</h1>
-    <div class="date-range">Senior Living &amp; AI &mdash; January 24, 2026 to January 31, 2026</div>
-    <div class="generated">Generated January 31, 2026 at 4:35 PM</div>
-    <div class="hero-stats">
-        <div class="hero-stat">
-            <div class="num">64</div>
-            <div class="label">Total Items</div>
+<div class="header">
+    <h1>Industry Intelligence</h1>
+    <div class="date">Senior Living &amp; AI &mdash; Saturday, January 31, 2026</div>
+</div>
+
+<div class="tabs">
+    <button class="tab active" onclick="showTab('today')">
+        Today <span class="tab-count">5</span>
+    </button>
+    <button class="tab" onclick="showTab('weekly')">
+        In Case You Missed It <span class="tab-count">2</span>
+    </button>
+</div>
+
+<div id="today" class="tab-panel active">
+    
+    <div class="item-card">
+        <div class="item-header">
+            <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="item-title">Assisted Living Wage Growth Slows, Turnover Improving</a>
+            <span class="pri-badge pri-high">High</span>
         </div>
-        <div class="hero-stat">
-            <div class="num">8</div>
-            <div class="label">High Priority</div>
+        <p class="item-desc">The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Report by Hospital &amp;#38; Healthcare Compensation Service (HCS), published [&amp;#8230;] The post Assisted Living Wage Growth Slows, Turnover Improving appeared first on Senior Housing News.</p>
+        <div class="item-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS Products</span>
+            <span class="item-source">Senior Housing News</span>
+            <span class="item-date">Jan 30</span>
         </div>
-        <div class="hero-stat">
-            <div class="num">16</div>
-            <div class="label">SaaS Products</div>
+    </div>
+    <div class="item-card">
+        <div class="item-header">
+            <a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank" class="item-title">Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept</a>
+            <span class="pri-badge pri-high">High</span>
         </div>
-        <div class="hero-stat">
-            <div class="num">48</div>
-            <div class="label">AI Developments</div>
+        <p class="item-desc">A Wisconsin-based nonprofit hospice, Agrace, is launching a new memory care initiative that includes a village for residents inspired by the Hogeweyk model in The Netherlands. The hospice and palliative care provider recently announced the project, which will be dubbed as the Ellen &amp;#38; Peter Johnson Dementia Village at Agrace.</p>
+        <div class="item-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS Products</span>
+            <span class="item-source">Senior Housing News</span>
+            <span class="item-date">Jan 30</span>
+        </div>
+    </div>
+    <div class="item-card">
+        <div class="item-header">
+            <a href="https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/" target="_blank" class="item-title">Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled</a>
+            <span class="pri-badge pri-medium">Medium</span>
+        </div>
+        <p class="item-desc">Nvidia CEO Jensen Huang said that a recent report of friction between his company and OpenAI was “nonsense.”.</p>
+        <div class="item-meta">
+            <span class="cat-tag" style="border-color:#0891b2;color:#0891b2">AI for Business / CRM / Sales / PM Tools</span>
+            <span class="item-source">TechCrunch AI</span>
+            <span class="item-date">Jan 31</span>
+        </div>
+    </div>
+    <div class="item-card">
+        <div class="item-header">
+            <a href="https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/" target="_blank" class="item-title">A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains</a>
+            <span class="pri-badge pri-medium">Medium</span>
+        </div>
+        <p class="item-desc">If co-founder Lachy Groom has any doubts, he doesn’t show it. He’s working with people who&#x27;ve been working on this problem for decades and who believe the timing is finally right, which is all he needs to know.</p>
+        <div class="item-meta">
+            <span class="cat-tag" style="border-color:#0891b2;color:#0891b2">AI for Business / CRM / Sales / PM Tools</span>
+            <span class="item-source">TechCrunch AI</span>
+            <span class="item-date">Jan 31</span>
+        </div>
+    </div>
+    <div class="item-card">
+        <div class="item-header">
+            <a href="https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/" target="_blank" class="item-title">OpenClaw’s AI assistants are now building their own social network</a>
+            <span class="pri-badge pri-medium">Medium</span>
+        </div>
+        <p class="item-desc">The viral personal AI assistant formerly known as Clawdbot has a new shell — again. After briefly rebranding as Moltbot, it has now picked OpenClaw as its new name.</p>
+        <div class="item-meta">
+            <span class="cat-tag" style="border-color:#0891b2;color:#0891b2">AI for Business / CRM / Sales / PM Tools</span>
+            <span class="item-source">TechCrunch AI</span>
+            <span class="item-date">Jan 30</span>
         </div>
     </div>
 </div>
 
-<div class="exec-summary">
-    <h2>Executive Summary</h2>
-    <p>The most important developments this week:</p>
-    <ul class="exec-highlights">
-        <li><a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank">Assisted Living Wage Growth Slows, Turnover Improving</a><span class="exec-detail">The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year.</span></li>
-<li><a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank">Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept</a><span class="exec-detail">A Wisconsin-based nonprofit hospice, Agrace, is launching a new memory care initiative that includes a village for residents inspired by the Hogeweyk model in The Netherlands.</span></li>
-<li><a href="https://seniorhousingnews.com/2026/01/29/wtwh-healthcare-announces-the-frontline-honors-class-of-2025/" target="_blank">WTWH Healthcare Announces the Frontline Honors Class of 2025</a><span class="exec-detail">WTWH Healthcare, a WTWH Media, LLC company, is proud to announce the Frontline Honors Class of 2025.</span></li>
-<li><a href="https://seniorhousingnews.com/2026/01/28/senior-care-bankruptcies-rising-even-as-healthcare-filings-decline/" target="_blank">Senior Care Bankruptcies Rising Even as Healthcare Filings Decline</a><span class="exec-detail">The number of bankruptcy filings related to senior housing and care increased 18% last year, even as total health care bankruptcies fell 21% in that time.</span></li>
-<li><a href="https://www.businesswire.com/news/home/20260127269418/en/Lifesparks-COMPLETE-Senior-Living-Model-Sets-New-Standard-for-Senior-Living-Innovation" target="_blank">Lifespark Unveils COMPLETE Senior Living Model With Plans for Significant 2026 Growth</a><span class="exec-detail">Lifespark, managing 50+ communities in MN and WI, unveiled its COMPLETE Senior Living model integrating housing, health services, wellness, and on-site geriatric primary care.</span></li>
-    </ul>
+<div id="weekly" class="tab-panel">
+    
+        <div class="weekly-category">
+            <h3><span class="cat-icon">&#127970;</span> Senior Living SaaS Products</h3>
+            
+    <div class="item-card">
+        <div class="item-header">
+            <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="item-title">Assisted Living Wage Growth Slows, Turnover Improving</a>
+            <span class="pri-badge pri-high">High</span>
+        </div>
+        <p class="item-desc">The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Report by Hospital &amp;#38; Healthcare Compensation Service (HCS), published [&amp;#8230;] The post Assisted Living Wage Growth Slows, Turnover Improving appeared first on Senior Housing News.</p>
+        <div class="item-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS Products</span>
+            <span class="item-source">Senior Housing News</span>
+            <span class="item-date">Jan 30</span>
+        </div>
+    </div>
+    <div class="item-card">
+        <div class="item-header">
+            <a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank" class="item-title">Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept</a>
+            <span class="pri-badge pri-high">High</span>
+        </div>
+        <p class="item-desc">A Wisconsin-based nonprofit hospice, Agrace, is launching a new memory care initiative that includes a village for residents inspired by the Hogeweyk model in The Netherlands. The hospice and palliative care provider recently announced the project, which will be dubbed as the Ellen &amp;#38; Peter Johnson Dementia Village at Agrace.</p>
+        <div class="item-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS Products</span>
+            <span class="item-source">Senior Housing News</span>
+            <span class="item-date">Jan 30</span>
+        </div>
+    </div>
+        </div>
 </div>
-
-
-    <div class="spotlight">
-        <div class="spotlight-label">Trend Spotlight</div>
-        <h3><a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank">Assisted Living Wage Growth Slows, Turnover Improving</a></h3>
-        <p>The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Report by Hospital &amp;#38; Healthcare Compensation Service (HCS), published [&amp;#8230;] The post Assisted </p>
-        <span class="item-source">Senior Housing News</span>
-    </div>
-
-
-        <div class="category-section">
-            <h3><span class="cat-icon">&#127970;</span> Senior Living SaaS Products
-                <span class="cat-count">16</span></h3>
-            
-            <div class="section-spotlight" style="border-left-color: #4361ee">
-                <div class="section-spotlight-label">Key Takeaways</div>
-                <ul><li>The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year.</li><li>A Wisconsin-based nonprofit hospice, Agrace, is launching a new memory care initiative that includes a village for residents inspired by the Hogeweyk model in The Netherlands.</li><li>WTWH Healthcare, a WTWH Media, LLC company, is proud to announce the Frontline Honors Class of 2025.</li></ul>
-            </div>
-            
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="item-title">Assisted Living Wage Growth Slows, Turnover Improving</a>
-                    <span class="pri-badge pri-high">High</span>
-                </div>
-                <p class="item-desc">The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Re...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank" class="item-title">Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept</a>
-                    <span class="pri-badge pri-high">High</span>
-                </div>
-                <p class="item-desc">A Wisconsin-based nonprofit hospice, Agrace, is launching a new memory care initiative that includes a village for residents inspired by the Hogeweyk model in The Netherlands. The hospice and palliative care provider recently announced the project, which will be dubbed as the Ellen &amp;#38; Peter Johns...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/29/wtwh-healthcare-announces-the-frontline-honors-class-of-2025/" target="_blank" class="item-title">WTWH Healthcare Announces the Frontline Honors Class of 2025</a>
-                    <span class="pri-badge pri-high">High</span>
-                </div>
-                <p class="item-desc">WTWH Healthcare, a WTWH Media, LLC company, is proud to announce the Frontline Honors Class of 2025. With nominations across the behavioral health, home health &amp;#38; home care, hospice &amp;#38; palliative care, memory care, senior housing &amp;#38; senior living, and skilled nursing industries, the program...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/28/senior-care-bankruptcies-rising-even-as-healthcare-filings-decline/" target="_blank" class="item-title">Senior Care Bankruptcies Rising Even as Healthcare Filings Decline</a>
-                    <span class="pri-badge pri-high">High</span>
-                </div>
-                <p class="item-desc">The number of bankruptcy filings related to senior housing and care increased 18% last year, even as total health care bankruptcies fell 21% in that time. Ch. 11 Bankruptcies stemming from independent living, assisted living, CCRCs and skilled nursing increased from filings in 2024 to 13 filings in ...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.businesswire.com/news/home/20260127269418/en/Lifesparks-COMPLETE-Senior-Living-Model-Sets-New-Standard-for-Senior-Living-Innovation" target="_blank" class="item-title">Lifespark Unveils COMPLETE Senior Living Model With Plans for Significant 2026 Growth</a>
-                    <span class="pri-badge pri-high">High</span>
-                </div>
-                <p class="item-desc">Lifespark, managing 50+ communities in MN and WI, unveiled its COMPLETE Senior Living model integrating housing, health services, wellness, and on-site geriatric primary care. Portfolio occupancy trending toward 96% (vs. industry average 88-89%), with expansion to nearly 100 communities by end of 20...</p>
-                <div class="item-meta">
-                    <span class="item-source">Business Wire</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.einpresswire.com/article/885522757/new-report-what-s-now-and-ahead-for-ai-and-older-adults" target="_blank" class="item-title">New Report: What&#x27;s Now and Ahead for AI and Older Adults</a>
-                    <span class="pri-badge pri-high">High</span>
-                </div>
-                <p class="item-desc">Senior living organizations must find ways to benefit from vetted AI tools within five years, including automated documentation, care plans, and AI agents with predictive capabilities. Workforce shortages are boosting adoption of hybrid care models spanning in-person care and AI.</p>
-                <div class="item-meta">
-                    <span class="item-source">EIN Presswire</span>
-                    <span class="item-date">Jan 26</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/30/brookdale-senior-livings-downsizing-continues-ceo-targets-3-pronged-strategy-in-2026/" target="_blank" class="item-title">Brookdale Senior Living’s Downsizing Continues, CEO Targets 3-Pronged Strategy in 2026</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Brookdale Senior Living CEO Nick Stengle believes that a leaner portfolio and a focus on supply-demand, critical mass and operational excellence are top ways to bring the company into its next evolution. Earlier this week, the Brentwood, Tennessee-based senior living operator said it expected to not...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/29/in-the-pipeline-minto-usa-plans-mixed-use-development-r-d-olson-starts-construction-in-california/" target="_blank" class="item-title">In the Pipeline: Minto USA Plans Mixed-Use Development; R.D. Olson Starts Construction in California</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">In the Pipeline is part of your SHN+ subscription In the Pipeline is brought to you by the Senior Housing News Architecture &amp;#38; Design Awards, an annual competition that recognizes cutting-edge design, excellence, and innovation in senior living. Construction: Planned Bozzuto Construction plans ne...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/29/2life-communities-ceo-to-retire-in-leadership-transition-planned-for-october/" target="_blank" class="item-title">2Life Communities CEO to Retire in Leadership Transition Planned for October</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">2Life Communities is undergoing a leadership transition later this year. Leader Amy Schectman is retiring from her post as Saul and Gitta Kurlat CEO in October and current 2Life President Lizbeth Heyer is assuming the organization’s top leadership role Heyer has since joining the organization in 201...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/29/accountability-without-leverage-why-trust-is-a-cornerstone-of-senior-living-turnarounds/" target="_blank" class="item-title">Accountability Without Leverage: Why Trust is a Cornerstone of Senior Living Turnarounds</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">This story is part of your SHN+ subscription Many operators have tried, but not all have succeeded turning around communities. Companies taking on these deals in 2026 say they’re harder than they look. A recent blog post from Nick Gesue, who was CEO of NewPoint Capital from 2024 until it changed han...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/29/executive-perspectives-helen-adeosun-chief-strategy-officer-activated-insights/" target="_blank" class="item-title">Executive Perspectives: Helen Adeosun, Chief Strategy Officer, Activated Insights</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Executive Perspectives: Helen Adeosun, Chief Strategy Officer, Activated Insights In this Executive Perspectives interview, Helen sits down with Senior Housing News to talk about today&amp;#8217;s workforce challenges, the portable worker, onboarding and more. v This interview is sponsored by Activated ...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/28/senior-living-operators-embrace-personalized-services-to-meet-shifting-wellness-preferences/" target="_blank" class="item-title">Senior Living Operators Embrace Personalized Services to Meet Shifting Wellness Preferences</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Senior living providers are shifting their engagement and wellness to focus on personalization, independence and choice as the boomers arrive at their doorstep. These efforts are improving resident satisfaction while reshaping community life, from dining to programming. Operators are now measuring r...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.prnewswire.com/news-releases/lifeloop-innovation-awards-honor-the-senior-living-organizations-powering-a-new-era-of-aging-302670246.html" target="_blank" class="item-title">LifeLoop Innovation Awards Honor Senior Living Organizations Powering a New Era of Aging</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">LifeLoop announced its 2025 Communities That Shine award winners. Submissions showed 97% of staff report LifeLoop reduces social isolation and loneliness, and 99% report it improves family satisfaction — demonstrating measurable outcomes from engagement technology.</p>
-                <div class="item-meta">
-                    <span class="item-source">PR Newswire</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.mordorintelligence.com/industry-reports/long-term-care-software-market" target="_blank" class="item-title">HTI-1 Compliance Deadline Arrives — Driving Senior Living Software Refresh Cycles</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">The January 2026 HTI-1 final rule deadline requires long-term care facilities to implement certified health IT modules supporting USCDI v3. This is converting compliance pressure into software refresh cycles, with information-blocking enforcement driving multi-state chains to harmonize on API-first ...</p>
-                <div class="item-meta">
-                    <span class="item-source">Mordor Intelligence</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/06/senior-living-executive-forecast-2026-industry-still-not-ready-to-serve-boomer-generation/" target="_blank" class="item-title">Senior Living Industry &#x27;Not Ready&#x27; for Boomer Generation — Executive Forecast 2026</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">The oldest baby boomers turn 80 in 2026, creating an urgent demand runway. NIC MAP data shows the industry would need to develop at twice its maximum historical pace each year for 20 years just to maintain 90% occupancy. The investment gap is widening as demand accelerates.</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.prnewswire.com/news-releases/ecp-and-sage-partner-to-bring-real-time-visibility-and-smarter-care-workflows-to-senior-living-communities-302658679.html" target="_blank" class="item-title">ECP and Sage Partner to Bring Real-Time Visibility and Smarter Care Workflows to Senior Living</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">ECP, trusted by 8,000+ senior living communities, announced integration with Sage&#x27;s intelligent alerting platform. The partnership closes the gap between real-time care actions and resident documentation — Sage tracks every alert, response, and care action as it happens, feeding directly into ECP&#x27;s ...</p>
-                <div class="item-meta">
-                    <span class="item-source">PR Newswire</span>
-                    <span class="item-date">Jan 26</span>
-                </div>
-            </div>
-        </div>
-        <div class="category-section">
-            <h3><span class="cat-icon">&#129302;</span> AI for Senior Living
-                <span class="cat-count">7</span></h3>
-            
-            <div class="section-spotlight" style="border-left-color: #7c3aed">
-                <div class="section-spotlight-label">Key Takeaways</div>
-                <ul><li>Aegis Living is among the first senior living communities to adopt AI fall prevention technology using privacy-preserving monitoring that shows only stick figures.</li><li>Luna, an AI-powered voice care companion by Cairns Health, won the CTA Foundation contest at CES 2026 — offering medication reminders, brain games, and conversation.</li></ul>
-            </div>
-            
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.king5.com/article/sponsor-story/smart-technology-is-reshaping-senior-living/281-2f750dd3-12a9-4b79-86a3-79be22c8b7a7" target="_blank" class="item-title">Aegis Living Adopts AI Fall Prevention — Privacy-Preserving System Shows Only Stick Figures</a>
-                    <span class="pri-badge pri-high">High</span>
-                </div>
-                <p class="item-desc">Aegis Living is among the first senior living communities to adopt AI fall prevention technology using privacy-preserving monitoring that shows only stick figures. The AI learns each resident&#x27;s movement patterns and alerts staff when a high-risk resident attempts to leave a bed or chair while appear...</p>
-                <div class="item-meta">
-                    <span class="item-source">KING 5 / NBC</span>
-                    <span class="item-date">Jan 25</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://leadingage.org/roundup-key-innovations-from-ces-2026/" target="_blank" class="item-title">CES 2026: Luna AI Care Companion and AgeTech Innovations Making Waves</a>
-                    <span class="pri-badge pri-high">High</span>
-                </div>
-                <p class="item-desc">Luna, an AI-powered voice care companion by Cairns Health, won the CTA Foundation contest at CES 2026 — offering medication reminders, brain games, and conversation. Also: Captify glasses provide live captioning at 98% accuracy, and Vovo Smart Toilet analyzes urine samples (CES Innovation Award Hono...</p>
-                <div class="item-meta">
-                    <span class="item-source">LeadingAge</span>
-                    <span class="item-date">Jan 25</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.ageinplacetech.com/blog/health-tech-and-ai-2026-not-so-fast" target="_blank" class="item-title">Health tech and AI in 2026 -- Not So Fast</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">The AARP survey of ‘Jobs to be Done’ by AI shows readiness for health-related AI. Health-related opportunities were cited – medication tracking, personalized wellness guidance, and active living reminders. At the same time, the report asserts that adoption depends on trust, customization and integra...</p>
-                <div class="item-meta">
-                    <span class="item-source">Aging in Place Tech</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.prnewswire.com/news-releases/2026-industry-growth-insights-report-highlights-ai-opportunity-and-workforce-challenges-in-care-at-home-302667218.html" target="_blank" class="item-title">2026 Industry Report Highlights AI Opportunity and Workforce Challenges in Care at Home</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">The 2026 Axxess Industry Growth Insights Report reveals AI is expected to play a significant role in home care, yet most organizations have not invested. Over 60% cite recruitment and retention as their biggest challenge, and only one-third use technology-enabled training. The report recommends pilo...</p>
-                <div class="item-meta">
-                    <span class="item-source">PR Newswire</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/14/senior-living-operators-embrace-authenticity-in-digital-marketing-amid-new-frontier-of-ai-searches/" target="_blank" class="item-title">Senior Living Operators Embrace Authenticity in Digital Marketing Amid AI Search &#x27;New Frontier&#x27;</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Heritage Communities is seeing a dip in Google search inquiries as AI-driven search reshapes discovery. Operators are adapting by attributing blog posts to named authors for AI credibility, hiring AI consultants, and focusing on authenticity to earn placement in AI search overviews.</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://seniorhousingnews.com/2026/01/16/hdg-execs-these-6-trends-could-reshape-senior-living-in-2026/" target="_blank" class="item-title">HDG Identifies AI as Key 2026 Trend — Using AI for Health Forecasting and Personalized Engagement</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Health Dimensions Group is using AI tools to forecast health changes, triage clinical needs, and aggregate resident data. Communities are using AI for personalized engagement, interviewing incoming residents to form programming plans. Operators should treat AI as a tool to free staff for more reside...</p>
-                <div class="item-meta">
-                    <span class="item-source">Senior Housing News</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.ageinplacetech.com/blog/new-report-ai-and-older-adults-whats-now-and-next" target="_blank" class="item-title">New report -- AI and Older Adults -- What&#x27;s Now and Next</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">The hype still outpaces adoption. According to the Wall Street Journal in August, companies are slowing their rate of AI adoption amidst some stumbles among innovators. As in the 2023 report, there is still trepidation, and the Pew Research April 2025 study shows that experts are more optimistic tha...</p>
-                <div class="item-meta">
-                    <span class="item-source">Aging in Place Tech</span>
-                    <span class="item-date">Jan 26</span>
-                </div>
-            </div>
-        </div>
-        <div class="category-section">
-            <h3><span class="cat-icon">&#128200;</span> AI for Business / CRM / Sales / PM Tools
-                <span class="cat-count">41</span></h3>
-            
-            <div class="section-spotlight" style="border-left-color: #0891b2">
-                <div class="section-spotlight-label">Key Takeaways</div>
-                <ul><li>Nvidia CEO Jensen Huang said that a recent report of friction between his company and OpenAI was “nonsense.”.</li><li>If co-founder Lachy Groom has any doubts, he doesn’t show it.</li></ul>
-            </div>
-            
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/" target="_blank" class="item-title">Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Nvidia CEO Jensen Huang said that a recent report of friction between his company and OpenAI was “nonsense.”</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 31</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/" target="_blank" class="item-title">A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">If co-founder Lachy Groom has any doubts, he doesn’t show it. He’s working with people who&#x27;ve been working on this problem for decades and who believe the timing is finally right, which is all he needs to know.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 31</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/" target="_blank" class="item-title">OpenClaw’s AI assistants are now building their own social network</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">The viral personal AI assistant formerly known as Clawdbot has a new shell — again. After briefly rebranding as Moltbot, it has now picked OpenClaw as its new name.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/30/anthropic-brings-agentic-plugins-to-cowork/" target="_blank" class="item-title">Anthropic brings agentic plug-ins to Cowork</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">The company says you can use plug-ins to &quot;tell Claude how you like work done, which tools and data to pull from, how to handle critical workflows, and what slash commands to expose so your team gets more consistent outcomes.&quot;</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/30/last-24-hours-to-grab-your-1-pass-at-50-off-to-techcrunch-disrupt-2026/" target="_blank" class="item-title">Last 24 hours to grab your plus-one pass at 50% off to TechCrunch Disrupt 2026</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Today is the last day to lock in a plus-one pass at 50% off to TechCrunch Disrupt 2026, happening on October 13-15 in San Francisco.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://blog.hubspot.com/marketing/email-marketing-automation-platforms" target="_blank" class="item-title">Email marketing automation tools: How to choose in 2026</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Selecting an email marketing automation platform goes far beyond choosing where marketers will send emails. The right tool becomes the backbone of lifecycle marketing — powering personalized workflows and driving revenue. Email marketing automation platforms help businesses send targeted, personaliz...</p>
-                <div class="item-meta">
-                    <span class="item-source">HubSpot Blog</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/travelers-ai-in-contact-centres-two-stage-innovation-strategy/" target="_blank" class="item-title">AI use surges at Travelers as call centre roles reduce</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Mid-January saw insurance company, Travelers, announce a new deal that empowers 10,000 engineers and data scientists with AI assistants. However, less than two weeks on, Travelers&amp;#8217; leadership explained that the company&amp;#8217;s true competitive advantage lies in expertise, not AIs alone, believ...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/pepsico-is-using-ai-to-rethink-how-factories-are-designed-and-updated/" target="_blank" class="item-title">PepsiCo is using AI to rethink how factories are designed and updated</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">For many large companies, the most useful form of AI right now has little to do with writing emails or answering questions. At PepsiCo, AI is being tested in places where mistakes are costly and changes are hard to undo — factory layouts, production lines, and physical operations. That shift is visi...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/china-hyperscalers-agentic-ai-commerce-battleground/" target="_blank" class="item-title">China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">The artificial intelligence industry&amp;#8217;s pivot toward agentic AI – systems capable of autonomously executing multi-step tasks – has dominated technology discussions in recent months. But while Western firms focus on foundational models and cross-platform interoperability, China&amp;#8217;s technolog...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 30</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/guys-i-dont-think-tim-cook-knows-how-to-monetize-ai/" target="_blank" class="item-title">Guys, I don’t think Tim Cook knows how to monetize AI</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">One intrepid Morgan Stanley analyst dared to ask how Apple will make money on its AI investments. The answer will not shock you.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/elon-musk-spacex-tesla-xai-merger-talks-ipo-reuters/" target="_blank" class="item-title">Elon Musk’s SpaceX, Tesla, and xAI in talks to merge, according to reports</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">This merger would bring the Grok chatbot, Starlink satellites, and SpaceX rockets together under one corporation.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/amazon-is-reportedly-in-talks-to-invest-50-billion-in-openai/" target="_blank" class="item-title">Amazon is reportedly in talks to invest $50B in OpenAI</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">If a deal materializes, it would mean Amazon is backing competing startups in the race for AI supremacy.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/satya-nadella-insists-people-are-using-microsofts-copilot-ai-a-lot/" target="_blank" class="item-title">Satya Nadella insists people are using Microsoft’s Copilot AI a lot</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">With Microsoft spending many billions on data centers, and rumors that no one is using its AI, CEO Satya Nadella shared some usage numbers.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/apple-buys-israeli-startup-q-ai-as-the-ai-race-heats-up/" target="_blank" class="item-title">Apple buys Israeli startup Q.ai as the AI race heats up</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Q.ai is an Israeli startup specializing in imaging and machine learning, particularly technologies that enable devices to interpret whispered speech and enhance audio in noisy environments.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/i-built-marshmallow-castles-in-googles-new-ai-world-generator-project-genie/" target="_blank" class="item-title">I built marshmallow castles in Google’s new AI-world generator</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Starting Thursday, Google AI Ultra subscribers in the U.S. can play around with Project Genie, which is powered by a combination of Google’s latest world model Genie 3, its image generation model Nano Banana Pro, and Gemini.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/openais-sora-app-is-struggling-after-its-stellar-launch/" target="_blank" class="item-title">OpenAI’s Sora app is struggling after its stellar launch</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">New data suggests the app is seeing declines in both app downloads and consumer spending, as the early hype about the AI video social network wears off.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/music-publishers-sue-anthropic-for-3b-over-flagrant-piracy-of-20000-works/" target="_blank" class="item-title">Music publishers sue Anthropic for $3B over ‘flagrant piracy’ of 20,000 works</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Originally, these music publishers had filed a lawsuit against Anthropic over its use of about 500 copyrighted works.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/india-is-teaching-google-how-ai-in-education-can-scale/" target="_blank" class="item-title">India is teaching Google how AI in education can scale</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">With the highest global usage of Gemini for learning, India is emerging as a key market shaping Google&#x27;s approach to AI in education.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/flapping-airplanes-and-the-promise-of-research-driven-ai/" target="_blank" class="item-title">Flapping Airplanes and the promise of research-driven AI</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">A new AI lab called Flapping Airplanes launched yesterday, and a Sequoia partner has an interesting take on why they stand out.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/accenture-report-on-ai-in-insurance-sector/" target="_blank" class="item-title">Insurers betting big on AI: Accenture</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">New research from Accenture has discovered insurance executives are planning on increased investment into AI during 2026 despite a widening skills gap in insurance organisations. Surveying 3,650 C-suite leaders over 20 industries and 20 countries, the Pulse of Change poll revealed 90% of the 218 sen...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/29/google-maps-now-lets-you-access-gemini-while-walking-and-cycling/" target="_blank" class="item-title">Google Maps now lets you access Gemini while walking and cycling</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">When you&#x27;re walking around and navigating with Maps, you can now ask Gemini questions like &quot;What neighborhood am I in?&quot; or &quot;What are top-rated restaurants nearby?&quot;</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 29</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/28/zuckerberg-teases-agentic-commerce-tools-and-major-ai-rollout-in-2026/" target="_blank" class="item-title">Zuckerberg teases agentic commerce tools and major AI rollout in 2026</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Mark Zuckerberg says 2026 will be &quot;a big year for delivering personal super intelligence.&quot;</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/28/mark-zuckerberg-future-smart-glasses/" target="_blank" class="item-title">Mark Zuckerberg says a future without smart glasses is ‘hard to imagine’</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Take Zuckerberg&#x27;s outlook with a grain of salt. After all, he thought we&#x27;d all be hanging out in the metaverse by now.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/28/tesla-invested-2b-in-elon-musks-xai/" target="_blank" class="item-title">Tesla to invest $2B in Elon Musk’s xAI</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Elon Musk&#x27;s AI company xAI disclosed earlier this month it had raised $20 billion.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://techcrunch.com/2026/01/28/elon-musk-teases-a-new-image-labeling-system-for-xwe-think/" target="_blank" class="item-title">Elon Musk teases a new image-labeling system for X… we think?</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Elon Musk says X will begin identifying &quot;manipulated media&quot; but doesn&#x27;t share details.</p>
-                <div class="item-meta">
-                    <span class="item-source">TechCrunch AI</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/deloitte-agentic-ai-guidelines-published/" target="_blank" class="item-title">Deloitte sounds alarm as AI agent deployment outruns safety frameworks</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">A new report from Deloitte has warned that businesses are deploying AI agents faster than their safety protocols and safeguards can keep up. Therefore, serious concerns around security, data privacy, and accountability are spreading. According to the survey, agentic systems are moving from pilot to ...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/franny-hsiao-salesforce-scaling-enterprise-ai/" target="_blank" class="item-title">Franny Hsiao, Salesforce: Scaling enterprise AI</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Scaling enterprise AI requires overcoming architectural oversights that often stall pilots before production, a challenge that goes far beyond model selection. While generative AI prototypes are easy to spin up, turning them into reliable business assets involves solving the difficult problems of da...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/masumi-network-how-ai-blockchain-fusion-adds-trust-to-burgeoning-agent-economy/" target="_blank" class="item-title">Masumi Network: How AI-blockchain fusion adds trust to burgeoning agent economy</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">2026 will see forward-thinking organisations building out their squads of AI agents across roles and functions. But amid the rush, there is another aspect to consider. One of IDC’s enterprise technology predictions for the coming five years, published in October, was fascinating. “By 2030, up to 20%...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/white-house-predicts-ai-growth-with-comparison-industrial-and-artificial-intelligence-revolutions/" target="_blank" class="item-title">White House compares industrial revolution with AI era</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">A White House paper titled &amp;#8220;Artificial Intelligence and the Great Divergence&amp;#8221; sets out parallels between the effects of the industrial revolution in the 18th and 19th centuries and the current times, with artificial intelligence positioned as guiding the way the world&amp;#8217;s economies w...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/gallup-workforce-ai-shows-details-of-ml-adoption-in-us-workplaces/" target="_blank" class="item-title">Gallup Workforce shows details of AI adoption in US workplaces</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Artificial intelligence has moved into the US workplace, but its adoption remains uneven, fragmented, and tied to role, industry, and organisation. Findings from a Gallup Workforce survey covering the period to the end of December 2025 show how employees use AI, who benefits most from it, and where ...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/how-standard-chartered-runs-ai-under-privacy-rules/" target="_blank" class="item-title">How Standard Chartered runs AI under privacy rules</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">For banks trying to put AI into real use, the hardest questions often come before any model is trained. Can the data be used at all? Where is it allowed to be stored? Who is responsible once the system goes live? At Standard Chartered, these privacy-driven questions now shape how AI systems are buil...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://community.hubspot.com/t5/Releases-and-Updates/The-January-2026-Industry-Edit-Essential-HubSpot-Updates/ba-p/1245652" target="_blank" class="item-title">HubSpot January 2026 Updates: MCP Server Beta, Claude Connector, AI Customer Agent Enhancements</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">HubSpot launched its Model Context Protocol (MCP) server in public beta for AI workflow integration, plus new connectors for Claude and ChatGPT. The Customer Agent now supports working hours scheduling and reCAPTCHA protection. AI-powered CPQ in Commerce Hub drafts branded quotes from conversations ...</p>
-                <div class="item-meta">
-                    <span class="item-source">HubSpot Community</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.opensourceforu.com/2026/01/deepseek-publishes-open-source-ai-training-framework-to-bypass-nvidia-chip-limits/" target="_blank" class="item-title">DeepSeek Publishes Open Source AI Training Framework to Bypass Nvidia Chip Limits</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">DeepSeek published a new AI training framework introducing &#x27;Manifold-Constrained Hyper-Connections&#x27; to improve scalability while reducing computational costs. The paper targets training instability and infrastructure inefficiencies — seen as a precursor to the upcoming R2 model expected around Febru...</p>
-                <div class="item-meta">
-                    <span class="item-source">Open Source For You</span>
-                    <span class="item-date">Jan 28</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/databricks-enterprise-ai-adoption-shifts-agentic-systems/" target="_blank" class="item-title">Databricks: Enterprise AI adoption shifts to agentic systems</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">According to Databricks, enterprise AI adoption is shifting to agentic systems as organisations embrace intelligent workflows. Generative AI’s first wave promised business transformation but often delivered little more than isolated chatbots and stalled pilot programmes. Technology leaders found the...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.artificialintelligence-news.com/news/anthropic-selected-build-government-ai-assistant-pilot/" target="_blank" class="item-title">Anthropic selected to build government AI assistant pilot</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Anthropic has been selected to build government AI assistant capabilities to modernise how citizens interact with complex state services. For both public and private sector technology leaders, the integration of LLMs into customer-facing platforms often stalls at the proof-of-concept stage. The UK’s...</p>
-                <div class="item-meta">
-                    <span class="item-source">AI News</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.destinationcrm.com/Articles/Web-Exclusives/Viewpoints/3-Trends-Reshaping-CRM-Software-in-2026-172936.aspx" target="_blank" class="item-title">Enterprise AI Shift: From &#x27;AI-Assisted&#x27; to &#x27;AI-Operated&#x27; — Self-Driving CRMs Becoming Table Stakes</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">The CRM industry is moving from AI-assisted to AI-operated. Self-driving CRMs, project management, and analytics — zero clicks, zero manual work — will be table stakes by end of 2026. Experts caution that &#x27;fast AI is table stakes, trustable AI is the moat.&#x27; Vertical-specific CRMs are replacing one-s...</p>
-                <div class="item-meta">
-                    <span class="item-source">Destination CRM</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.constellationr.com/blog-news/insights/enterprise-technology-2026-15-ai-saas-data-business-trends-watch" target="_blank" class="item-title">Salesforce Agentforce Pioneers New &#x27;Agentic Enterprise License Agreements&#x27; Model</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Agentic Enterprise License Agreements (ALEAs) are expected to become standard in 2026 as SaaS vendors shift from seat-based to consumption-based models. Salesforce&#x27;s Agentforce pioneered this, and other providers will follow — though some may sign ALEAs at a loss to lock in renewals.</p>
-                <div class="item-meta">
-                    <span class="item-source">Constellation Research</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://www.marketsandmarkets.com/AI-sales/ai-sales-tools-whats-changing" target="_blank" class="item-title">AI Sales Tools Delivering 30% Productivity Gains and 68% Shorter Sales Cycles</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Companies using AI sales tools report 30% productivity gains, 13-15% revenue increases, and up to 68% shorter sales cycles. Sales professionals currently spend only 25% of their time actually selling — AI tools can double that by handling routine tasks. Only 12% of CRM users actually use AI features...</p>
-                <div class="item-meta">
-                    <span class="item-source">MarketsandMarkets</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://news.sap.com/2026/01/ai-in-2026-five-defining-themes/" target="_blank" class="item-title">SAP Outlines Five Defining Themes for AI in 2026</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">SAP identifies five AI themes for 2026: AI agents moving from demos to real business impact, enterprise-grade AI governance becoming mandatory, vertical AI solutions outperforming horizontal tools, data quality becoming the primary bottleneck, and open-source AI creating viable enterprise alternativ...</p>
-                <div class="item-meta">
-                    <span class="item-source">SAP News Center</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://aiagentstore.ai/ai-agent-news/2026-january" target="_blank" class="item-title">Exabeam Launches AI Agent Security — 80% of Enterprises Deploying AI Agents Without Governance</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">Exabeam launched AI Agent Security to monitor AI tools for suspicious behavior, responding to the finding that 80% of enterprises are deploying AI agents without proper governance. Meanwhile, Rezolve.ai&#x27;s Teams/Slack AI is resolving 60-80% of IT tickets automatically.</p>
-                <div class="item-meta">
-                    <span class="item-source">AI Agent Store</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-            <div class="item-card">
-                <div class="item-header">
-                    <a href="https://cyclr.com/resources/ai/7-saas-predictions-for-2026-the-year-ai-native-platforms-go-mainstream" target="_blank" class="item-title">MCP Becomes the New Standard — SaaS Vendors to Ship MCP Endpoints Out of the Box</a>
-                    <span class="pri-badge pri-medium">Medium</span>
-                </div>
-                <p class="item-desc">SaaS vendors will increasingly ship Model Context Protocol endpoints by default, similar to the REST API adoption wave of the 2010s. By end of 2026, a majority of successful SaaS launches will advertise &#x27;MCP-native&#x27; as a core product capability. AI-native SaaS is diverging from AI-enabled SaaS.</p>
-                <div class="item-meta">
-                    <span class="item-source">Cyclr</span>
-                    <span class="item-date">Jan 27</span>
-                </div>
-            </div>
-        </div>
-
-
-    <div class="watch-list">
-        <h3>Watch List</h3>
-        <p class="watch-subtitle">Emerging themes to monitor in the coming weeks</p>
-        <ul><li><a href="https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/" target="_blank">Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled</a> <span class="watch-cat">AI for Business / CRM / Sales / PM Tools</span></li><li><a href="https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/" target="_blank">A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains</a> <span class="watch-cat">AI for Business / CRM / Sales / PM Tools</span></li><li><a href="https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/" target="_blank">OpenClaw’s AI assistants are now building their own social network</a> <span class="watch-cat">AI for Business / CRM / Sales / PM Tools</span></li><li><a href="https://seniorhousingnews.com/2026/01/30/brookdale-senior-livings-downsizing-continues-ceo-targets-3-pronged-strategy-in-2026/" target="_blank">Brookdale Senior Living’s Downsizing Continues, CEO Targets 3-Pronged Strategy in 2026</a> <span class="watch-cat">Senior Living SaaS Products</span></li><li><a href="https://techcrunch.com/2026/01/30/anthropic-brings-agentic-plugins-to-cowork/" target="_blank">Anthropic brings agentic plug-ins to Cowork</a> <span class="watch-cat">AI for Business / CRM / Sales / PM Tools</span></li></ul>
-    </div>
 
 <footer class="footer">
-    Sources include Senior Housing News, McKnight's Senior Living, TechCrunch, VentureBeat, and other
-    verified industry publications. All items verified from original sources. &bull; Generated by Industry Intelligence Brief
+    January 31, 2026 at 4:42 PM &bull;
+    <a href="archive/">Past briefs</a> &bull;
+    <a href="../">All dashboards</a>
 </footer>
 
+<script>
+function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.closest('.tab').classList.add('active');
+}
+</script>
 </body>
 </html>
