@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Industry Intelligence — Saturday, January 31, 2026</title>
+<title>Industry Intelligence &mdash; Saturday, January 31, 2026</title>
 <style>
 :root {
     --bg: #f8f9fa; --surface: #ffffff; --text: #1a1a2e; --text-secondary: #6c757d;
@@ -25,15 +25,9 @@ body {
 }
 
 /* Header */
-.header {
-    margin-bottom: 1.5rem;
-}
-.header h1 {
-    font-size: 1.5rem; font-weight: 700; margin-bottom: 0.15rem;
-}
-.header .date {
-    color: var(--text-secondary); font-size: 0.9rem;
-}
+.header { margin-bottom: 1.5rem; }
+.header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.15rem; }
+.header .date { color: var(--text-secondary); font-size: 0.9rem; }
 
 /* Tabs */
 .tabs {
@@ -43,48 +37,63 @@ body {
 .tab {
     padding: 0.6rem 1.25rem; cursor: pointer; font-weight: 600; font-size: 0.9rem;
     color: var(--text-secondary); border-bottom: 2px solid transparent;
-    margin-bottom: -2px; transition: all 0.15s; background: none; border-top: none;
-    border-left: none; border-right: none;
+    margin-bottom: -2px; transition: all 0.15s; background: none;
+    border-top: none; border-left: none; border-right: none;
 }
 .tab:hover { color: var(--text); }
-.tab.active {
-    color: var(--accent); border-bottom-color: var(--accent);
-}
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
 .tab-count {
     background: var(--border); color: var(--text-secondary); font-size: 0.7rem;
     padding: 0.1rem 0.4rem; border-radius: 8px; margin-left: 0.35rem; font-weight: 700;
 }
-.tab.active .tab-count {
-    background: var(--accent); color: #fff;
-}
+.tab.active .tab-count { background: var(--accent); color: #fff; }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
 
-/* Item Cards */
-.item-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 1rem 1.25rem; margin-bottom: 0.75rem; box-shadow: var(--shadow);
-    transition: box-shadow 0.2s;
+/* Sections */
+.section { margin-bottom: 1.75rem; }
+.section-header {
+    font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--accent); padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border); margin-bottom: 0.75rem;
 }
-.item-card:hover { box-shadow: var(--shadow-md); }
-.item-header {
+
+/* Cards */
+.brief-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem; box-shadow: var(--shadow); transition: box-shadow 0.2s;
+}
+.brief-card:hover { box-shadow: var(--shadow-md); }
+.card-header {
     display: flex; align-items: flex-start; justify-content: space-between;
-    gap: 0.75rem; margin-bottom: 0.4rem;
+    gap: 0.75rem; margin-bottom: 0.5rem;
 }
-.item-title {
-    font-weight: 600; color: var(--accent); text-decoration: none;
-    font-size: 0.95rem; line-height: 1.4;
+.card-title {
+    font-weight: 600; font-size: 0.95rem; line-height: 1.4;
+    color: var(--accent); text-decoration: none;
 }
-.item-title:hover { text-decoration: underline; }
-.item-desc {
-    font-size: 0.875rem; color: var(--text-secondary);
-    margin-bottom: 0.4rem; line-height: 1.5;
-}
-.item-meta {
+.card-title:hover { text-decoration: underline; }
+
+/* Fields */
+.field { margin-bottom: 0.3rem; font-size: 0.875rem; line-height: 1.5; }
+.field-label { font-weight: 600; color: var(--text); }
+.field-text { color: var(--text-secondary); }
+
+/* Card meta */
+.card-meta {
     display: flex; gap: 0.75rem; font-size: 0.75rem; color: var(--text-secondary);
-    align-items: center; flex-wrap: wrap;
+    align-items: center; flex-wrap: wrap; margin-top: 0.5rem;
+    padding-top: 0.4rem; border-top: 1px solid var(--border);
 }
-.item-source { font-weight: 600; }
+.card-source-name { font-weight: 600; }
+.card-link {
+    color: var(--accent); text-decoration: none; font-weight: 600;
+    margin-left: auto;
+}
+.card-link:hover { text-decoration: underline; }
+
+/* Category tags */
 .cat-tag {
     border: 1px solid; border-radius: 4px; padding: 0.05rem 0.4rem;
     font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
@@ -103,20 +112,23 @@ body {
     .pri-medium { background: #1e3a5f; color: #93c5fd; }
 }
 
-/* Weekly category sections */
-.weekly-category {
-    margin-bottom: 1.5rem;
+/* Takeaways */
+.takeaways-list { list-style: none; padding: 0; }
+.takeaways-list li {
+    padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.875rem; line-height: 1.5; color: var(--text-secondary);
 }
-.weekly-category h3 {
-    font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem;
-    padding-bottom: 0.4rem; border-bottom: 2px solid var(--border);
-    display: flex; align-items: center; gap: 0.4rem;
+.takeaways-list li:last-child { border-bottom: none; }
+.takeaways-list li::before {
+    content: "\2022"; color: var(--accent); font-weight: 700; margin-right: 0.5rem;
 }
-.cat-icon { font-size: 1.1rem; }
+.takeaway-source {
+    font-size: 0.7rem; color: var(--accent); text-decoration: none;
+}
+.takeaway-source:hover { text-decoration: underline; }
 
-.empty-state {
-    color: var(--text-secondary); font-style: italic; padding: 2rem;
-    text-align: center;
+.no-items {
+    color: var(--text-secondary); font-style: italic; padding: 1rem; font-size: 0.9rem;
 }
 
 /* Footer */
@@ -142,111 +154,358 @@ body {
 
 <div class="tabs">
     <button class="tab active" onclick="showTab('today')">
-        Today <span class="tab-count">5</span>
+        Today <span class="tab-count">10</span>
     </button>
     <button class="tab" onclick="showTab('weekly')">
-        In Case You Missed It <span class="tab-count">2</span>
+        In Case You Missed It <span class="tab-count">5</span>
     </button>
 </div>
 
 <div id="today" class="tab-panel active">
     
-    <div class="item-card">
-        <div class="item-header">
-            <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="item-title">Assisted Living Wage Growth Slows, Turnover Improving</a>
+    <div class="section">
+        <h3 class="section-header">Key Stories</h3>
+        
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/29/wtwh-healthcare-announces-the-frontline-honors-class-of-2025/" target="_blank" class="card-title">WTWH Healthcare Announces the Frontline Honors Class of 2025</a>
             <span class="pri-badge pri-high">High</span>
         </div>
-        <p class="item-desc">The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Report by Hospital &amp;#38; Healthcare Compensation Service (HCS), published [&amp;#8230;] The post Assisted Living Wage Growth Slows, Turnover Improving appeared first on Senior Housing News.</p>
-        <div class="item-meta">
-            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS Products</span>
-            <span class="item-source">Senior Housing News</span>
-            <span class="item-date">Jan 30</span>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">WTWH Healthcare, a WTWH Media, LLC company, is proud to announce the Frontline Honors Class of 2025. With nominations across the behavioral health, home health &amp;#38; home care, hospice &amp;#38; palliative care, memory care, senior housing &amp;#38; senior living, and skilled nursing industries, the program showcases exemplary character and performance of frontline workers across the [&amp;#8230;] The post WTWH Healthcare Announces the Frontline Honors Class of 2025 appeared first on Senior Housing News.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 29</span>
+            <a href="https://seniorhousingnews.com/2026/01/29/wtwh-healthcare-announces-the-frontline-honors-class-of-2025/" target="_blank" class="card-link">Read more &rarr;</a>
         </div>
     </div>
-    <div class="item-card">
-        <div class="item-header">
-            <a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank" class="item-title">Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept</a>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/28/senior-care-bankruptcies-rising-even-as-healthcare-filings-decline/" target="_blank" class="card-title">Senior Care Bankruptcies Rising Even as Healthcare Filings Decline</a>
             <span class="pri-badge pri-high">High</span>
         </div>
-        <p class="item-desc">A Wisconsin-based nonprofit hospice, Agrace, is launching a new memory care initiative that includes a village for residents inspired by the Hogeweyk model in The Netherlands. The hospice and palliative care provider recently announced the project, which will be dubbed as the Ellen &amp;#38; Peter Johnson Dementia Village at Agrace.</p>
-        <div class="item-meta">
-            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS Products</span>
-            <span class="item-source">Senior Housing News</span>
-            <span class="item-date">Jan 30</span>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">The number of bankruptcy filings related to senior housing and care increased 18% last year, even as total health care bankruptcies fell 21% in that time. 11 Bankruptcies stemming from independent living, assisted living, CCRCs and skilled nursing increased from filings in 2024 to 13 filings in 2025, according to a report by health care [&amp;#8230;] The post Senior Care Bankruptcies Rising Even as Healthcare Filings Decline appeared first on Senior Housing News.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 28</span>
+            <a href="https://seniorhousingnews.com/2026/01/28/senior-care-bankruptcies-rising-even-as-healthcare-filings-decline/" target="_blank" class="card-link">Read more &rarr;</a>
         </div>
     </div>
-    <div class="item-card">
-        <div class="item-header">
-            <a href="https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/" target="_blank" class="item-title">Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled</a>
-            <span class="pri-badge pri-medium">Medium</span>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank" class="card-title">Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept</a>
+            <span class="pri-badge pri-high">High</span>
         </div>
-        <p class="item-desc">Nvidia CEO Jensen Huang said that a recent report of friction between his company and OpenAI was “nonsense.”.</p>
-        <div class="item-meta">
-            <span class="cat-tag" style="border-color:#0891b2;color:#0891b2">AI for Business / CRM / Sales / PM Tools</span>
-            <span class="item-source">TechCrunch AI</span>
-            <span class="item-date">Jan 31</span>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">A Wisconsin-based nonprofit hospice, Agrace, is launching a new memory care initiative that includes a village for residents inspired by the Hogeweyk model in The Netherlands. The hospice and palliative care provider recently announced the project, which will be dubbed as the Ellen &amp;#38; Peter Johnson Dementia Village at Agrace.</span>
         </div>
-    </div>
-    <div class="item-card">
-        <div class="item-header">
-            <a href="https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/" target="_blank" class="item-title">A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains</a>
-            <span class="pri-badge pri-medium">Medium</span>
+        <div class="field">
+            <span class="field-label">Why it matters:</span>
+            <span class="field-text">Fueled with the Johnsons’ donation [&amp;#8230;] The post Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept appeared first on Senior Housing News.</span>
         </div>
-        <p class="item-desc">If co-founder Lachy Groom has any doubts, he doesn’t show it. He’s working with people who&#x27;ve been working on this problem for decades and who believe the timing is finally right, which is all he needs to know.</p>
-        <div class="item-meta">
-            <span class="cat-tag" style="border-color:#0891b2;color:#0891b2">AI for Business / CRM / Sales / PM Tools</span>
-            <span class="item-source">TechCrunch AI</span>
-            <span class="item-date">Jan 31</span>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 30</span>
+            <a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank" class="card-link">Read more &rarr;</a>
         </div>
     </div>
-    <div class="item-card">
-        <div class="item-header">
-            <a href="https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/" target="_blank" class="item-title">OpenClaw’s AI assistants are now building their own social network</a>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/29/accountability-without-leverage-why-trust-is-a-cornerstone-of-senior-living-turnarounds/" target="_blank" class="card-title">Accountability Without Leverage: Why Trust is a Cornerstone of Senior Living Turnarounds</a>
+            <span class="pri-badge pri-high">High</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">This story is part of your SHN+ subscription Many operators have tried, but not all have succeeded turning around communities. Companies taking on these deals in 2026 say they’re harder than they look.</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Why it matters:</span>
+            <span class="field-text">A recent blog post from Nick Gesue, who was CEO of NewPoint Capital from 2024 until it changed hands for $425 million [&amp;#8230;] The post Accountability Without Leverage: Why Trust is a Cornerstone of Senior Living Turnarounds appeared first on Senior Housing News.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 29</span>
+            <a href="https://seniorhousingnews.com/2026/01/29/accountability-without-leverage-why-trust-is-a-cornerstone-of-senior-living-turnarounds/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/29/in-the-pipeline-minto-usa-plans-mixed-use-development-r-d-olson-starts-construction-in-california/" target="_blank" class="card-title">In the Pipeline: Minto USA Plans Mixed-Use Development; R.D. Olson Starts Construction in California</a>
             <span class="pri-badge pri-medium">Medium</span>
         </div>
-        <p class="item-desc">The viral personal AI assistant formerly known as Clawdbot has a new shell — again. After briefly rebranding as Moltbot, it has now picked OpenClaw as its new name.</p>
-        <div class="item-meta">
-            <span class="cat-tag" style="border-color:#0891b2;color:#0891b2">AI for Business / CRM / Sales / PM Tools</span>
-            <span class="item-source">TechCrunch AI</span>
-            <span class="item-date">Jan 30</span>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">In the Pipeline is part of your SHN+ subscription In the Pipeline is brought to you by the Senior Housing News Architecture &amp;#38; Design Awards, an annual competition that recognizes cutting-edge design, excellence, and innovation in senior living. Construction: Planned Bozzuto Construction plans new community in Dallas Bozzuto Construction announced an expansion into Texas, detailing [&amp;#8230;] The post In the Pipeline: Minto USA Plans Mixed-Use Development; R.D.</span>
         </div>
+        <div class="field">
+            <span class="field-label">Why it matters:</span>
+            <span class="field-text">Olson Starts Construction in Cal.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 29</span>
+            <a href="https://seniorhousingnews.com/2026/01/29/in-the-pipeline-minto-usa-plans-mixed-use-development-r-d-olson-starts-construction-in-california/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://techcrunch.com/2026/01/29/apple-buys-israeli-startup-q-ai-as-the-ai-race-heats-up/" target="_blank" class="card-title">Apple buys Israeli startup Q.ai as the AI race heats up</a>
+            <span class="pri-badge pri-medium">Medium</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">Q.ai is an Israeli startup specializing in imaging and machine learning, particularly technologies that enable devices to interpret whispered speech and enhance audio in noisy environments.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">TechCrunch AI</span>
+            <span class="card-date">Jan 29</span>
+            <a href="https://techcrunch.com/2026/01/29/apple-buys-israeli-startup-q-ai-as-the-ai-race-heats-up/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-header">Emerging Trends</h3>
+        
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://techcrunch.com/2026/01/28/mark-zuckerberg-future-smart-glasses/" target="_blank" class="card-title">Mark Zuckerberg says a future without smart glasses is ‘hard to imagine’</a>
+            <span class="pri-badge pri-medium">Medium</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Description:</span>
+            <span class="field-text">Take Zuckerberg&#x27;s outlook with a grain of salt. After all, he thought we&#x27;d all be hanging out in the metaverse by now.</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Early Signals:</span>
+            <span class="field-text">Take Zuckerberg&#x27;s outlook with a grain of salt.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#0891b2;color:#0891b2">AI for Business / CRM / Sales / PM Tools</span>
+            <span class="card-source-name">TechCrunch AI</span>
+            <span class="card-date">Jan 28</span>
+            <a href="https://techcrunch.com/2026/01/28/mark-zuckerberg-future-smart-glasses/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-header">Conversations &amp; Insights</h3>
+        
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="card-title">Assisted Living Wage Growth Slows, Turnover Improving</a>
+            <span class="pri-badge pri-high">High</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Where It's Happening:</span>
+            <span class="field-text">Senior Housing News</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Takeaway:</span>
+            <span class="field-text">The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Report by Hospital &amp;#38; Healthcare Compensation Service (HCS), published [&amp;#8230;] The post Assisted Living Wage Growth Slows, Turnover Improving appeared first on Senior Housing News.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 30</span>
+            <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/30/brookdale-senior-livings-downsizing-continues-ceo-targets-3-pronged-strategy-in-2026/" target="_blank" class="card-title">Brookdale Senior Living’s Downsizing Continues, CEO Targets 3-Pronged Strategy in 2026</a>
+            <span class="pri-badge pri-medium">Medium</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Where It's Happening:</span>
+            <span class="field-text">Senior Housing News</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Key Voices:</span>
+            <span class="field-text">Nick Stengle, Targets, Brookdale Senior Living</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Takeaway:</span>
+            <span class="field-text">Brookdale Senior Living CEO Nick Stengle believes that a leaner portfolio and a focus on supply-demand, critical mass and operational excellence are top ways to bring the company into its next evolution. Earlier this week, the Brentwood, Tennessee-based senior living operator said it expected to notch revenue per available rooms (RevPAR) growth of between 8% [&amp;#8230;] The post Brookdale Senior Living’s Downsizing Continues, CEO Targets 3-Pronged Strategy in 2026 appeared first on Senior Housing.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 30</span>
+            <a href="https://seniorhousingnews.com/2026/01/30/brookdale-senior-livings-downsizing-continues-ceo-targets-3-pronged-strategy-in-2026/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/29/2life-communities-ceo-to-retire-in-leadership-transition-planned-for-october/" target="_blank" class="card-title">2Life Communities CEO to Retire in Leadership Transition Planned for October</a>
+            <span class="pri-badge pri-medium">Medium</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Where It's Happening:</span>
+            <span class="field-text">Senior Housing News</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Key Voices:</span>
+            <span class="field-text">Gitta Kurlat, Life Communities</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Takeaway:</span>
+            <span class="field-text">2Life Communities is undergoing a leadership transition later this year. Leader Amy Schectman is retiring from her post as Saul and Gitta Kurlat CEO in October and current 2Life President Lizbeth Heyer is assuming the organization’s top leadership role Heyer has since joining the organization in 2014 led multiple efforts, including the development, acquisition, and [&amp;#8230;] The post 2Life Communities CEO to Retire in Leadership Transition Planned for October appeared first on Senior Housing New.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 29</span>
+            <a href="https://seniorhousingnews.com/2026/01/29/2life-communities-ceo-to-retire-in-leadership-transition-planned-for-october/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-header">Quick Takeaways</h3>
+            <ul class="takeaways-list">
+        <li>WTWH Healthcare, a WTWH Media, LLC company, is proud to announce the Frontline Honors Class of 2025. With nominations across the behavioral health, home health &amp;#38; home care, hospice &amp;#38; palliative care, memory care, senior housing &amp;#38; senior living, and skilled nursing industries, the program showcases exemplary character and performance of frontline workers across the [&amp;#8230;] The post WTWH Healthcare Announces the Frontline Honors Class of 2025 appeared first on Senior Housing News. <a href="https://seniorhousingnews.com/2026/01/29/wtwh-healthcare-announces-the-frontline-honors-class-of-2025/" target="_blank" class="takeaway-source">[Senior Housing News]</a></li>
+        <li>The number of bankruptcy filings related to senior housing and care increased 18% last year, even as total health care bankruptcies fell 21% in that time. 11 Bankruptcies stemming from independent living, assisted living, CCRCs and skilled nursing increased from filings in 2024 to 13 filings in 2025, according to a report by health care [&amp;#8230;] The post Senior Care Bankruptcies Rising Even as Healthcare Filings Decline appeared first on Senior Housing News. <a href="https://seniorhousingnews.com/2026/01/28/senior-care-bankruptcies-rising-even-as-healthcare-filings-decline/" target="_blank" class="takeaway-source">[Senior Housing News]</a></li>
+        <li>The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Report by Hospital &amp;#38; Healthcare Compensation Service (HCS), published [&amp;#8230;] The post Assisted Living Wage Growth Slows, Turnover Improving appeared first on Senior Housing News. <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="takeaway-source">[Senior Housing News]</a></li>
+        <li>Nvidia CEO Jensen Huang said that a recent report of friction between his company and OpenAI was “nonsense.”. <a href="https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/" target="_blank" class="takeaway-source">[TechCrunch AI]</a></li>
+    </ul>
     </div>
 </div>
 
 <div id="weekly" class="tab-panel">
     
-        <div class="weekly-category">
-            <h3><span class="cat-icon">&#127970;</span> Senior Living SaaS Products</h3>
-            
-    <div class="item-card">
-        <div class="item-header">
-            <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="item-title">Assisted Living Wage Growth Slows, Turnover Improving</a>
+    <div class="section">
+        <h3 class="section-header">Key Stories</h3>
+        
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/29/wtwh-healthcare-announces-the-frontline-honors-class-of-2025/" target="_blank" class="card-title">WTWH Healthcare Announces the Frontline Honors Class of 2025</a>
             <span class="pri-badge pri-high">High</span>
         </div>
-        <p class="item-desc">The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Report by Hospital &amp;#38; Healthcare Compensation Service (HCS), published [&amp;#8230;] The post Assisted Living Wage Growth Slows, Turnover Improving appeared first on Senior Housing News.</p>
-        <div class="item-meta">
-            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS Products</span>
-            <span class="item-source">Senior Housing News</span>
-            <span class="item-date">Jan 30</span>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">WTWH Healthcare, a WTWH Media, LLC company, is proud to announce the Frontline Honors Class of 2025. With nominations across the behavioral health, home health &amp;#38; home care, hospice &amp;#38; palliative care, memory care, senior housing &amp;#38; senior living, and skilled nursing industries, the program showcases exemplary character and performance of frontline workers across the [&amp;#8230;] The post WTWH Healthcare Announces the Frontline Honors Class of 2025 appeared first on Senior Housing News.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 29</span>
+            <a href="https://seniorhousingnews.com/2026/01/29/wtwh-healthcare-announces-the-frontline-honors-class-of-2025/" target="_blank" class="card-link">Read more &rarr;</a>
         </div>
     </div>
-    <div class="item-card">
-        <div class="item-header">
-            <a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank" class="item-title">Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept</a>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/28/senior-care-bankruptcies-rising-even-as-healthcare-filings-decline/" target="_blank" class="card-title">Senior Care Bankruptcies Rising Even as Healthcare Filings Decline</a>
             <span class="pri-badge pri-high">High</span>
         </div>
-        <p class="item-desc">A Wisconsin-based nonprofit hospice, Agrace, is launching a new memory care initiative that includes a village for residents inspired by the Hogeweyk model in The Netherlands. The hospice and palliative care provider recently announced the project, which will be dubbed as the Ellen &amp;#38; Peter Johnson Dementia Village at Agrace.</p>
-        <div class="item-meta">
-            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS Products</span>
-            <span class="item-source">Senior Housing News</span>
-            <span class="item-date">Jan 30</span>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">The number of bankruptcy filings related to senior housing and care increased 18% last year, even as total health care bankruptcies fell 21% in that time. 11 Bankruptcies stemming from independent living, assisted living, CCRCs and skilled nursing increased from filings in 2024 to 13 filings in 2025, according to a report by health care [&amp;#8230;] The post Senior Care Bankruptcies Rising Even as Healthcare Filings Decline appeared first on Senior Housing News.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 28</span>
+            <a href="https://seniorhousingnews.com/2026/01/28/senior-care-bankruptcies-rising-even-as-healthcare-filings-decline/" target="_blank" class="card-link">Read more &rarr;</a>
         </div>
     </div>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank" class="card-title">Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept</a>
+            <span class="pri-badge pri-high">High</span>
         </div>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">A Wisconsin-based nonprofit hospice, Agrace, is launching a new memory care initiative that includes a village for residents inspired by the Hogeweyk model in The Netherlands. The hospice and palliative care provider recently announced the project, which will be dubbed as the Ellen &amp;#38; Peter Johnson Dementia Village at Agrace.</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Why it matters:</span>
+            <span class="field-text">Fueled with the Johnsons’ donation [&amp;#8230;] The post Nonprofit Hospice Provider Agrace Plans New Dementia Village Concept appeared first on Senior Housing News.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 30</span>
+            <a href="https://seniorhousingnews.com/2026/01/30/nonprofit-hospice-provider-agrace-plans-new-dementia-village-concept/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/29/accountability-without-leverage-why-trust-is-a-cornerstone-of-senior-living-turnarounds/" target="_blank" class="card-title">Accountability Without Leverage: Why Trust is a Cornerstone of Senior Living Turnarounds</a>
+            <span class="pri-badge pri-high">High</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Summary:</span>
+            <span class="field-text">This story is part of your SHN+ subscription Many operators have tried, but not all have succeeded turning around communities. Companies taking on these deals in 2026 say they’re harder than they look.</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Why it matters:</span>
+            <span class="field-text">A recent blog post from Nick Gesue, who was CEO of NewPoint Capital from 2024 until it changed hands for $425 million [&amp;#8230;] The post Accountability Without Leverage: Why Trust is a Cornerstone of Senior Living Turnarounds appeared first on Senior Housing News.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 29</span>
+            <a href="https://seniorhousingnews.com/2026/01/29/accountability-without-leverage-why-trust-is-a-cornerstone-of-senior-living-turnarounds/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-header">Emerging Trends</h3>
+        <p class="no-items">No emerging trends identified in this period.</p>
+    </div>
+
+    <div class="section">
+        <h3 class="section-header">Conversations &amp; Insights</h3>
+        
+    <div class="brief-card">
+        <div class="card-header">
+            <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="card-title">Assisted Living Wage Growth Slows, Turnover Improving</a>
+            <span class="pri-badge pri-high">High</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Where It's Happening:</span>
+            <span class="field-text">Senior Housing News</span>
+        </div>
+        <div class="field">
+            <span class="field-label">Takeaway:</span>
+            <span class="field-text">The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Report by Hospital &amp;#38; Healthcare Compensation Service (HCS), published [&amp;#8230;] The post Assisted Living Wage Growth Slows, Turnover Improving appeared first on Senior Housing News.</span>
+        </div>
+        <div class="card-meta">
+            <span class="cat-tag" style="border-color:#4361ee;color:#4361ee">Senior Living SaaS</span>
+            <span class="card-source-name">Senior Housing News</span>
+            <span class="card-date">Jan 30</span>
+            <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="card-link">Read more &rarr;</a>
+        </div>
+    </div>
+    </div>
+
+    <div class="section">
+        <h3 class="section-header">Quick Takeaways</h3>
+            <ul class="takeaways-list">
+        <li>WTWH Healthcare, a WTWH Media, LLC company, is proud to announce the Frontline Honors Class of 2025. With nominations across the behavioral health, home health &amp;#38; home care, hospice &amp;#38; palliative care, memory care, senior housing &amp;#38; senior living, and skilled nursing industries, the program showcases exemplary character and performance of frontline workers across the [&amp;#8230;] The post WTWH Healthcare Announces the Frontline Honors Class of 2025 appeared first on Senior Housing News. <a href="https://seniorhousingnews.com/2026/01/29/wtwh-healthcare-announces-the-frontline-honors-class-of-2025/" target="_blank" class="takeaway-source">[Senior Housing News]</a></li>
+        <li>The number of bankruptcy filings related to senior housing and care increased 18% last year, even as total health care bankruptcies fell 21% in that time. 11 Bankruptcies stemming from independent living, assisted living, CCRCs and skilled nursing increased from filings in 2024 to 13 filings in 2025, according to a report by health care [&amp;#8230;] The post Senior Care Bankruptcies Rising Even as Healthcare Filings Decline appeared first on Senior Housing News. <a href="https://seniorhousingnews.com/2026/01/28/senior-care-bankruptcies-rising-even-as-healthcare-filings-decline/" target="_blank" class="takeaway-source">[Senior Housing News]</a></li>
+        <li>The pace of wage growth for assisted living nursing positions has decelerated in 2025, while the senior living industry is seeing positive momentum in retaining staff as turnover rates continued on a downward trajectory last year. That’s according to the 2025 Assisted Living Salary &amp;#38; Benefits Report by Hospital &amp;#38; Healthcare Compensation Service (HCS), published [&amp;#8230;] The post Assisted Living Wage Growth Slows, Turnover Improving appeared first on Senior Housing News. <a href="https://seniorhousingnews.com/2026/01/30/assisted-living-wage-growth-slows-turnover-improving/" target="_blank" class="takeaway-source">[Senior Housing News]</a></li>
+    </ul>
+    </div>
 </div>
 
 <footer class="footer">
-    January 31, 2026 at 4:42 PM &bull;
+    January 31, 2026 at 9:04 PM &bull;
     <a href="archive/">Past briefs</a> &bull;
     <a href="../">All dashboards</a>
 </footer>
