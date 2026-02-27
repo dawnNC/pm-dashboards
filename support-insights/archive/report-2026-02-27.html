@@ -370,7 +370,7 @@ details[open] .category-header::before {
 
 <header>
     <h1>Support Insights Dashboard</h1>
-    <p class="subtitle">Generated February 27, 2026 at 8:56 AM</p>
+    <p class="subtitle">Generated February 27, 2026 at 12:02 PM</p>
     <div class="date-filter">
         <label for="startDate">From:</label>
         <input type="date" id="startDate" value="2026-01-26">
@@ -542,6 +542,56 @@ details[open] .category-header::before {
                 </tr>
         </tbody>
     </table>
+</div>
+
+<!-- SLA Compliance -->
+
+<div class="section">
+    <h2>SLA Compliance</h2>
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1rem">
+        Resolved last 30 days: <strong>0 tickets</strong>
+        
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        
+        <div>
+            <h3 style="margin-bottom:0.75rem;font-size:1rem">Initial Response SLA</h3>
+            <p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.75rem">Enterprise tier baseline. Time from ticket creation to triage.</p>
+            <table class="ticket-table">
+                <thead><tr><th>Priority</th><th>Target</th><th>Compliance</th><th style="text-align:right">Tickets</th></tr></thead>
+                <tbody>
+                <tr>
+                    <td><span class="priority-badge pri-critical">Critical</span></td>
+                    <td style="font-size:0.85rem;color:var(--text-secondary)">24/7 · 30 min target</td>
+                    <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:88%;background:var(--good);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--good);min-width:3rem">88%</span></div></td>
+                    <td style="text-align:right;font-size:0.85rem">7/8</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge pri-high">High</span></td>
+                    <td style="font-size:0.85rem;color:var(--text-secondary)">Business hrs · 4h target</td>
+                    <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:73%;background:var(--warn);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--warn);min-width:3rem">73%</span></div></td>
+                    <td style="text-align:right;font-size:0.85rem">11/15</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge pri-medium">Medium</span></td>
+                    <td style="font-size:0.85rem;color:var(--text-secondary)">Business hrs · 1d target</td>
+                    <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:89%;background:var(--good);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--good);min-width:3rem">89%</span></div></td>
+                    <td style="text-align:right;font-size:0.85rem">33/37</td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge pri-low">Low</span></td>
+                    <td style="font-size:0.85rem;color:var(--text-secondary)">Business hrs · 2d target</td>
+                    <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:100%;background:var(--good);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--good);min-width:3rem">100%</span></div></td>
+                    <td style="text-align:right;font-size:0.85rem">1/1</td>
+                </tr></tbody>
+            </table>
+        </div>
+        <div><p style="color:var(--text-secondary)">No resolved P1/P2 tickets in the last 30 days.</p></div>
+    </div>
+    <p style="font-size:0.75rem;color:var(--text-secondary);margin-top:1rem">
+        &#9432; SLA targets: Initial response — Critical 30 min (24/7), High 4 biz hrs, Medium 8 biz hrs, Low 2 biz days.
+        Resolution — Critical ASAP (4h threshold), High 1 biz day. Compliance uses calendar-hour approximations.
+    </p>
 </div>
 
 <!-- Ticket Details by Category -->
