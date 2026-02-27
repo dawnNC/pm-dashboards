@@ -370,7 +370,7 @@ details[open] .category-header::before {
 
 <header>
     <h1>Support Insights Dashboard</h1>
-    <p class="subtitle">Generated February 27, 2026 at 8:01 AM</p>
+    <p class="subtitle">Generated February 27, 2026 at 8:42 AM</p>
     <div class="date-filter">
         <label for="startDate">From:</label>
         <input type="date" id="startDate" value="2026-01-26">
@@ -394,8 +394,8 @@ details[open] .category-header::before {
         <span class="badge badge-neutral">No change</span>
     </div>
     <div class="metric-card">
-        <div class="metric-label">Mean Time to Triage</div>
-        <div class="metric-value">23.4h</div>
+        <div class="metric-label">Median Time to Triage</div>
+        <div class="metric-value">0.0h</div>
         <span class="badge badge-neutral">No change</span>
     </div>
     <div class="metric-card">
@@ -497,14 +497,64 @@ details[open] .category-header::before {
 
 <!-- Priority Distribution Trend -->
 
+<div class="section">
+    <h2>Priority Distribution Trend</h2>
+    <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.75rem">Week-over-week shift in priority mix (pp = percentage points)</p>
+    <table class="ticket-table" style="max-width:500px">
+        <thead>
+            <tr>
+                <th>Priority</th>
+                <th style="text-align:right">This Period</th>
+                <th style="text-align:right">Previous</th>
+                <th style="text-align:right">Change</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td><span class="priority-badge pri-critical">Critical</span></td>
+                    <td style="text-align:right">8 (12%)</td>
+                    <td style="text-align:right">8 (12%)</td>
+                    <td style="text-align:right"><span style="color:var(--text-secondary)">&#8212;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge pri-highest">Highest</span></td>
+                    <td style="text-align:right">1 (1%)</td>
+                    <td style="text-align:right">1 (1%)</td>
+                    <td style="text-align:right"><span style="color:var(--text-secondary)">&#8212;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge pri-high">High</span></td>
+                    <td style="text-align:right">19 (28%)</td>
+                    <td style="text-align:right">19 (28%)</td>
+                    <td style="text-align:right"><span style="color:var(--text-secondary)">&#8212;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge pri-medium">Medium</span></td>
+                    <td style="text-align:right">39 (57%)</td>
+                    <td style="text-align:right">39 (57%)</td>
+                    <td style="text-align:right"><span style="color:var(--text-secondary)">&#8212;</span></td>
+                </tr>
+                <tr>
+                    <td><span class="priority-badge pri-low">Low</span></td>
+                    <td style="text-align:right">1 (1%)</td>
+                    <td style="text-align:right">1 (1%)</td>
+                    <td style="text-align:right"><span style="color:var(--text-secondary)">&#8212;</span></td>
+                </tr>
+        </tbody>
+    </table>
+</div>
 
 <!-- MTTT Breakdown -->
 
 <div class="section">
     <h2>Mean Time to Triage — Breakdown</h2>
-    <div class="metric-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 600px;">
+    <div class="metric-grid" style="grid-template-columns: repeat(4, 1fr); max-width: 800px;">
         <div class="metric-card">
             <div class="metric-label">Fastest</div>
+            <div class="metric-value" style="font-size:1.5rem">0.0h</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Median (typical)</div>
             <div class="metric-value" style="font-size:1.5rem">0.0h</div>
         </div>
         <div class="metric-card">
@@ -516,7 +566,7 @@ details[open] .category-header::before {
             <div class="metric-value" style="font-size:1.5rem">332.2h</div>
         </div>
     </div>
-    <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.5rem">Based on 62 triaged tickets this period — time from first seen in filter to triage completion.</p>
+    <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.5rem">Based on 62 triaged tickets this period — time from first seen in filter to triage completion. High mean vs. median indicates outliers skewing the average.</p>
 </div>
 
 <!-- Ticket Details by Category -->
