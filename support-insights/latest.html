@@ -309,6 +309,9 @@ details[open] .category-header::before {
 .status-inprogress { color: var(--warning); font-weight: 600; }
 .status-open { color: var(--warning); font-weight: 600; }
 .status-triaged { color: var(--good); font-weight: 600; }
+.sla-expandable { cursor: pointer; }
+.sla-expandable:hover { background: var(--surface); }
+.sla-expandable.expanded td:last-child { color: var(--primary); }
 
 /* Footer */
 .footer {
@@ -374,7 +377,7 @@ details[open] .category-header::before {
 
 <header>
     <h1>Support Insights Dashboard</h1>
-    <p class="subtitle">Generated March 3, 2026 at 10:34 AM</p>
+    <p class="subtitle">Generated March 3, 2026 at 10:53 AM</p>
     <div class="date-filter">
         <label for="startDate">From:</label>
         <input type="date" id="startDate" value="2026-01-26">
@@ -400,12 +403,12 @@ details[open] .category-header::before {
     <div class="metric-card">
         <div class="metric-label">Median Time to Triage</div>
         <div class="metric-value">0.0h</div>
-        <span class="badge badge-good">▼ 7.3%</span>
+        <span class="badge badge-neutral">No change</span>
     </div>
     <div class="metric-card">
         <div class="metric-label">Triaged This Period</div>
         <div class="metric-value">95</div>
-        <span class="badge badge-bad">▲ 8.0%</span>
+        <span class="badge badge-neutral">No change</span>
     </div>
     <div class="metric-card">
         <div class="metric-label">Incomplete Rate</div>
@@ -570,29 +573,645 @@ details[open] .category-header::before {
             <table class="ticket-table">
                 <thead><tr><th>Priority</th><th>Target</th><th>Compliance</th><th style="text-align:right">Tickets</th></tr></thead>
                 <tbody>
-                <tr>
+                <tr class="sla-expandable" onclick="toggleSlaDetail(this)">
                     <td><span class="priority-badge pri-critical">Critical</span></td>
                     <td style="font-size:0.85rem;color:var(--text-secondary)">24/7 · 30 min target</td>
                     <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:91%;background:var(--good);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--good);min-width:3rem">91%</span></div></td>
-                    <td style="text-align:right;font-size:0.85rem">10/11</td>
+                    <td style="text-align:right;font-size:0.85rem">10/11 &#9660;</td>
                 </tr>
-                <tr>
+                <tr class="sla-detail" style="display:none">
+                    <td colspan="4" style="padding:0;background:var(--bg)">
+                        <table style="width:100%;border-collapse:collapse;border-top:1px solid var(--border)">
+                            <thead><tr style="background:var(--surface)">
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Key</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Summary</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">To Triage</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">SLA</th>
+                            </tr></thead>
+                            <tbody>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2041" target="_blank" style="font-size:0.8rem">ACES-2041</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Pegasus Insights not up-to-date - Feb missing </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">2.2d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1432" target="_blank" style="font-size:0.8rem">PBI-1432</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Length of Stay report edits</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2340" target="_blank" style="font-size:0.8rem">ENQCES-2340</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">DOR Report for DSL doesn't show the TerraBella South region</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2462" target="_blank" style="font-size:0.8rem">ENQCES-2462</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">BI-Occupancy Board not loading </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2000" target="_blank" style="font-size:0.8rem">PBI-2000</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Publish a Copy of Reports from Leisure Care to Meridian Senior Living</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1711" target="_blank" style="font-size:0.8rem">PBI-1711</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Legacy Healthcare - Custom Fields not Pulling into Report </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2636" target="_blank" style="font-size:0.8rem">ENQCES-2636</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Mainstay | Add Missing KMS Forms</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-1973" target="_blank" style="font-size:0.8rem">ENQCES-1973</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Response Time Discrepancies &amp; Missing Status Update Logs</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2623" target="_blank" style="font-size:0.8rem">ENQCES-2623</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">User Synced as Super User for Aline </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2231" target="_blank" style="font-size:0.8rem">PBI-2231</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Executive Overview - Widget: Cash Health (Fabric)</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2243" target="_blank" style="font-size:0.8rem">PBI-2243</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Forecast &amp; Risk - Widget: Pipeline Drop-Off Rate</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr></tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="sla-expandable" onclick="toggleSlaDetail(this)">
                     <td><span class="priority-badge pri-high">High</span></td>
                     <td style="font-size:0.85rem;color:var(--text-secondary)">Business hrs · 4h target</td>
                     <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:71%;background:var(--warn);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--warn);min-width:3rem">71%</span></div></td>
-                    <td style="text-align:right;font-size:0.85rem">20/28</td>
+                    <td style="text-align:right;font-size:0.85rem">20/28 &#9660;</td>
                 </tr>
-                <tr>
+                <tr class="sla-detail" style="display:none">
+                    <td colspan="4" style="padding:0;background:var(--bg)">
+                        <table style="width:100%;border-collapse:collapse;border-top:1px solid var(--border)">
+                            <thead><tr style="background:var(--surface)">
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Key</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Summary</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">To Triage</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">SLA</th>
+                            </tr></thead>
+                            <tbody>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-1970" target="_blank" style="font-size:0.8rem">ACES-1970</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">eLead Organization Metrics date filter broken </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">32.1d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2277" target="_blank" style="font-size:0.8rem">ACES-2277</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Hebrew SeniorLife (664) There are two tickets for Al Higgens but one of them does not have any locations/tabs/tags assigned to them. According to client, they were created in Orchard Cove but for one profile, he is not assigned to any location.</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">15.8d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2213" target="_blank" style="font-size:0.8rem">ENQCES-2869</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Create DW for Friendship Village of Dublin (#818)</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">13.8d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2360" target="_blank" style="font-size:0.8rem">ACES-2360</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Revenue Occupancy - Unit Capacity not updating </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">8.8d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2019" target="_blank" style="font-size:0.8rem">ACES-2019</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">CIMA Insights not up-to-date</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">8.1d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2213" target="_blank" style="font-size:0.8rem">ACES-2213</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Create DW for Friendship Village of Dublin (#818)</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">7.6d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2277" target="_blank" style="font-size:0.8rem">ENQCES-2813</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Hebrew SeniorLife (664) There are two tickets for Al Higgens but one of them does not have any locations/tabs/tags assigned to them. According to client, they were created in Orchard Cove but for one profile, he is not assigned to any location.</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">39.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2832" target="_blank" style="font-size:0.8rem">ENQCES-2832</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">profile is not attached to a community and is not visible</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">15.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2042" target="_blank" style="font-size:0.8rem">ACES-2042</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Reload Custom Occupancy Report</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">1.8h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-1910" target="_blank" style="font-size:0.8rem">ACES-1910</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Create Data Dictionary Request for Sales Mgmt Database Mgmt</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">1.1h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1491" target="_blank" style="font-size:0.8rem">PBI-1491</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add ADO page to Vitals - Occupancy Analytics</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1918" target="_blank" style="font-size:0.8rem">PBI-1918</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Update logic in reporting for company/other users</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2215" target="_blank" style="font-size:0.8rem">ACES-2215</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Profile Links Not Working</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2620" target="_blank" style="font-size:0.8rem">PBI-2620</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">DSL Lead Timing Issue</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2377" target="_blank" style="font-size:0.8rem">ENQCES-2377</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">PowerBI DSL - Vitals DOR Not populating data</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1783" target="_blank" style="font-size:0.8rem">PBI-1783</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Data Validation (QA) for Adlington Tableau Report </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2510" target="_blank" style="font-size:0.8rem">ENQCES-2510</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">PowerBI Access Request</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1779" target="_blank" style="font-size:0.8rem">PBI-1779</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add reports to DW for Meridian Senior Living #805</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1539" target="_blank" style="font-size:0.8rem">PBI-1539</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Vitals Occupancy Analytics - Blank Rows for Move Ins and Move Outs</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1768" target="_blank" style="font-size:0.8rem">PBI-1768</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add reports to workspace for The Aspenwood Company #804</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2457" target="_blank" style="font-size:0.8rem">ENQCES-2457</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Occupancy Board Error Message and incorrect occupied amount</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1991" target="_blank" style="font-size:0.8rem">PBI-1991</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Create Power BI Licenses for Meridian Senior Living</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2071" target="_blank" style="font-size:0.8rem">ACES-2071</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Sales mgmt report not reloaded to current day</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2188" target="_blank" style="font-size:0.8rem">ACES-2188</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Creating Reservation linked to wrong community</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2227" target="_blank" style="font-size:0.8rem">ACES-2227</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Prospects with Waitlist not appearing on Waitlist tab in Census Analytics</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2278" target="_blank" style="font-size:0.8rem">ACES-2278</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">KPI reports aren't showing accurate info.</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1335" target="_blank" style="font-size:0.8rem">DBA-1335</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">MOZ107339 Was Inactivated Then Reactivated — notes disappeared</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1766" target="_blank" style="font-size:0.8rem">PBI-1766</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add reports to DW for Baptist House Senior Living #803</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr></tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="sla-expandable" onclick="toggleSlaDetail(this)">
                     <td><span class="priority-badge pri-medium">Medium</span></td>
                     <td style="font-size:0.85rem;color:var(--text-secondary)">Business hrs · 1d target</td>
                     <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:86%;background:var(--good);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--good);min-width:3rem">86%</span></div></td>
-                    <td style="text-align:right;font-size:0.85rem">44/51</td>
+                    <td style="text-align:right;font-size:0.85rem">44/51 &#9660;</td>
                 </tr>
-                <tr>
+                <tr class="sla-detail" style="display:none">
+                    <td colspan="4" style="padding:0;background:var(--bg)">
+                        <table style="width:100%;border-collapse:collapse;border-top:1px solid var(--border)">
+                            <thead><tr style="background:var(--surface)">
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Key</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Summary</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">To Triage</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">SLA</th>
+                            </tr></thead>
+                            <tbody>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2276" target="_blank" style="font-size:0.8rem">ENQCES-2276</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Occupancy Board -&gt; Combining AL units and MC units in column</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">32.1d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2160" target="_blank" style="font-size:0.8rem">ACES-2160</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Outreach activities are showing up under the wrong community.</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">15.8d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2233" target="_blank" style="font-size:0.8rem">ENQCES-2801</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Prospects with Waitlist do not show on Waitlist report</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">12.9d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2160" target="_blank" style="font-size:0.8rem">ENQCES-2784</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Outreach activities are showing up under the wrong community.</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">12.8d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2228" target="_blank" style="font-size:0.8rem">ACES-2228</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Trilogy (132) Lead Does Not Have Any Location Assigned To Them</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">7.6d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2233" target="_blank" style="font-size:0.8rem">ACES-2233</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Prospects with Waitlist do not show on Waitlist report</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">6.6d to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2228" target="_blank" style="font-size:0.8rem">ENQCES-2878</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Trilogy (132) Lead Does Not Have Any Location Assigned To Them</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">39.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1580" target="_blank" style="font-size:0.8rem">PBI-1580</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add Toggle to Distinguish Pre-Leads and Prospects in Sales &amp; Marketing Analytics &gt; Lost Leads Tab</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1598" target="_blank" style="font-size:0.8rem">PBI-1598</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Introduce Additional Data points to Cross Tenant DW </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2567" target="_blank" style="font-size:0.8rem">PBI-2567</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Daily Job Request - DSL Active Users</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-822" target="_blank" style="font-size:0.8rem">ACES-822</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Review/Adjust Logic Infection Control Summary </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1732" target="_blank" style="font-size:0.8rem">PBI-1732</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Remove Post Acute and Services Report from Cappella/CLC (ID: 75)</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1651" target="_blank" style="font-size:0.8rem">PBI-1651</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Support Scorecard - Data Not Importing</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1714" target="_blank" style="font-size:0.8rem">PBI-1714</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Deposit logic is not working for Exeter Community</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1273" target="_blank" style="font-size:0.8rem">DBA-1273</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">EnquireDW access for Persitent Developers Sonia and Anuradha</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1272" target="_blank" style="font-size:0.8rem">DBA-1272</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">EnquireDW access for Persistent Developer Puli Reddy</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1173" target="_blank" style="font-size:0.8rem">DBA-1173</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Can you create reports for Phoebe Ministries 785?</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1764" target="_blank" style="font-size:0.8rem">PBI-1764</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Remove PowerBI User - Charli Sotomora. Client - Plaza Assisted Living</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1538" target="_blank" style="font-size:0.8rem">PBI-1538</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Artegan's(771) Occupancy Board shows as 202 and by their count it should be 204.</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1279" target="_blank" style="font-size:0.8rem">DBA-1279</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Full Refresh of DW for LIVE603(Bridge Senior Living) Reporting for 2 location expansion</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2138" target="_blank" style="font-size:0.8rem">ENQCES-2138</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Individual not appearing on Paid Lead report. </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1803" target="_blank" style="font-size:0.8rem">PBI-1803</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Create Premium Reporting Account for Westminster Canterbury Blue Ridge and add Kate Phelps from Taylor Reporting </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2426" target="_blank" style="font-size:0.8rem">ENQCES-2426</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Second Resident missing on Census Analytics  </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-492" target="_blank" style="font-size:0.8rem">ACES-492</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">iCIMS -Pending candidate</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2501" target="_blank" style="font-size:0.8rem">ENQCES-2501</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Second Resident not showing on Census Analysis </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2480" target="_blank" style="font-size:0.8rem">ENQCES-2480</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Please remove BI Access for Users</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2388" target="_blank" style="font-size:0.8rem">ENQCES-2388</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Reporting- Speed to Lead report pulling leads outside of date range</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1285" target="_blank" style="font-size:0.8rem">DBA-1285</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">EnquireDW access for new Contract Developer - Jasmina Dafade</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1769" target="_blank" style="font-size:0.8rem">PBI-1769</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add reports to the DW for Tockwotton- Company ID 795</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1287" target="_blank" style="font-size:0.8rem">DBA-1287</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">New Migration Go-LIVE DW Refresh LIVE766</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1286" target="_blank" style="font-size:0.8rem">DBA-1286</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Refresh DW LIVE 798</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1294" target="_blank" style="font-size:0.8rem">DBA-1294</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Full Refresh of DW for LIVE68 Reporting</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1295" target="_blank" style="font-size:0.8rem">DBA-1295</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">New Migration GO-LIVE DW Refresh LIVE800 - Westminster Canterbury Richmond</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1948" target="_blank" style="font-size:0.8rem">PBI-1948</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add Standard reports to DW for Meridian Senior Living #805</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1288" target="_blank" style="font-size:0.8rem">DBA-1288</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">New Migration Go-LIVE DW Refresh LIVE795</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2540" target="_blank" style="font-size:0.8rem">ENQCES-2540</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Sales Trend Analysis Report for Adlington Retirement Living UK has not updated since 15/9/25</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1289" target="_blank" style="font-size:0.8rem">DBA-1289</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">EnquireDW access for Persistent contractor Sai Nadide Reddy</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2522" target="_blank" style="font-size:0.8rem">ENQCES-2522</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Notes not appearing under "Notes" on profile</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1776" target="_blank" style="font-size:0.8rem">PBI-1776</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Create Reports for Symphony Care Network</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1306" target="_blank" style="font-size:0.8rem">DBA-1306</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Full Refresh of DW for LIVE761(DSL) Reporting - Fivestar phase2 expansion</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1307" target="_blank" style="font-size:0.8rem">DBA-1307</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">New Migration GO-LIVE DW Refresh LIVE804</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1309" target="_blank" style="font-size:0.8rem">DBA-1309</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Full Refresh of DW for LIVE68(Senior Management Advisors)  Reporting</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1712" target="_blank" style="font-size:0.8rem">PBI-1712</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Please Create Reports for Westminster Canterbury Richmond company ID 800</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1395" target="_blank" style="font-size:0.8rem">PBI-1395</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add Days Since Last Engaged Date to AaPa</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1613" target="_blank" style="font-size:0.8rem">PBI-1613</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Create and share report with AEW through SFTP</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1619" target="_blank" style="font-size:0.8rem">PBI-1619</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Days Since Last Engaged</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1958" target="_blank" style="font-size:0.8rem">PBI-1958</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Update Power BI reports to use Azure Maps instead of deprecated Bing Maps</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2069" target="_blank" style="font-size:0.8rem">PBI-2069</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Fixing "market source facts"</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2428" target="_blank" style="font-size:0.8rem">PBI-2428</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Create a FactInquiryByReferral for Compass Widget </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1999" target="_blank" style="font-size:0.8rem">PBI-1999</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Prospect Profile Link Not Working in Meridian Senior Living (805)</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2557" target="_blank" style="font-size:0.8rem">PBI-2557</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add new PBI user for Plaza Assisted Living</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr></tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="sla-expandable" onclick="toggleSlaDetail(this)">
                     <td><span class="priority-badge pri-low">Low</span></td>
                     <td style="font-size:0.85rem;color:var(--text-secondary)">Business hrs · 2d target</td>
                     <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:100%;background:var(--good);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--good);min-width:3rem">100%</span></div></td>
-                    <td style="text-align:right;font-size:0.85rem">4/4</td>
+                    <td style="text-align:right;font-size:0.85rem">4/4 &#9660;</td>
+                </tr>
+                <tr class="sla-detail" style="display:none">
+                    <td colspan="4" style="padding:0;background:var(--bg)">
+                        <table style="width:100%;border-collapse:collapse;border-top:1px solid var(--border)">
+                            <thead><tr style="background:var(--surface)">
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Key</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Summary</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">To Triage</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">SLA</th>
+                            </tr></thead>
+                            <tbody>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1486" target="_blank" style="font-size:0.8rem">PBI-1486</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Add "bucket" for Days Since Last Activity for DSL existing custom report</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1499" target="_blank" style="font-size:0.8rem">PBI-1499</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Re-create Length of Stay Report for DSL</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-1778" target="_blank" style="font-size:0.8rem">PBI-1778</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Market Insights Report Incorrectly Including Pre-Leads in Total Lead Counts</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.3h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ENQCES-2343" target="_blank" style="font-size:0.8rem">ENQCES-2343</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Atria Speed to Connect/Speed to lead report is showing a lot of blanks</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">0.0h to triage</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr></tbody>
+                        </table>
+                    </td>
                 </tr></tbody>
             </table>
         </div>
@@ -603,19 +1222,129 @@ details[open] .category-header::before {
             <table class="ticket-table">
                 <thead><tr><th>Priority</th><th>Target</th><th>Compliance</th><th style="text-align:right">Tickets</th><th style="text-align:right">Median Time</th></tr></thead>
                 <tbody>
-                <tr>
+                <tr class="sla-expandable" onclick="toggleSlaDetail(this)">
                     <td><span class="priority-badge pri-critical">Critical</span></td>
                     <td style="font-size:0.85rem;color:var(--text-secondary)">4.0h target</td>
                     <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:0%;background:var(--bad);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--bad);min-width:3rem">0%</span></div></td>
-                    <td style="text-align:right;font-size:0.85rem">0/2</td>
+                    <td style="text-align:right;font-size:0.85rem">0/2 &#9660;</td>
                     <td style="text-align:right;font-size:0.85rem">30.4h median</td>
                 </tr>
-                <tr>
+                <tr class="sla-detail" style="display:none">
+                    <td colspan="5" style="padding:0;background:var(--bg)">
+                        <table style="width:100%;border-collapse:collapse;border-top:1px solid var(--border)">
+                            <thead><tr style="background:var(--surface)">
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Key</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Summary</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">To Resolve</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">SLA</th>
+                            </tr></thead>
+                            <tbody>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2041" target="_blank" style="font-size:0.8rem">ACES-2041</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Pegasus Insights not up-to-date - Feb missing </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">2.3d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2090" target="_blank" style="font-size:0.8rem">ACES-2090</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)"> Insights Custom reports not up to date </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">6.0h to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr></tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr class="sla-expandable" onclick="toggleSlaDetail(this)">
                     <td><span class="priority-badge pri-high">High</span></td>
                     <td style="font-size:0.85rem;color:var(--text-secondary)">1 business day target</td>
                     <td style="min-width:160px"><div style="display:flex;align-items:center;gap:0.5rem"><div style="flex:1;background:var(--border);border-radius:4px;height:8px"><div style="width:25%;background:var(--bad);height:8px;border-radius:4px"></div></div><span style="font-size:0.8rem;font-weight:600;color:var(--bad);min-width:3rem">25%</span></div></td>
-                    <td style="text-align:right;font-size:0.85rem">3/12</td>
+                    <td style="text-align:right;font-size:0.85rem">3/12 &#9660;</td>
                     <td style="text-align:right;font-size:0.85rem">375.6h median</td>
+                </tr>
+                <tr class="sla-detail" style="display:none">
+                    <td colspan="5" style="padding:0;background:var(--bg)">
+                        <table style="width:100%;border-collapse:collapse;border-top:1px solid var(--border)">
+                            <thead><tr style="background:var(--surface)">
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Key</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">Summary</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">To Resolve</th>
+                                <th style="padding:0.3rem 0.5rem;font-size:0.75rem;text-align:left">SLA</th>
+                            </tr></thead>
+                            <tbody>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2028" target="_blank" style="font-size:0.8rem">PBI-2028</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Meridian Reports Not Reflecting True Occupancy</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">94.9d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1323" target="_blank" style="font-size:0.8rem">DBA-1323</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">New Migration Go-LIVE DW Refresh LIVE761</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">48.6d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2175" target="_blank" style="font-size:0.8rem">ACES-2175</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Tutera TSZ report is conflicting with Team Productivity Report</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">39.8d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/DBA-1324" target="_blank" style="font-size:0.8rem">DBA-1324</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">New Migration Go-LIVE DW Refresh LIVE815</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">26.8d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2213" target="_blank" style="font-size:0.8rem">ACES-2213</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Create DW for Friendship Village of Dublin (#818)</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">26.1d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2421" target="_blank" style="font-size:0.8rem">PBI-2421</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Contact Center Analytics | Add Aline Connect Call In </td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">18.0d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2427" target="_blank" style="font-size:0.8rem">PBI-2427</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">User access to Power BI</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">13.3d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2019" target="_blank" style="font-size:0.8rem">ACES-2019</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">CIMA Insights not up-to-date</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">8.0d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2530" target="_blank" style="font-size:0.8rem">PBI-2530</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Please add additional reports to Cypress Cove #813</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">6.1d to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--bad);font-weight:600">&#10007; Breached</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/PBI-2619" target="_blank" style="font-size:0.8rem">PBI-2619</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Azure release scripts broken</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">18.3h to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2042" target="_blank" style="font-size:0.8rem">ACES-2042</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Reload Custom Occupancy Report</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">2.9h to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.3rem 0.5rem"><a href="https://alineops.atlassian.net/browse/ACES-2071" target="_blank" style="font-size:0.8rem">ACES-2071</a></td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;color:var(--text-secondary)">Sales mgmt report not reloaded to current day</td>
+                            <td style="padding:0.3rem 0.5rem;font-size:0.8rem;white-space:nowrap">2.1h to resolve</td>
+                            <td style="padding:0.3rem 0.5rem"><span style="color:var(--good);font-weight:600">&#10003; Met</span></td>
+                        </tr></tbody>
+                        </table>
+                    </td>
                 </tr></tbody>
             </table>
         </div>
@@ -955,7 +1684,7 @@ details[open] .category-header::before {
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1958" target="_blank">PBI-1958</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
                     <td><span class="status-inactive">Backlog</span></td>
-                    <td style="white-space:nowrap">133.7d</td>
+                    <td style="white-space:nowrap">133.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
@@ -969,7 +1698,7 @@ details[open] .category-header::before {
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1486" target="_blank">PBI-1486</a></td>
                     <td><span class="priority-badge pri-low">Low</span></td>
                     <td><span class="status-inactive">Backlog</span></td>
-                    <td style="white-space:nowrap">300.7d</td>
+                    <td style="white-space:nowrap">300.8d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
                 <tr>
@@ -1574,6 +2303,14 @@ function updateDashboard(stats, tickets) {
             </tr>
         `).join('');
     }
+}
+
+function toggleSlaDetail(row) {
+    const detail = row.nextElementSibling;
+    if (!detail || !detail.classList.contains('sla-detail')) return;
+    const isOpen = detail.style.display !== 'none';
+    detail.style.display = isOpen ? 'none' : 'table-row';
+    row.classList.toggle('expanded', !isOpen);
 }
 
 function applyDateFilter() {
