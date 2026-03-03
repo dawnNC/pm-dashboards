@@ -303,9 +303,12 @@ details[open] .category-header::before {
     .pri-lowest { background: #312e81; color: #c7d2fe; }
     .pri-unset { background: var(--border); color: var(--text-secondary); }
 }
-.status-triaged { color: var(--good); font-weight: 600; }
+.status-done { color: var(--good); font-weight: 600; }
+.status-indev { color: #4361ee; font-weight: 600; }
+.status-inactive { color: #4b5563; font-weight: 600; }
+.status-inprogress { color: var(--warning); font-weight: 600; }
 .status-open { color: var(--warning); font-weight: 600; }
-.status-inprogress { color: #4361ee; font-weight: 600; }
+.status-triaged { color: var(--good); font-weight: 600; }
 
 /* Footer */
 .footer {
@@ -371,7 +374,7 @@ details[open] .category-header::before {
 
 <header>
     <h1>Support Insights Dashboard</h1>
-    <p class="subtitle">Generated March 3, 2026 at 9:39 AM</p>
+    <p class="subtitle">Generated March 3, 2026 at 9:44 AM</p>
     <div class="date-filter">
         <label for="startDate">From:</label>
         <input type="date" id="startDate" value="2026-01-26">
@@ -387,7 +390,7 @@ details[open] .category-header::before {
     <div class="metric-card">
         <div class="metric-label">Total Unique Tickets</div>
         <div class="metric-value">88</div>
-        <span class="badge badge-good">▼ 20.0%</span>
+        <span class="badge badge-neutral">No change</span>
     </div>
     <div class="metric-card">
         <div class="metric-label">Critical Issues</div>
@@ -397,12 +400,12 @@ details[open] .category-header::before {
     <div class="metric-card">
         <div class="metric-label">Median Time to Triage</div>
         <div class="metric-value">0.0h</div>
-        <span class="badge badge-bad">▲ 24.9%</span>
+        <span class="badge badge-neutral">No change</span>
     </div>
     <div class="metric-card">
         <div class="metric-label">Triaged This Period</div>
         <div class="metric-value">88</div>
-        <span class="badge badge-good">▼ 20.0%</span>
+        <span class="badge badge-neutral">No change</span>
     </div>
     <div class="metric-card">
         <div class="metric-label">Incomplete Rate</div>
@@ -513,8 +516,8 @@ details[open] .category-header::before {
                 <tr>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
                     <td style="text-align:right">11 (12%)</td>
-                    <td style="text-align:right">11 (10%)</td>
-                    <td style="text-align:right"><span style="color:var(--bad)">&#9650; +2pp</span></td>
+                    <td style="text-align:right">11 (12%)</td>
+                    <td style="text-align:right"><span style="color:var(--text-secondary)">&#8212;</span></td>
                 </tr>
                 <tr>
                     <td><span class="priority-badge pri-highest">Highest</span></td>
@@ -525,20 +528,20 @@ details[open] .category-header::before {
                 <tr>
                     <td><span class="priority-badge pri-high">High</span></td>
                     <td style="text-align:right">23 (26%)</td>
-                    <td style="text-align:right">24 (22%)</td>
-                    <td style="text-align:right"><span style="color:var(--bad)">&#9650; +4pp</span></td>
+                    <td style="text-align:right">23 (26%)</td>
+                    <td style="text-align:right"><span style="color:var(--text-secondary)">&#8212;</span></td>
                 </tr>
                 <tr>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
                     <td style="text-align:right">49 (56%)</td>
-                    <td style="text-align:right">70 (64%)</td>
-                    <td style="text-align:right"><span style="color:var(--good)">&#9660; -8pp</span></td>
+                    <td style="text-align:right">49 (56%)</td>
+                    <td style="text-align:right"><span style="color:var(--text-secondary)">&#8212;</span></td>
                 </tr>
                 <tr>
                     <td><span class="priority-badge pri-low">Low</span></td>
                     <td style="text-align:right">4 (5%)</td>
-                    <td style="text-align:right">4 (4%)</td>
-                    <td style="text-align:right"><span style="color:var(--bad)">&#9650; +1pp</span></td>
+                    <td style="text-align:right">4 (5%)</td>
+                    <td style="text-align:right"><span style="color:var(--text-secondary)">&#8212;</span></td>
                 </tr>
         </tbody>
     </table>
@@ -636,35 +639,35 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2340" target="_blank">ENQCES-2340</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">34.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2462" target="_blank">ENQCES-2462</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">20.6d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-2000" target="_blank">PBI-2000</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">6.1d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1711" target="_blank">PBI-1711</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">46.9d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2041" target="_blank">ACES-2041</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">2.3d</td>
                     <td style="white-space:nowrap">2.2d</td>
                 </tr>
@@ -678,154 +681,154 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1343" target="_blank">PBI-1343</a></td>
                     <td><span class="priority-badge pri-highest">Highest</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">69.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2377" target="_blank">ENQCES-2377</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">27.5d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1783" target="_blank">PBI-1783</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">2.5d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1779" target="_blank">PBI-1779</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">33.6d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1539" target="_blank">PBI-1539</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">79.3d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1768" target="_blank">PBI-1768</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">52.0d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2457" target="_blank">ENQCES-2457</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">28.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2019" target="_blank">ACES-2019</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">8.0d</td>
                     <td style="white-space:nowrap">8.1d</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2042" target="_blank">ACES-2042</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">3h</td>
                     <td style="white-space:nowrap">2h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2071" target="_blank">ACES-2071</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">2h</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1491" target="_blank">PBI-1491</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">300.1d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1918" target="_blank">PBI-1918</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">147.0d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1732" target="_blank">PBI-1732</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">12.2d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1651" target="_blank">PBI-1651</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">31.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1173" target="_blank">DBA-1173</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">6.2d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1538" target="_blank">PBI-1538</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">107.4d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1279" target="_blank">DBA-1279</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">12.4d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2138" target="_blank">ENQCES-2138</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">45.0d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1803" target="_blank">PBI-1803</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">4.0d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2426" target="_blank">ENQCES-2426</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">Closed</span></td>
+                    <td><span class="status-done">Closed</span></td>
                     <td style="white-space:nowrap">24.5d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2501" target="_blank">ENQCES-2501</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">Closed</span></td>
+                    <td><span class="status-done">Closed</span></td>
                     <td style="white-space:nowrap">7.0d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2388" target="_blank">ENQCES-2388</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">45.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
@@ -839,119 +842,119 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1769" target="_blank">PBI-1769</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">46.5d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1294" target="_blank">DBA-1294</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">21h</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1948" target="_blank">PBI-1948</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">2.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2540" target="_blank">ENQCES-2540</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">7.0d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1776" target="_blank">PBI-1776</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">27.6d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1306" target="_blank">DBA-1306</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">21h</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1309" target="_blank">DBA-1309</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">10h</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1712" target="_blank">PBI-1712</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">82.7d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2233" target="_blank">ACES-2233</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">Closed</span></td>
+                    <td><span class="status-done">Closed</span></td>
                     <td style="white-space:nowrap">40.9d</td>
                     <td style="white-space:nowrap">12.9d</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2233" target="_blank">ACES-2233</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">Closed</span></td>
+                    <td><span class="status-done">Closed</span></td>
                     <td style="white-space:nowrap">40.9d</td>
                     <td style="white-space:nowrap">6.6d</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1580" target="_blank">PBI-1580</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">To Do</span></td>
+                    <td><span class="status-inactive">To Do</span></td>
                     <td style="white-space:nowrap">256.6d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1613" target="_blank">PBI-1613</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">248.9d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1958" target="_blank">PBI-1958</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">133.7d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2343" target="_blank">ENQCES-2343</a></td>
                     <td><span class="priority-badge pri-low">Low</span></td>
-                    <td><span class="status-triaged">Closed</span></td>
+                    <td><span class="status-done">Closed</span></td>
                     <td style="white-space:nowrap">91.1d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1486" target="_blank">PBI-1486</a></td>
                     <td><span class="priority-badge pri-low">Low</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">300.7d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1499" target="_blank">PBI-1499</a></td>
                     <td><span class="priority-badge pri-low">Low</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">300.0d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1778" target="_blank">PBI-1778</a></td>
                     <td><span class="priority-badge pri-low">Low</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">256.9d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
@@ -974,21 +977,21 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2623" target="_blank">ENQCES-2623</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">5.1d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-2231" target="_blank">PBI-2231</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">82.9d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-2243" target="_blank">PBI-2243</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">82.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
@@ -1002,49 +1005,49 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2832" target="_blank">ENQCES-2832</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-triaged">Closed</span></td>
+                    <td><span class="status-done">Closed</span></td>
                     <td style="white-space:nowrap">15.9d</td>
                     <td style="white-space:nowrap">15h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2277" target="_blank">ACES-2277</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-inprogress">In Review</span></td>
+                    <td><span class="status-inactive">In Review</span></td>
                     <td style="white-space:nowrap">48.9d</td>
                     <td style="white-space:nowrap">39h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2277" target="_blank">ACES-2277</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-inprogress">In Review</span></td>
+                    <td><span class="status-inactive">In Review</span></td>
                     <td style="white-space:nowrap">48.9d</td>
                     <td style="white-space:nowrap">15.8d</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2360" target="_blank">ACES-2360</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-inprogress">In Review</span></td>
+                    <td><span class="status-inactive">In Review</span></td>
                     <td style="white-space:nowrap">12.8d</td>
                     <td style="white-space:nowrap">8.8d</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2215" target="_blank">ACES-2215</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-inprogress">In Review</span></td>
+                    <td><span class="status-inactive">In Review</span></td>
                     <td style="white-space:nowrap">27.6d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-2620" target="_blank">PBI-2620</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">5.7d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1714" target="_blank">PBI-1714</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">18.2d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
@@ -1058,56 +1061,56 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2228" target="_blank">ACES-2228</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-inprogress">In Review</span></td>
+                    <td><span class="status-inactive">In Review</span></td>
                     <td style="white-space:nowrap">31.7d</td>
                     <td style="white-space:nowrap">39h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2228" target="_blank">ACES-2228</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-inprogress">In Review</span></td>
+                    <td><span class="status-inactive">In Review</span></td>
                     <td style="white-space:nowrap">31.7d</td>
                     <td style="white-space:nowrap">7.6d</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1395" target="_blank">PBI-1395</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">340.7d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1619" target="_blank">PBI-1619</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">244.7d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-2069" target="_blank">PBI-2069</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">105.9d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-2428" target="_blank">PBI-2428</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">41.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-2567" target="_blank">PBI-2567</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">18.5d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-822" target="_blank">ACES-822</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">143.9d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
@@ -1130,56 +1133,56 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2510" target="_blank">ENQCES-2510</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">7.9d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1991" target="_blank">PBI-1991</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">10.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1273" target="_blank">DBA-1273</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">12.5d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1272" target="_blank">DBA-1272</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">19.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1764" target="_blank">PBI-1764</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">21.8d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2480" target="_blank">ENQCES-2480</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">13.0d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1285" target="_blank">DBA-1285</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">14.1d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1289" target="_blank">DBA-1289</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">4.7d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
@@ -1202,56 +1205,56 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2213" target="_blank">ACES-2213</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-triaged">Closed</span></td>
+                    <td><span class="status-done">Closed</span></td>
                     <td style="white-space:nowrap">26.1d</td>
                     <td style="white-space:nowrap">13.8d</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2213" target="_blank">ACES-2213</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-triaged">Closed</span></td>
+                    <td><span class="status-done">Closed</span></td>
                     <td style="white-space:nowrap">26.1d</td>
                     <td style="white-space:nowrap">7.6d</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1287" target="_blank">DBA-1287</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">14.1d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1286" target="_blank">DBA-1286</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">15.0d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1295" target="_blank">DBA-1295</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">4h</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1288" target="_blank">DBA-1288</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">13.9d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/DBA-1307" target="_blank">DBA-1307</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-triaged">DONE</span></td>
+                    <td><span class="status-done">DONE</span></td>
                     <td style="white-space:nowrap">4h</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/PBI-1598" target="_blank">PBI-1598</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">251.9d</td>
                     <td style="white-space:nowrap">0h</td>
                 </tr>
@@ -1274,35 +1277,35 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2636" target="_blank">ENQCES-2636</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">2h</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-1973" target="_blank">ENQCES-1973</a></td>
                     <td><span class="priority-badge pri-critical">Critical</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">98.9d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ENQCES-2522" target="_blank">ENQCES-2522</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Deployed to Prod</span></td>
+                    <td><span class="status-done">Deployed to Prod</span></td>
                     <td style="white-space:nowrap">15.1d</td>
                     <td style="white-space:nowrap">—</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2160" target="_blank">ACES-2160</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">63.0d</td>
                     <td style="white-space:nowrap">12.8d</td>
                 </tr>
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-2160" target="_blank">ACES-2160</a></td>
                     <td><span class="priority-badge pri-medium">Medium</span></td>
-                    <td><span class="status-open">Backlog</span></td>
+                    <td><span class="status-inactive">Backlog</span></td>
                     <td style="white-space:nowrap">63.0d</td>
                     <td style="white-space:nowrap">15.8d</td>
                 </tr>
@@ -1325,7 +1328,7 @@ details[open] .category-header::before {
                 <tr>
                     <td><a href="https://alineops.atlassian.net/browse/ACES-1970" target="_blank">ACES-1970</a></td>
                     <td><span class="priority-badge pri-high">High</span></td>
-                    <td><span class="status-inprogress">In Review</span></td>
+                    <td><span class="status-inactive">In Review</span></td>
                     <td style="white-space:nowrap">48.0d</td>
                     <td style="white-space:nowrap">32.1d</td>
                 </tr>
