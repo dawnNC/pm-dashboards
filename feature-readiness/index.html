@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<title>Feature Readiness Snapshot &mdash; Q4&ndash;Q1 2026</title>
+<style>
+:root {
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+  --accent: #0d6e8a;
+  --header-bg: #1e3a4c;
+  --header-text: #ffffff;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --radius: 8px;
+
+  /* Status colors */
+  --s-complete-bg: #1e3a4c;
+  --s-complete-text: #ffffff;
+  --s-inprogress-bg: #3b82f6;
+  --s-inprogress-text: #ffffff;
+  --s-notstarted-bg: #cbd5e1;
+  --s-notstarted-text: #475569;
+  --s-notready-bg: #cbd5e1;
+  --s-notready-text: #475569;
+  --s-targeted-bg: #6366f1;
+  --s-targeted-text: #ffffff;
+  --s-broadly-bg: #0891b2;
+  --s-broadly-text: #ffffff;
+  --s-late-bg: #f59e0b;
+  --s-late-text: #ffffff;
+  --s-hotready-bg: #16a34a;
+  --s-hotready-text: #ffffff;
+
+  /* GTM Confidence */
+  --conf-high-bg: #dcfce7;
+  --conf-high-text: #15803d;
+  --conf-high-border: #16a34a;
+  --conf-medium-bg: #fef3c7;
+  --conf-medium-text: #92400e;
+  --conf-medium-border: #d97706;
+  --conf-low-bg: #fee2e2;
+  --conf-low-text: #991b1b;
+  --conf-low-border: #dc2626;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --text: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+    --header-bg: #0f2233;
+    --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+    --s-notstarted-bg: #334155;
+    --s-notstarted-text: #94a3b8;
+    --s-notready-bg: #334155;
+    --s-notready-text: #94a3b8;
+    --conf-high-bg: rgba(22,163,74,0.15);
+    --conf-high-text: #4ade80;
+    --conf-medium-bg: rgba(217,119,6,0.15);
+    --conf-medium-text: #fbbf24;
+    --conf-low-bg: rgba(220,38,38,0.15);
+    --conf-low-text: #f87171;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── Header ── */
+.page-header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.page-header-left h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.page-header-left p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+}
+
+.header-badge {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.85);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  margin-top: 0.2rem;
+}
+
+.back-link {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.15rem;
+}
+.back-link:hover { color: rgba(255,255,255,0.9); }
+
+/* ── Note bar ── */
+.note-bar {
+  background: #1a4a5e;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.78rem;
+  padding: 0.5rem 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  letter-spacing: 0.01em;
+}
+
+.note-bar strong { color: rgba(255,255,255,0.95); }
+
+/* ── Main content ── */
+.main { padding: 1.5rem 2rem; }
+
+/* ── Legend panel ── */
+.legend-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.legend-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  border: none;
+  width: 100%;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+.legend-toggle:hover { background: var(--bg); }
+
+.legend-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.legend-chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--text-secondary);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.legend-chevron.open { transform: rotate(180deg); }
+
+.legend-body {
+  display: none;
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.legend-body.open { display: block; }
+
+.legend-note {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  padding: 0.5rem 0.75rem;
+  margin: 0.75rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.legend-section h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.legend-section p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.legend-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text);
+}
+
+/* ── Controls ── */
+.controls {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.875rem 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  box-shadow: var(--shadow);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.control-group label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.search-input {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.85rem;
+  width: 220px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.search-input:focus { border-color: var(--accent); }
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text-secondary);
+  transition: all 0.15s;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+
+.chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.chip.conf-high.active  { background: var(--conf-high-border); border-color: var(--conf-high-border); }
+.chip.conf-medium.active { background: var(--conf-medium-border); border-color: var(--conf-medium-border); }
+.chip.conf-low.active   { background: var(--conf-low-border); border-color: var(--conf-low-border); }
+
+.controls-right {
+  margin-left: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.results-count {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* ── Table wrapper ── */
+.table-wrapper {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+thead th {
+  background: var(--header-bg);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+thead th:first-child { border-radius: var(--radius) 0 0 0; }
+thead th:last-child  { border-radius: 0 var(--radius) 0 0; }
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: var(--bg); }
+
+tbody td {
+  padding: 0.65rem 0.75rem;
+  vertical-align: top;
+}
+
+/* Product column */
+td.col-product {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+  min-width: 90px;
+}
+
+/* Feature column */
+td.col-feature {
+  font-weight: 600;
+  min-width: 160px;
+  max-width: 200px;
+}
+
+/* Status columns */
+td.col-status { min-width: 90px; }
+td.col-gtm-window { white-space: nowrap; min-width: 70px; font-size: 0.8rem; }
+
+/* Next milestone */
+td.col-milestone {
+  min-width: 140px;
+  max-width: 180px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Key gaps */
+td.col-gaps { min-width: 220px; max-width: 300px; }
+
+/* ── Status badges ── */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.badge-complete    { background: var(--s-complete-bg);    color: var(--s-complete-text); }
+.badge-inprogress  { background: var(--s-inprogress-bg);  color: var(--s-inprogress-text); }
+.badge-notstarted  { background: var(--s-notstarted-bg);  color: var(--s-notstarted-text); }
+.badge-notready    { background: var(--s-notready-bg);    color: var(--s-notready-text); }
+.badge-targeted    { background: var(--s-targeted-bg);    color: var(--s-targeted-text); }
+.badge-broadly     { background: var(--s-broadly-bg);     color: var(--s-broadly-text); }
+.badge-late        { background: var(--s-late-bg);        color: var(--s-late-text); }
+.badge-hotready    { background: var(--s-hotready-bg);    color: var(--s-hotready-text); }
+
+/* ── GTM Confidence pills ── */
+.conf-pill {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1.5px solid transparent;
+}
+
+.conf-high   { background: var(--conf-high-bg);   color: var(--conf-high-text);   border-color: var(--conf-high-border); }
+.conf-medium { background: var(--conf-medium-bg); color: var(--conf-medium-text); border-color: var(--conf-medium-border); }
+.conf-low    { background: var(--conf-low-bg);    color: var(--conf-low-text);    border-color: var(--conf-low-border); }
+
+/* ── Gaps expand/collapse ── */
+.gaps-preview {
+  font-size: 0.78rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.gaps-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.gaps-bullets li {
+  display: flex;
+  gap: 0.4rem;
+  align-items: flex-start;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.gaps-bullets li::before {
+  content: '•';
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  margin-top: 0.05em;
+}
+
+.gap-blocked {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.gap-risk {
+  color: #d97706;
+  font-weight: 700;
+}
+
+.gaps-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.2rem 0;
+  margin-top: 0.3rem;
+  display: block;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.gaps-toggle-btn:hover { opacity: 0.8; }
+
+.gaps-extra { display: none; }
+.gaps-extra.open { display: flex; flex-direction: column; gap: 0.3rem; margin-top: 0.3rem; }
+
+/* ── Empty state ── */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ── Footer ── */
+.page-footer {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .page-header, .main { padding: 1rem; }
+  .note-bar { padding: 0.5rem 1rem; }
+  .controls { flex-direction: column; align-items: stretch; }
+  .search-input { width: 100%; }
+  .controls-right { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="page-header">
+  <div class="page-header-left">
+    <a class="back-link" href="../">&#8592; Dashboards</a>
+    <h1>Feature Readiness Snapshot</h1>
+    <p>Build status, readiness gaps, and GTM timing for high-interest features &mdash; Q4&ndash;Q1 2026</p>
+  </div>
+  <div class="header-badge">Shipping &ne; Commercialization</div>
+</header>
+
+<div class="note-bar">
+  <strong>Note:</strong> Promotion aligns to commercial readiness, but does not block build completion.
+</div>
+
+<!-- ── Main ── -->
+<main class="main">
+
+  <!-- Legend Panel -->
+  <div class="legend-panel">
+    <button class="legend-toggle" onclick="toggleLegend()" id="legendToggleBtn" aria-expanded="false">
+      <span class="legend-toggle-label">
+        <svg class="legend-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="8" cy="8" r="6.5"/>
+          <path d="M8 7v4M8 5.5v.5" stroke-linecap="round"/>
+        </svg>
+        Key Concepts &amp; Interpretation Guide
+      </span>
+      <svg class="legend-chevron" id="legendChevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="legend-body" id="legendBody">
+      <div class="legend-note">
+        <strong>Shipping &ne; Commercialization.</strong> A feature can be built and deployed without being commercially ready.
+        GTM readiness requires completed product definition, customer enablement, and commercial preparation.
+      </div>
+      <div class="legend-grid">
+
+        <div class="legend-section">
+          <h4>Product Definition Status</h4>
+          <p>Are requirements, UX, and acceptance criteria complete and validated?</p>
+          <div class="legend-badges">
+            <div class="legend-row"><span class="badge badge-complete">Complete</span> All definition artifacts signed off</div>
+            <div class="legend-row"><span class="badge badge-inprogress">In Progress</span> Actively being written or reviewed</div>
+            <div class="legend-row"><span class="badge badge-notstarted">Not Started</span> Definition work has not begun</div>
+          </div>
+        </div>
+
+        <div class="legend-section">
+          <h4>Build Status</h4>
+          <p>Is core development work complete today?</p>
+          <div class="legend-badges">
+            <div class="legend-row"><span class="badge badge-complete">Complete</span> Development fully done</div>
+            <div class="legend-row"><span class="badge badge-inprogress">In Progress</span> Actively in development</div>
+            <div class="legend-row"><span class="badge badge-notstarted">Not Started</span> Dev has not yet begun</div>
+          </div>
+        </div>
+
+        <div class="legend-section">
+          <h4>Customer Readiness</h4>
+          <p>Is the feature ready to be released to customers?</p>
+          <div class="legend-badges">
+            <div class="legend-row"><span class="badge badge-complete">Complete</span> Ready for customer release</div>
+            <div class="legend-row"><span class="badge badge-hotready">Hot Ready</span> Fully ready, deploy immediately</div>
+            <div class="legend-row"><span class="badge badge-broadly">Broadly Ready</span> Ready with minor caveats</div>
+            <div class="legend-row"><span class="badge badge-broadly">QA Broadly Ready</span> QA complete, broadly cleared</div>
+            <div class="legend-row"><span class="badge badge-late">Late</span> High risk to derail readiness</div>
+            <div class="legend-row"><span class="badge badge-notready">Not Ready</span> Not yet prepared for customers</div>
+          </div>
+        </div>
+
+        <div class="legend-section">
+          <h4>Commercial Readiness</h4>
+          <p>Is the feature ready to be commercially promoted?</p>
+          <div class="legend-badges">
+            <div class="legend-row"><span class="badge badge-complete">Complete</span> Fully commercially ready</div>
+            <div class="legend-row"><span class="badge badge-inprogress">In Progress</span> Enablement work underway</div>
+            <div class="legend-row"><span class="badge badge-targeted">Targeted</span> Target date set, work planned</div>
+            <div class="legend-row"><span class="badge badge-notready">Not Ready</span> Not yet prepared for promotion</div>
+          </div>
+        </div>
+
+        <div class="legend-section">
+          <h4>GTM Confidence</h4>
+          <p>Current confidence in hitting the GTM window given known dependencies and readiness gaps.</p>
+          <div class="legend-badges">
+            <div class="legend-row"><span class="conf-pill conf-high">High</span> On track, low risk</div>
+            <div class="legend-row"><span class="conf-pill conf-medium">Medium</span> Some risk; dependencies in flight</div>
+            <div class="legend-row"><span class="conf-pill conf-low">Low</span> Significant blockers or unknowns</div>
+          </div>
+        </div>
+
+        <div class="legend-section">
+          <h4>GTM Target Window</h4>
+          <p>The earliest expected timeframe for marketing, assuming readiness criteria are met.</p>
+          <div class="legend-badges">
+            <div class="legend-row" style="font-size:0.75rem;color:var(--text-secondary);">Q1 = Jan–Mar &nbsp;|&nbsp; Q2 = Apr–Jun &nbsp;|&nbsp; Q3 = Jul–Sep &nbsp;|&nbsp; Q4 = Oct–Dec</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="control-group">
+      <label for="searchInput">Search</label>
+      <input class="search-input" id="searchInput" type="text" placeholder="Search features&hellip;" oninput="applyFilters()">
+    </div>
+    <div class="control-group">
+      <label>Product</label>
+      <div class="filter-chips" id="productChips">
+        <span class="chip active" data-filter="product" data-value="all" onclick="toggleChip(this,'product')">All</span>
+        <span class="chip" data-filter="product" data-value="AI Essential" onclick="toggleChip(this,'product')">AI Essential</span>
+        <span class="chip" data-filter="product" data-value="AI Pro" onclick="toggleChip(this,'product')">AI Pro</span>
+        <span class="chip" data-filter="product" data-value="AI + BI" onclick="toggleChip(this,'product')">AI + BI</span>
+        <span class="chip" data-filter="product" data-value="CRM + BI" onclick="toggleChip(this,'product')">CRM + BI</span>
+        <span class="chip" data-filter="product" data-value="Roobrik" onclick="toggleChip(this,'product')">Roobrik</span>
+        <span class="chip" data-filter="product" data-value="Roobrik CRM &amp; AI" onclick="toggleChip(this,'product')">Roobrik CRM &amp; AI</span>
+      </div>
+    </div>
+    <div class="control-group">
+      <label>GTM Confidence</label>
+      <div class="filter-chips" id="confChips">
+        <span class="chip active" data-filter="conf" data-value="all" onclick="toggleChip(this,'conf')">All</span>
+        <span class="chip conf-high" data-filter="conf" data-value="High" onclick="toggleChip(this,'conf')">High</span>
+        <span class="chip conf-medium" data-filter="conf" data-value="Medium" onclick="toggleChip(this,'conf')">Medium</span>
+        <span class="chip conf-low" data-filter="conf" data-value="Low" onclick="toggleChip(this,'conf')">Low</span>
+      </div>
+    </div>
+    <div class="controls-right">
+      <span class="results-count" id="resultsCount"></span>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrapper">
+    <table id="featureTable">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Feature</th>
+          <th>Product Def</th>
+          <th>Build</th>
+          <th>Customer Readiness</th>
+          <th>Commercial Readiness</th>
+          <th>Next Milestone</th>
+          <th>GTM Window</th>
+          <th>GTM Confidence</th>
+          <th>Key Readiness Gaps</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      No features match your current filters.
+    </div>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  Last updated: March 10, 2026 &nbsp;&middot;&nbsp; <a href="../" style="color:var(--text-secondary);">All Dashboards</a>
+</footer>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────────
+
+const features = [
+  // AI Essential
+  {
+    product: "AI Essential",
+    feature: "Improved Opportunity (Lead) Score",
+    productDef: "In Progress",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Complete analysis of the current model",
+    gtmWindow: "Q2",
+    gtmConfidence: "Low",
+    gaps: [
+      "Current opportunity score model to be evaluated for inclusion and expanded to include pre-tour steps."
+    ]
+  },
+  {
+    product: "AI Essential",
+    feature: "AI Text Drafts",
+    productDef: "In Progress",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Product Definition Complete",
+    gtmWindow: "Q2",
+    gtmConfidence: "High",
+    gaps: [
+      "Definition is in progress. Development has not yet begun.",
+      "This feature will recommend sending a Roobrik survey via email or text when a customer has Roobrik and a Prospect has not taken a survey. Feature definition must be finalized before development can start.",
+      "High readiness gap — Q2–Q3 timeline, development has not begun."
+    ]
+  },
+  {
+    product: "AI Essential",
+    feature: "Smart Next Step + Roobrik",
+    productDef: "Not Started",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Product Requirements",
+    gtmWindow: "Q2",
+    gtmConfidence: "",
+    gaps: [
+      "Product requirements have not been written.",
+      "Dependency on Roobrik delivering functionality before CRM/AI integration is possible."
+    ]
+  },
+
+  // AI Pro
+  {
+    product: "AI Pro",
+    feature: "Daily Lineup",
+    productDef: "Complete",
+    build: "In Progress",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Targeted",
+    nextMilestone: "Build Complete",
+    gtmWindow: "Q2",
+    gtmConfidence: "Medium",
+    gaps: [
+      "BLOCKED: Q2 delivery readiness is dependent on Opportunity score model launch.",
+      "RISK: Possible change in scope pending decision on model direction."
+    ]
+  },
+  {
+    product: "AI Pro",
+    feature: "Smart Lists",
+    productDef: "In Progress",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Product Definition Complete — Early Q2",
+    gtmWindow: "Early Q2",
+    gtmConfidence: "",
+    gaps: [
+      "Requirements and design tickets completed. Development has not started.",
+      "Q2 delivery target depends on product definition being finalized in early Q2."
+    ]
+  },
+  {
+    product: "AI Pro",
+    feature: "Clara Prospect Agent (Chat) — Labs release",
+    productDef: "Complete",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Build Complete",
+    gtmWindow: "Q2",
+    gtmConfidence: "High",
+    gaps: [
+      "Development has not yet started; build is the primary open item before readiness can progress.",
+      "Labs release scope requires validation before broader commercial readiness."
+    ]
+  },
+  {
+    product: "AI Pro",
+    feature: "AI Content Builder",
+    productDef: "Not Started",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Product Definition",
+    gtmWindow: "Q3–Q4",
+    gtmConfidence: "Low",
+    gaps: [
+      "Feature definition has not yet started."
+    ]
+  },
+
+  // AI + BI
+  {
+    product: "AI + BI",
+    feature: "BI Agent",
+    productDef: "In Progress",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Data Vectorization Foundations for BI Agent Use",
+    gtmWindow: "Q3–Q4",
+    gtmConfidence: "Low",
+    gaps: [
+      "This feature is in very early stages with foundational back-end work underway in Q1.",
+      "Vectorization pipeline infrastructure in progress; foundational work needed before feature can be scoped.",
+      "Pending Completion of Q1 Schedule Window Automation Plan for Top BI Reports.",
+      "RISK: Possible change in scope pending decision on model direction."
+    ]
+  },
+
+  // CRM + BI
+  {
+    product: "CRM + BI",
+    feature: "Sharpe Reporting (Space, Schedule & Share)",
+    productDef: "In Progress",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Product Definition Complete",
+    gtmWindow: "Q2",
+    gtmConfidence: "",
+    gaps: [
+      "Product definition in progress; build cannot start until definition is complete.",
+      "Pending Completion of product definition before development can be scoped and scheduled."
+    ]
+  },
+  {
+    product: "CRM + BI",
+    feature: "Incorporate Benchmark Data into Dashboard & Goals (Pro feature)",
+    productDef: "Not Started",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Product Definition Kickoff",
+    gtmWindow: "TBD — Earliest Q3",
+    gtmConfidence: "Low",
+    gaps: [
+      "Target GTM window for this feature depends on downstream prioritization and clarity of product definition.",
+      "Product definition kickoff has not yet occurred."
+    ]
+  },
+
+  // Roobrik
+  {
+    product: "Roobrik",
+    feature: "Custom Lead Routing",
+    productDef: "Complete",
+    build: "In Progress",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Build Complete",
+    gtmWindow: "Q2",
+    gtmConfidence: "High",
+    gaps: [
+      "Front end development of the configuration pages is in progress.",
+      "Extensive QA is required after development is complete to ensure leads can be delivered as expected."
+    ]
+  },
+
+  // Roobrik CRM & AI
+  {
+    product: "Roobrik CRM & AI",
+    feature: "Roobrik Survey Click-to-Send",
+    productDef: "In Progress",
+    build: "Not Started",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Product Definition Complete",
+    gtmWindow: "Q3",
+    gtmConfidence: "Medium",
+    gaps: [
+      "Roobrik needs to deliver the survey click-through functionality before it can be integrated into the CRM and AI stack.",
+      "Survey Click-throughs for Aline CRM use (RPR-90) is a prerequisite."
+    ]
+  }
+];
+
+// ── Status badge helper ────────────────────────────────────────────────────────
+
+function badgeClass(status) {
+  switch ((status || '').toLowerCase().replace(/\s+/g, '')) {
+    case 'complete':        return 'badge-complete';
+    case 'inprogress':      return 'badge-inprogress';
+    case 'notstarted':      return 'badge-notstarted';
+    case 'notready':        return 'badge-notready';
+    case 'targeted':        return 'badge-targeted';
+    case 'broadlyready':
+    case 'qabroadlyready':  return 'badge-broadly';
+    case 'late':            return 'badge-late';
+    case 'hotready':        return 'badge-hotready';
+    default:                return 'badge-notready';
+  }
+}
+
+function statusLabel(status) {
+  switch ((status || '').toLowerCase().replace(/\s+/g, '')) {
+    case 'qabroadlyready': return 'QA Broadly Ready';
+    case 'broadlyready':   return 'Broadly Ready';
+    case 'notstarted':     return 'Not Started';
+    case 'notready':       return 'Not Ready';
+    case 'inprogress':     return 'In Progress';
+    case 'hotready':       return 'Hot Ready';
+    default:               return status || '—';
+  }
+}
+
+function badge(status) {
+  if (!status) return '<span style="color:var(--text-secondary);font-size:0.72rem;">—</span>';
+  return `<span class="badge ${badgeClass(status)}">${statusLabel(status)}</span>`;
+}
+
+function confPill(conf) {
+  if (!conf) return '<span style="color:var(--text-secondary);font-size:0.72rem;">—</span>';
+  const cls = conf.toLowerCase();
+  return `<span class="conf-pill conf-${cls}">${conf}</span>`;
+}
+
+// ── Render gaps with expand/collapse ──────────────────────────────────────────
+
+let gapStates = {};
+
+function renderGaps(gaps, rowId) {
+  if (!gaps || gaps.length === 0) {
+    return '<span style="color:var(--text-secondary);font-size:0.72rem;">—</span>';
+  }
+
+  const formatGap = (g) => {
+    let text = g;
+    text = text.replace(/^(BLOCKED:)/i, '<span class="gap-blocked">BLOCKED:</span>');
+    text = text.replace(/^(RISK:)/i, '<span class="gap-risk">RISK:</span>');
+    return text;
+  };
+
+  const PREVIEW_COUNT = 1;
+  const preview = gaps.slice(0, PREVIEW_COUNT);
+  const extra = gaps.slice(PREVIEW_COUNT);
+  const hasMore = extra.length > 0;
+
+  const previewHtml = preview.map(g => `<li><span>${formatGap(g)}</span></li>`).join('');
+  const extraHtml = extra.map(g => `<li><span>${formatGap(g)}</span></li>`).join('');
+
+  return `
+    <div class="gaps-preview">
+      <ul class="gaps-bullets">${previewHtml}</ul>
+      ${hasMore ? `
+        <ul class="gaps-bullets gaps-extra" id="gaps-extra-${rowId}">${extraHtml}</ul>
+        <button class="gaps-toggle-btn" id="gaps-btn-${rowId}" onclick="toggleGaps('${rowId}', ${extra.length})">
+          +${extra.length} more
+        </button>
+      ` : ''}
+    </div>`;
+}
+
+function toggleGaps(rowId, count) {
+  const extra = document.getElementById(`gaps-extra-${rowId}`);
+  const btn   = document.getElementById(`gaps-btn-${rowId}`);
+  if (!extra || !btn) return;
+  const isOpen = extra.classList.toggle('open');
+  btn.textContent = isOpen ? 'Show less' : `+${count} more`;
+}
+
+// ── Render table ──────────────────────────────────────────────────────────────
+
+let activeProduct = 'all';
+let activeConf    = 'all';
+let searchTerm    = '';
+
+function renderTable() {
+  const tbody = document.getElementById('tableBody');
+  const empty = document.getElementById('emptyState');
+  const counter = document.getElementById('resultsCount');
+
+  const search = searchTerm.toLowerCase();
+
+  const filtered = features.filter(f => {
+    const matchProduct = activeProduct === 'all' || f.product === activeProduct;
+    const matchConf    = activeConf === 'all' || f.gtmConfidence === activeConf;
+    const matchSearch  = !search ||
+      f.feature.toLowerCase().includes(search) ||
+      f.product.toLowerCase().includes(search) ||
+      (f.nextMilestone || '').toLowerCase().includes(search);
+    return matchProduct && matchConf && matchSearch;
+  });
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = '';
+    empty.style.display = 'block';
+    counter.textContent = '0 features';
+    return;
+  }
+
+  empty.style.display = 'none';
+  counter.textContent = `${filtered.length} of ${features.length} features`;
+
+  tbody.innerHTML = filtered.map((f, i) => {
+    const rowId = `r${i}-${Date.now()}`;
+    return `
+      <tr>
+        <td class="col-product">${f.product}</td>
+        <td class="col-feature">${f.feature}</td>
+        <td class="col-status">${badge(f.productDef)}</td>
+        <td class="col-status">${badge(f.build)}</td>
+        <td class="col-status">${badge(f.customerReadiness)}</td>
+        <td class="col-status">${badge(f.commercialReadiness)}</td>
+        <td class="col-milestone">${f.nextMilestone || '—'}</td>
+        <td class="col-gtm-window">${f.gtmWindow || '—'}</td>
+        <td>${confPill(f.gtmConfidence)}</td>
+        <td class="col-gaps">${renderGaps(f.gaps, rowId)}</td>
+      </tr>`;
+  }).join('');
+}
+
+// ── Filter controls ───────────────────────────────────────────────────────────
+
+function toggleChip(el, filterType) {
+  const value = el.dataset.value;
+
+  if (filterType === 'product') {
+    document.querySelectorAll('[data-filter="product"]').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    activeProduct = value;
+  } else if (filterType === 'conf') {
+    document.querySelectorAll('[data-filter="conf"]').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    activeConf = value;
+  }
+
+  applyFilters();
+}
+
+function applyFilters() {
+  searchTerm = document.getElementById('searchInput').value;
+  renderTable();
+}
+
+// ── Legend toggle ─────────────────────────────────────────────────────────────
+
+function toggleLegend() {
+  const body    = document.getElementById('legendBody');
+  const chevron = document.getElementById('legendChevron');
+  const btn     = document.getElementById('legendToggleBtn');
+  const isOpen  = body.classList.toggle('open');
+  chevron.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', isOpen);
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+
+renderTable();
+</script>
+
+</body>
+</html>
