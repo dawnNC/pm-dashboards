@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aline Roadmap Report Card — Q1 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --teal:         #10A4D1;
+  --teal-65:      #64C4E1;
+  --teal-25:      #C3E8F4;
+  --teal-10:      #EAF6FB;
+  --purple:       #4E4EA6;
+  --purple-65:    #8C8CC5;
+  --purple-25:    #D3D3E9;
+  --purple-10:    #EEEEF8;
+  --magenta:      #EE3D65;
+  --magenta-10:   #FDECF1;
+  --orange:       #FF8F3F;
+  --orange-65:    #FFB882;
+  --orange-10:    #FFF4EC;
+  --lime:         #BCD72E;
+  --lime-10:      #F3F9E3;
+  --bg:           #F4F6F9;
+  --white:        #FFFFFF;
+  --border:       #E2E8F0;
+  --border-light: #EEF1F6;
+  --text-1:       #1A2635;
+  --text-2:       #4A5C6E;
+  --text-3:       #8A9BAC;
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:    0 4px 12px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+  --font: 'Manrope', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-1);
+  font-size: 13.5px;
+  line-height: 1.55;
+  padding: 36px 40px;
+}
+
+/* ── Jira link styles ─────────────────────────────────────── */
+a.jira-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.15s, color 0.15s;
+  cursor: pointer;
+}
+a.jira-link:hover {
+  border-bottom-color: currentColor;
+  opacity: 0.82;
+}
+a.jira-ref {
+  font-family: var(--font);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-10);
+  border: 1px solid var(--teal-25);
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+a.jira-ref:hover { background: var(--teal-25); }
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.header-accent {
+  height: 5px;
+  background: linear-gradient(90deg, var(--teal) 0%, var(--teal-65) 40%, var(--purple-65) 70%, var(--purple) 100%);
+}
+.header-inner {
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.eyebrow {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+.header h1 {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+.header h1 span { color: var(--teal); }
+.header-sub {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-top: 6px;
+  font-weight: 400;
+}
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--teal-10);
+  border: 1.5px solid var(--teal-25);
+  border-radius: 10px;
+  padding: 14px 20px;
+  flex-shrink: 0;
+}
+.status-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 3px rgba(16,164,209,0.2);
+  animation: pulse-teal 2.5s ease-in-out infinite;
+}
+@keyframes pulse-teal {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(16,164,209,0.2); }
+  50%       { box-shadow: 0 0 0 7px rgba(16,164,209,0.07); }
+}
+.status-label { font-size: 10px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 1px; }
+.status-value { font-size: 17px; font-weight: 800; color: var(--text-1); margin-top: 1px; }
+
+/* ── Filter Bar ─────────────────────────────────────────────── */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.filter-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-3);
+  margin-right: 4px;
+}
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  background: var(--white);
+  color: var(--text-2);
+  border-color: var(--border);
+  transition: all 0.18s;
+  user-select: none;
+  box-shadow: var(--shadow-sm);
+}
+.filter-chip:hover { border-color: var(--teal); color: var(--teal); }
+.filter-chip.active { background: var(--teal); color: var(--white); border-color: var(--teal); }
+.filter-chip[data-filter="done"].active   { background: var(--teal);   border-color: var(--teal); }
+.filter-chip[data-filter="qa"].active     { background: var(--orange); border-color: var(--orange); }
+.filter-chip[data-filter="dev"].active    { background: var(--purple); border-color: var(--purple); }
+.filter-chip[data-filter="queued"].active { background: var(--text-3); border-color: var(--text-3); }
+.filter-chip .chip-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+
+/* ── KPI Strip ───────────────────────────────────────────────── */
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.kpi {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 22px 24px;
+  border-top: 3px solid;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.18s, transform 0.18s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.kpi:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.kpi::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  opacity: 0.06;
+}
+.kpi.k-teal    { border-color: var(--teal); }
+.kpi.k-orange  { border-color: var(--orange); }
+.kpi.k-purple  { border-color: var(--purple); }
+.kpi.k-neutral { border-color: var(--border); }
+.kpi.k-teal::after    { background: var(--teal); }
+.kpi.k-orange::after  { background: var(--orange); }
+.kpi.k-purple::after  { background: var(--purple); }
+
+.kpi-num {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  margin-bottom: 5px;
+}
+.k-teal .kpi-num    { color: var(--teal); }
+.k-orange .kpi-num  { color: var(--orange); }
+.k-purple .kpi-num  { color: var(--purple); }
+.k-neutral .kpi-num { color: var(--text-3); }
+.kpi-label { font-size: 13px; font-weight: 600; color: var(--text-1); }
+.kpi-sub   { font-size: 11px; font-weight: 400; color: var(--text-3); margin-top: 2px; }
+.kpi-hint  { font-size: 10px; color: var(--teal); font-weight: 600; margin-top: 8px; opacity: 0.8; }
+.k-orange .kpi-hint { color: var(--orange); }
+.k-purple .kpi-hint { color: var(--purple); }
+.k-neutral .kpi-hint { color: var(--text-3); }
+
+/* ── Progress Card ───────────────────────────────────────────── */
+.progress-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 22px 28px;
+  margin-bottom: 24px;
+}
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.section-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-3);
+}
+.total-tag {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.stack-bar {
+  display: flex;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  gap: 2px;
+  margin-bottom: 14px;
+  background: var(--border-light);
+}
+.sb { border-radius: 4px; transform-origin: left; animation: bar-in 1s cubic-bezier(0.16,1,0.3,1) both; transform: scaleX(0); cursor: pointer; }
+.sb-teal   { background: var(--teal);   animation-delay: 0.1s; }
+.sb-orange { background: var(--orange); animation-delay: 0.3s; }
+.sb-purple { background: var(--purple); animation-delay: 0.5s; }
+.sb-neutral{ background: #CBD5E1;       animation-delay: 0.7s; }
+@keyframes bar-in { to { transform: scaleX(1); } }
+
+.legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text-2);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.leg:hover { background: var(--bg); }
+.leg-dot {
+  width: 10px; height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.leg strong { color: var(--text-1); }
+
+/* ── Section Title ───────────────────────────────────────────── */
+.section-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-3);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+
+/* ── Product Grid ────────────────────────────────────────────── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.pc {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 20px 22px;
+  border-left: 4px solid;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: card-in 0.45s ease both;
+  transition: box-shadow 0.18s, opacity 0.25s;
+}
+.pc.dimmed { opacity: 0.35; }
+@keyframes card-in { to { opacity: 1; transform: none; } }
+.pc:nth-child(1) { animation-delay: 0.1s; }
+.pc:nth-child(2) { animation-delay: 0.18s; }
+.pc:nth-child(3) { animation-delay: 0.26s; }
+.pc:nth-child(4) { animation-delay: 0.34s; }
+.pc:nth-child(5) { animation-delay: 0.42s; }
+.pc:nth-child(6) { animation-delay: 0.5s; }
+.pc-teal   { border-color: var(--teal); }
+.pc-purple { border-color: var(--purple); }
+.pc-orange { border-color: var(--orange); }
+.pc-lime   { border-color: var(--lime); }
+.pc-neutral{ border-color: var(--border); }
+
+.pc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.pc-name-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.pc-name-link:hover .pc-name { color: var(--teal); }
+.pc-name { font-size: 14px; font-weight: 700; color: var(--text-1); line-height: 1.2; transition: color 0.15s; }
+.pc-sub  { font-size: 10.5px; color: var(--text-3); font-weight: 500; margin-top: 2px; }
+
+.rag {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.rag-teal   { background: var(--teal-10);   color: var(--teal);   border: 1px solid var(--teal-25); }
+.rag-purple { background: var(--purple-10); color: var(--purple); border: 1px solid var(--purple-25); }
+.rag-orange { background: var(--orange-10); color: var(--orange); border: 1px solid rgba(255,143,63,0.25); }
+
+.pc-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-bottom: 12px;
+}
+.pcs {
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 7px;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  transition: filter 0.15s;
+}
+.pcs:hover { filter: brightness(0.93); }
+.pcs-done   { background: var(--teal-10); }
+.pcs-dev    { background: var(--purple-10); }
+.pcs-qa     { background: var(--orange-10); }
+.pcs-back   { background: var(--bg); }
+.pcs-num {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+.pcs-done .pcs-num  { color: var(--teal); }
+.pcs-dev  .pcs-num  { color: var(--purple); }
+.pcs-qa   .pcs-num  { color: var(--orange); }
+.pcs-back .pcs-num  { color: var(--text-3); }
+.pcs-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 2px;
+}
+.pcs-done .pcs-lbl  { color: var(--teal); }
+.pcs-dev  .pcs-lbl  { color: var(--purple); }
+.pcs-qa   .pcs-lbl  { color: var(--orange); }
+.pcs-back .pcs-lbl  { color: var(--text-3); }
+
+.pc-bar {
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--border-light);
+  display: flex;
+  gap: 1px;
+  margin-bottom: 14px;
+}
+.pcb { border-radius: 2px; }
+
+.pc-items {
+  border-top: 1px solid var(--border-light);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.pci {
+  font-size: 11.5px;
+  color: var(--text-2);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+.tag {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.t-done   { background: var(--teal-10);   color: var(--teal);   }
+.t-dev    { background: var(--purple-10); color: var(--purple); }
+.t-qa     { background: var(--orange-10); color: var(--orange); }
+.t-next   { background: var(--lime-10);   color: #7A9000;       }
+
+/* ── Two Column ──────────────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.panel {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.panel-header {
+  padding: 16px 22px 12px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ph-icon {
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.phi-teal   { background: var(--teal-10); }
+.phi-orange { background: var(--orange-10); }
+.panel-title { font-size: 13px; font-weight: 700; color: var(--text-1); }
+
+.win-row {
+  padding: 10px 22px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  transition: background 0.15s;
+}
+.win-row:last-child { border-bottom: none; }
+.win-row:hover { background: var(--bg); }
+.win-check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.wc-teal   { background: var(--teal-10);   border: 1.5px solid var(--teal-25); }
+.wc-orange { background: var(--orange-10); border: 1.5px solid var(--orange-65); }
+.wc-teal svg   { stroke: var(--teal);   width: 9px; height: 9px; fill: none; stroke-width: 2.5; }
+.wc-orange svg { stroke: var(--orange); width: 9px; height: 9px; fill: none; stroke-width: 2.5; }
+.win-body { flex: 1; }
+.win-title { font-size: 12.5px; font-weight: 600; color: var(--text-1); line-height: 1.4; }
+.win-meta  { font-size: 10.5px; color: var(--text-3); font-weight: 500; margin-top: 3px; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+
+/* ── Flight Grid ─────────────────────────────────────────────── */
+.flight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.flight-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.fc-head {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fc-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.fcd-purple { background: var(--purple); }
+.fcd-orange { background: var(--orange); }
+.fcd-neutral{ background: var(--text-3); }
+.fc-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.fcl-purple { color: var(--purple); }
+.fcl-orange { color: var(--orange); }
+.fcl-neutral{ color: var(--text-3); }
+
+.fc-body { padding: 6px 4px; }
+.fi {
+  font-size: 12px;
+  color: var(--text-2);
+  padding: 7px 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.fi:hover { background: var(--bg); color: var(--text-1); }
+.fi-bar {
+  width: 2px;
+  height: 14px;
+  border-radius: 1px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.fib-purple { background: var(--purple-65); }
+.fib-orange { background: var(--orange-65); }
+.fib-neutral{ background: var(--border); }
+
+/* hidden items when filtering */
+.fi.hidden { display: none; }
+
+/* ── Watch Card ──────────────────────────────────────────────── */
+.watch-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid var(--orange);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.watch-header {
+  padding: 16px 24px 12px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.watch-icon {
+  width: 28px; height: 28px;
+  background: var(--orange-10);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.watch-title { font-size: 13px; font-weight: 700; color: var(--text-1); }
+.watch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.wi {
+  padding: 14px 24px;
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  transition: background 0.15s;
+}
+.wi:hover { background: var(--orange-10); }
+.wi:nth-child(even) { border-right: none; }
+.wi:nth-last-child(-n+2) { border-bottom: none; }
+.wi-marker {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.wi-body { flex: 1; }
+.wi-title { font-size: 12.5px; font-weight: 700; color: var(--text-1); margin-bottom: 2px; }
+.wi-text  { font-size: 12px; color: var(--text-2); font-weight: 400; line-height: 1.4; }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-3);
+  font-weight: 500;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 1000px) {
+  body { padding: 20px 16px; }
+  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .flight-grid { grid-template-columns: 1fr; }
+  .watch-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Drill-down button ──────────────────────────────────────── */
+.drill-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  color: var(--teal);
+  font-family: var(--font);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  letter-spacing: 0.2px;
+}
+.drill-btn:hover { background: var(--teal-10); border-color: var(--teal-25); }
+
+/* ── Drawer overlay ─────────────────────────────────────────── */
+#drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,38,53,0.35);
+  z-index: 900;
+  backdrop-filter: blur(2px);
+}
+#drawer-overlay.open { display: block; }
+
+/* ── Detail drawer panel ────────────────────────────────────── */
+#detail-drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(880px, 94vw);
+  background: var(--white);
+  box-shadow: -4px 0 32px rgba(0,0,0,0.14);
+  z-index: 901;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  overflow: hidden;
+}
+#detail-drawer.open { transform: translateX(0); }
+
+.drw-header {
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--white);
+}
+.drw-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.drw-title { font-size: 16px; font-weight: 800; color: var(--text-1); line-height: 1.2; }
+.drw-meta  { font-size: 11.5px; color: var(--text-3); font-weight: 500; margin-top: 3px; }
+.drw-close {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--text-2);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+.drw-close:hover { background: var(--bg); color: var(--text-1); }
+
+.drw-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.drw-chip {
+  padding: 4px 11px;
+  border-radius: 20px;
+  font-size: 11px; font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text-2);
+  transition: all 0.15s;
+  user-select: none;
+}
+.drw-chip:hover { border-color: var(--teal-65); color: var(--teal); }
+.drw-chip.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+.drw-body { flex: 1; overflow-y: auto; padding: 0 24px 32px; }
+
+/* section header inside drawer */
+.drw-section {
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  color: var(--text-3);
+  padding: 20px 0 8px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 0;
+}
+
+/* detail table */
+.dt { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.dt thead th {
+  font-size: 10px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  color: var(--text-3);
+  padding: 10px 8px 8px;
+  text-align: left;
+  border-bottom: 1.5px solid var(--border);
+  white-space: nowrap;
+}
+.dt tbody tr { border-bottom: 1px solid var(--border-light); transition: background 0.12s; }
+.dt tbody tr:hover { background: var(--teal-10); }
+.dt tbody tr.row-hidden { display: none; }
+.dt td { padding: 9px 8px; vertical-align: middle; color: var(--text-1); }
+.dt td.td-sum { font-weight: 500; line-height: 1.35; max-width: 340px; }
+.dt td.td-team { color: var(--text-2); font-size: 11px; white-space: nowrap; }
+.dt td.td-tgt  { color: var(--text-2); font-size: 11px; white-space: nowrap; }
+
+/* status chips */
+.sc {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 8px; border-radius: 12px;
+  font-size: 10.5px; font-weight: 700; white-space: nowrap;
+}
+.sc::before { content:''; width:5px; height:5px; border-radius:50%; flex-shrink:0; }
+.sc-on-track  { background:var(--teal-10);    color:#0d7fa3; }
+.sc-on-track::before   { background:var(--teal); }
+.sc-done      { background:var(--lime-10);    color:#638a10; }
+.sc-done::before       { background:var(--lime); }
+.sc-at-risk   { background:var(--orange-10);  color:#c96000; }
+.sc-at-risk::before    { background:var(--orange); }
+.sc-off-track { background:#fef2f2;           color:#b91c1c; }
+.sc-off-track::before  { background:#ef4444; }
+.sc-blocked   { background:#f3f0ff;           color:#6d28d9; }
+.sc-blocked::before    { background:#8b5cf6; }
+.sc-to-do     { background:#f8fafc;           color:var(--text-3); }
+.sc-to-do::before      { background:#CBD5E1; }
+.sc-in-progress { background:var(--purple-10); color:var(--purple); }
+.sc-in-progress::before { background:var(--purple); }
+.sc-requirements { background:var(--purple-10); color:var(--purple-65); }
+.sc-requirements::before { background:var(--purple-25); }
+
+/* % complete bar */
+.pct-wrap { min-width: 72px; }
+.pct-num  { font-size: 11px; font-weight: 700; color: var(--text-2); }
+.pct-bar  { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-top: 3px; width: 56px; }
+.pct-fill { height: 100%; border-radius: 2px; background: var(--teal); }
+
+/* lock pills */
+.lp {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 2px 7px; border-radius: 4px; white-space: nowrap;
+}
+.lp-locked      { background:var(--teal-10);   color:var(--teal);    border:1px solid var(--teal-25); }
+.lp-stretch     { background:transparent;       color:var(--teal);    border:1.5px dashed var(--teal-65); }
+.lp-added       { background:var(--purple-10);  color:var(--purple);  border:1px solid var(--purple-25); }
+.lp-unplanned   { background:var(--magenta-10); color:var(--magenta); border:1px solid #f9b8cc; }
+.lp-out-of-scope { background:#f8fafc;          color:var(--text-3);  border:1px solid var(--border); }
+.lp-pending     { background:var(--orange-10);  color:#c96000;        border:1px solid var(--orange-65); }
+
+/* jira badge inside table */
+a.jira-badge {
+  font-size: 10.5px; font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-10);
+  border: 1px solid var(--teal-25);
+  padding: 2px 6px; border-radius: 4px;
+  text-decoration: none; white-space: nowrap;
+  transition: background 0.15s;
+}
+a.jira-badge:hover { background: var(--teal-25); }
+
+/* out-of-scope / unplanned collapsible */
+.drw-details { margin-top: 16px; border-top: 1px dashed var(--border); }
+.drw-details summary {
+  font-size: 11px; font-weight: 700; color: var(--text-3);
+  cursor: pointer; padding: 10px 0 6px;
+  list-style: none;
+  display: flex; align-items: center; gap: 6px;
+}
+.drw-details summary::-webkit-details-marker { display: none; }
+.drw-details summary::before { content:'▶'; font-size:8px; transition:transform 0.2s; }
+.drw-details[open] summary::before { transform: rotate(90deg); }
+
+/* notes block */
+.drw-notes {
+  font-size: 11.5px; color: var(--text-2);
+  background: var(--bg);
+  border-left: 3px solid var(--border);
+  padding: 10px 14px; border-radius: 0 6px 6px 0;
+  margin: 12px 0 4px; line-height: 1.5;
+}
+
+/* planning mode badge */
+.planning-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--purple-10); color: var(--purple);
+  border: 1px solid var(--purple-25);
+  border-radius: 12px; font-size: 10.5px; font-weight: 700;
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ────────────────────────────────────────────────── -->
+<header class="header">
+  <div class="header-accent"></div>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="eyebrow">
+        <a class="jira-link" href="https://alineops.atlassian.net/jira/plans/135/scenarios/135/timeline" target="_blank">Jira Plan #135</a>
+        &nbsp;·&nbsp; March 19, 2026
+      </div>
+      <h1>Roadmap <span>Report Card</span></h1>
+      <div class="header-sub">Q1 2026 &nbsp;·&nbsp; All Product Lines &nbsp;·&nbsp; Epic-level view &nbsp;·&nbsp; 125 items tracked</div>
+    </div>
+    <div class="status-badge">
+      <div class="status-dot"></div>
+      <div class="status-content">
+        <div class="status-label">Overall Status</div>
+        <div class="status-value">On Track</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── KPI STRIP ─────────────────────────────────────────────── -->
+<div class="kpi-strip">
+  <a class="kpi k-teal" href="https://alineops.atlassian.net/issues/?jql=issuetype%3DEpic%20AND%20status%3DDone%20ORDER%20BY%20project%20ASC" target="_blank">
+    <div class="kpi-num" data-target="47">0</div>
+    <div class="kpi-label">Epics Delivered</div>
+    <div class="kpi-sub">Completed &amp; shipped</div>
+    <div class="kpi-hint">↗ View in Jira</div>
+  </a>
+  <a class="kpi k-orange" href="https://alineops.atlassian.net/issues/?jql=issuetype%3DEpic%20AND%20status%3D%22In%20QA%22%20ORDER%20BY%20project%20ASC" target="_blank">
+    <div class="kpi-num" data-target="18">0</div>
+    <div class="kpi-label">In Review / QA</div>
+    <div class="kpi-sub">Near-term delivery</div>
+    <div class="kpi-hint">↗ View in Jira</div>
+  </a>
+  <a class="kpi k-purple" href="https://alineops.atlassian.net/issues/?jql=issuetype%3DEpic%20AND%20status%3D%22In%20Development%22%20ORDER%20BY%20project%20ASC" target="_blank">
+    <div class="kpi-num" data-target="32">0</div>
+    <div class="kpi-label">In Development</div>
+    <div class="kpi-sub">Actively being built</div>
+    <div class="kpi-hint">↗ View in Jira</div>
+  </a>
+  <a class="kpi k-neutral" href="https://alineops.atlassian.net/issues/?jql=issuetype%3DEpic%20AND%20status%3DBacklog%20ORDER%20BY%20project%20ASC" target="_blank">
+    <div class="kpi-num" data-target="28">0</div>
+    <div class="kpi-label">Planned / Backlog</div>
+    <div class="kpi-sub">Scoped &amp; queued</div>
+    <div class="kpi-hint">↗ View in Jira</div>
+  </a>
+</div>
+
+<!-- ── PROGRESS BAR ───────────────────────────────────────────── -->
+<div class="progress-card">
+  <div class="progress-header">
+    <div class="section-label">Portfolio Completion — All Product Lines</div>
+    <div class="total-tag">
+      <a class="jira-link" href="https://alineops.atlassian.net/issues/?jql=issuetype%3DEpic%20ORDER%20BY%20project%20ASC" target="_blank">125 epics tracked ↗</a>
+    </div>
+  </div>
+  <div class="stack-bar">
+    <div class="sb sb-teal"    style="width:37.6%" title="47 Done (38%)" onclick="activateFilter('done')"></div>
+    <div class="sb sb-orange"  style="width:14.4%" title="18 In QA (14%)" onclick="activateFilter('qa')"></div>
+    <div class="sb sb-purple"  style="width:25.6%" title="32 In Dev (26%)" onclick="activateFilter('dev')"></div>
+    <div class="sb sb-neutral" style="width:22.4%" title="28 Planned (22%)" onclick="activateFilter('queued')"></div>
+  </div>
+  <div class="legend">
+    <div class="leg" onclick="activateFilter('done')">
+      <div class="leg-dot" style="background:var(--teal)"></div>Delivered <strong>38%</strong>
+    </div>
+    <div class="leg" onclick="activateFilter('qa')">
+      <div class="leg-dot" style="background:var(--orange)"></div>In QA / Review <strong>14%</strong>
+    </div>
+    <div class="leg" onclick="activateFilter('dev')">
+      <div class="leg-dot" style="background:var(--purple)"></div>In Development <strong>26%</strong>
+    </div>
+    <div class="leg" onclick="activateFilter('queued')">
+      <div class="leg-dot" style="background:#CBD5E1"></div>Planned <strong>22%</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ── FILTER BAR ─────────────────────────────────────────────── -->
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <span class="filter-chip active" data-filter="all" onclick="activateFilter('all')">All items</span>
+  <span class="filter-chip" data-filter="done" onclick="activateFilter('done')">
+    <span class="chip-dot" style="background:var(--teal)"></span>Delivered
+  </span>
+  <span class="filter-chip" data-filter="qa" onclick="activateFilter('qa')">
+    <span class="chip-dot" style="background:var(--orange)"></span>In QA
+  </span>
+  <span class="filter-chip" data-filter="dev" onclick="activateFilter('dev')">
+    <span class="chip-dot" style="background:var(--purple)"></span>In Dev
+  </span>
+  <span class="filter-chip" data-filter="queued" onclick="activateFilter('queued')">
+    <span class="chip-dot" style="background:var(--text-3)"></span>Queued
+  </span>
+</div>
+
+<!-- ── PRODUCT SCORECARDS ─────────────────────────────────────── -->
+<div class="section-title">Product Area Scorecards</div>
+<div class="product-grid" id="product-grid">
+
+  <!-- Aline CRM -->
+  <div class="pc pc-orange" data-areas="crm">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Aline CRM</div>
+          <div class="pc-sub">Sales &amp; Marketing · CRM / SHCRM</div>
+        </a>
+      </div>
+      <span class="rag rag-orange">Active</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">12</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">14</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">6</div> <div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">8</div> <div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:30%"></div>
+      <div class="pcb" style="background:var(--purple);width:35%"></div>
+      <div class="pcb" style="background:var(--orange);width:15%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:20%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-7804" target="_blank">Rich Text Email Templates</a>
+      </div>
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-7816" target="_blank">Performance + Activity Goals</a> ·
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-6200" target="_blank">SNF API Ph.1</a>
+      </div>
+      <div class="pci"><span class="tag t-dev">Dev</span>DSL Dashboard · Canada Init. · eAdmit</div>
+      <div class="pci"><span class="tag t-qa">QA</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-7811" target="_blank">Consent Management</a> ·
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-5641" target="_blank">AIM Phase 3</a>
+      </div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('crm')">View Q1 commitments →</button>
+  </div>
+
+  <!-- eMAR & Care -->
+  <div class="pc pc-orange" data-areas="emar">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Aline eMAR &amp; Care</div>
+          <div class="pc-sub">Care &amp; Engagement · EMAR / CARE</div>
+        </a>
+      </div>
+      <span class="rag rag-orange">Active</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">3</div> <div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">10</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">9</div> <div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">9</div> <div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:10%"></div>
+      <div class="pcb" style="background:var(--purple);width:32%"></div>
+      <div class="pcb" style="background:var(--orange);width:29%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:29%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-qa">QA</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/EMAR-50" target="_blank">UI Kit Phases 1–4</a> ·
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/EMAR-52" target="_blank">Diagnosis Upgrade</a>
+      </div>
+      <div class="pci"><span class="tag t-qa">QA</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/EMAR-1437" target="_blank">King County SSO</a> ·
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CARE-1489" target="_blank">FOIA Records Package</a>
+      </div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Resident Notes + Clinical Workflows</div>
+      <div class="pci"><span class="tag t-dev">Dev</span>UI Kit Phases 5–10 · State Forms</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('emar')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Analytics -->
+  <div class="pc pc-teal" data-areas="analytics">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Analytics &amp; Insights</div>
+          <div class="pc-sub">Fabric / PowerBI · PBI</div>
+        </a>
+      </div>
+      <span class="rag rag-teal">On Track</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">11</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">3</div> <div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">2</div> <div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">2</div> <div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:61%"></div>
+      <div class="pcb" style="background:var(--purple);width:17%"></div>
+      <div class="pcb" style="background:var(--orange);width:11%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:11%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-2325" target="_blank">Communities Table</a> ·
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-2313" target="_blank">Housing Contracts</a> ·
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-2294" target="_blank">Benchmark Data</a>
+      </div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Snowflake Platform · Self-service Library for Compass</div>
+      <div class="pci"><span class="tag t-qa">QA</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-1868" target="_blank">Custom CRM Fields in Fabric</a> — due Mar 31
+      </div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('analytics')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Aline AI -->
+  <div class="pc pc-purple" data-areas="ai">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Aline AI</div>
+          <div class="pc-sub">AI Features &amp; Intelligence · AA / AI</div>
+        </a>
+      </div>
+      <span class="rag rag-purple">In Flight</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">0</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">4</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:29%"></div>
+      <div class="pcb" style="background:var(--purple);width:14%"></div>
+      <div class="pcb" style="background:var(--orange);width:0%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:57%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/AA-339" target="_blank">Profile Next Best Step Recommendation</a>
+      </div>
+      <div class="pci"><span class="tag t-done">Done</span>Sage API Summary Integration Phase 1</div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Sage Integration Phase 2 (Detail Level)</div>
+      <div class="pci"><span class="tag t-next">Up Next</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/AA-434" target="_blank">Clara Prospect Assistant — Labs Release</a>
+      </div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('ai')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Grove -->
+  <div class="pc pc-lime" data-areas="grove">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Grove by Aline</div>
+          <div class="pc-sub">Dining &amp; Engagement · GRO</div>
+        </a>
+      </div>
+      <span class="rag rag-teal">Delivered</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">0</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">0</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:75%"></div>
+      <div class="pcb" style="background:var(--purple);width:25%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/GRO-65" target="_blank">Grove ↔ Aline Systems Integration</a>
+      </div>
+      <div class="pci"><span class="tag t-done">Done</span>Daily Menu Printout · POS Server Logins</div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Grove ↔ Resident Sync &amp; Charges (SAGE)</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('grove')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Platform -->
+  <div class="pc pc-teal" data-areas="platform">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Platform &amp; Infrastructure</div>
+          <div class="pc-sub">Engineering + QA Automation · OPS / AUT / ROOB</div>
+        </a>
+      </div>
+      <span class="rag rag-teal">On Track</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">16</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">2</div> <div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">0</div> <div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">3</div> <div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:76%"></div>
+      <div class="pcb" style="background:var(--purple);width:10%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:14%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done ★</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/OPS-327" target="_blank">Full Suite AWS → Azure Migration (Critical)</a>
+      </div>
+      <div class="pci"><span class="tag t-done">Done</span>Vanta Compliance Ph.2 · 5 QA Automation epics</div>
+      <div class="pci"><span class="tag t-done">Done</span>6 Roobrik platform epics completed</div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Respite Stay Automation · Leave Reports</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('platform')">View Q1 commitments →</button>
+  </div>
+
+</div>
+
+<!-- ── WINS + IN QA ───────────────────────────────────────────── -->
+<div class="section-title">Q1 2026 Delivery Highlights</div>
+<div class="two-col">
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="ph-icon phi-teal">✓</div>
+      <div class="panel-title">Key Deliveries — Shipped</div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Full Suite Infrastructure — AWS to Azure complete</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/OPS-327" target="_blank">OPS-327</a>
+          Platform Engineering · Critical Priority ★
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">AI Profile Next Best Step Recommendation shipped</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/AA-339" target="_blank">AA-339</a>
+          Aline AI
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Communities Table + Housing Contracts in Fabric (Q1 targets)</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/PBI-2325" target="_blank">PBI-2325</a>
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/PBI-2313" target="_blank">PBI-2313</a>
+          Analytics / Fabric
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Keyword Logic Modernization with Curiflow integration</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/CRM-7586" target="_blank">CRM-7586</a>
+          Aline CRM
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">SNF API Phase 1 — Referral Intake &amp; Processing</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/CRM-6200" target="_blank">CRM-6200</a>
+          Aline CRM for Skilled Nursing
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Goals (Performance + Activity), Rich Text Email Templates</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/CRM-7816" target="_blank">CRM-7816</a>
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/CRM-7877" target="_blank">CRM-7877</a>
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/CRM-7804" target="_blank">CRM-7804</a>
+          Aline CRM
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Grove ↔ Aline Systems Integration complete</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/GRO-65" target="_blank">GRO-65</a>
+          Grove by Aline
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">2025 Benchmark Reporting Data finalized for release</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/PBI-2294" target="_blank">PBI-2294</a>
+          Analytics / Fabric
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="ph-icon phi-orange">→</div>
+      <div class="panel-title">Near Delivery — Currently in QA</div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-orange"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">FOIA Records Request Package (Aline Care)</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/CARE-1489" target="_blank">CARE-1489</a>
+          Active QA
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-orange"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">King County Single Sign-On (eMAR)</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/EMAR-1437" target="_blank">EMAR-1437</a>
+          Active QA
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-orange"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Consent Management / Communication Preferences</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/CRM-7811" target="_blank">CRM-7811</a>
+          Aline CRM
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-orange"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">AIM Phase 3 — 2-way Integration (CRM)</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/CRM-5641" target="_blank">CRM-5641</a>
+          Aline CRM
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-orange"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">eMAR UI Kit Phases 1, 2, 3 &amp; 4 (multi-phase nearing close)</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/EMAR-50" target="_blank">EMAR-50</a>
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/EMAR-1804" target="_blank">EMAR-1804</a>
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/EMAR-1805" target="_blank">EMAR-1805</a>
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/EMAR-1806" target="_blank">EMAR-1806</a>
+          Active QA
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-orange"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Custom CRM Fields in Fabric — Hard deadline Mar 31</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/PBI-1868" target="_blank">PBI-1868</a>
+          Analytics / Fabric
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-orange"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Aline UI Kit Phase 8 — Incident Reporting</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/EMAR-2613" target="_blank">EMAR-2613</a>
+          Active QA
+        </div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-orange"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">User Audit Trail + Diagnosis Upgrade (King County)</div>
+        <div class="win-meta">
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/EMAR-51" target="_blank">EMAR-51</a>
+          <a class="jira-ref" href="https://alineops.atlassian.net/browse/EMAR-52" target="_blank">EMAR-52</a>
+          Active QA
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── IN FLIGHT ─────────────────────────────────────────────── -->
+<div class="section-title">Active Development &amp; Pipeline</div>
+<div class="flight-grid">
+
+  <div class="flight-card">
+    <div class="fc-head">
+      <div class="fc-dot fcd-purple"></div>
+      <div class="fc-label fcl-purple">Actively Building</div>
+    </div>
+    <div class="fc-body">
+      <div class="fi" data-status="dev" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22%20AND%20summary%20~%20Snowflake" target="_blank">
+        <div class="fi-bar fib-purple"></div>Snowflake Platform Onboarding &amp; Capability Dev
+      </div>
+      <div class="fi" data-status="dev">
+        <div class="fi-bar fib-purple"></div>DSL Default Dashboard + Senior Living Dashboard (CRM)
+      </div>
+      <div class="fi" data-status="dev">
+        <div class="fi-bar fib-purple"></div>Canada Initiative Phase 2 (CRM)
+      </div>
+      <div class="fi" data-status="dev">
+        <div class="fi-bar fib-purple"></div>Sage Integration Phase 2 — Detail Level
+      </div>
+      <div class="fi" data-status="dev">
+        <div class="fi-bar fib-purple"></div>eAdmit × Aline Integration Phase 1
+      </div>
+      <div class="fi" data-status="dev">
+        <div class="fi-bar fib-purple"></div>Curiflow Background Check Integration
+      </div>
+      <div class="fi" data-status="dev">
+        <div class="fi-bar fib-purple"></div>Resident Notes Dashboard + Clinical Workflow (eMAR)
+      </div>
+      <div class="fi" data-status="dev">
+        <div class="fi-bar fib-purple"></div>Self-service Report Library for Compass
+      </div>
+    </div>
+  </div>
+
+  <div class="flight-card">
+    <div class="fc-head">
+      <div class="fc-dot fcd-orange"></div>
+      <div class="fc-label fcl-orange">In Review / Code Review</div>
+    </div>
+    <div class="fc-body">
+      <div class="fi" data-status="qa">
+        <div class="fi-bar fib-orange"></div>Snowflake Platform Onboarding (In Review)
+      </div>
+      <div class="fi" data-status="qa">
+        <div class="fi-bar fib-orange"></div>Sherpa CRM Pen Test Remediation 2025
+      </div>
+      <a class="fi" data-status="qa" href="https://alineops.atlassian.net/browse/EMAR-3062" target="_blank">
+        <div class="fi-bar fib-orange"></div>eMAR Pen Test Failures Remediation (OVERDUE)
+      </a>
+      <div class="fi" data-status="qa">
+        <div class="fi-bar fib-orange"></div>King County Identifier Changes (eMAR)
+      </div>
+      <div class="fi" data-status="qa">
+        <div class="fi-bar fib-orange"></div>RMS ↔ Aline CRM Integration
+      </div>
+      <div class="fi" data-status="qa">
+        <div class="fi-bar fib-orange"></div>eMAR UI Kit Phases 6, 7, 9 (multiple in review)
+      </div>
+      <a class="fi" data-status="qa" href="https://alineops.atlassian.net/browse/PBI-1868" target="_blank">
+        <div class="fi-bar fib-orange"></div>Custom CRM Fields in Fabric (Mar 31 deadline)
+      </a>
+      <div class="fi" data-status="qa">
+        <div class="fi-bar fib-orange"></div>Sherpa × Enquire API Relay
+      </div>
+    </div>
+  </div>
+
+  <div class="flight-card">
+    <div class="fc-head">
+      <div class="fc-dot fcd-neutral"></div>
+      <div class="fc-label fcl-neutral">Queued / Up Next</div>
+    </div>
+    <div class="fc-body">
+      <a class="fi" data-status="queued" href="https://alineops.atlassian.net/browse/AA-434" target="_blank">
+        <div class="fi-bar fib-neutral"></div>Clara Prospect Assistant — Labs Release
+      </a>
+      <div class="fi" data-status="queued">
+        <div class="fi-bar fib-neutral"></div>Insurance Eligibility UI + Multi-Vendor Processing
+      </div>
+      <div class="fi" data-status="queued">
+        <div class="fi-bar fib-neutral"></div>AIM Usage &amp; Outcome Tracking
+      </div>
+      <div class="fi" data-status="queued">
+        <div class="fi-bar fib-neutral"></div>Community Dashboard (eMAR)
+      </div>
+      <div class="fi" data-status="queued">
+        <div class="fi-bar fib-neutral"></div>Assessment Configuration &amp; Task Scheduling
+      </div>
+      <div class="fi" data-status="queued">
+        <div class="fi-bar fib-neutral"></div>Snowflake POC &amp; Early Dev Work
+      </div>
+      <div class="fi" data-status="queued">
+        <div class="fi-bar fib-neutral"></div>NOC Alerts Optimization (Platform Engineering)
+      </div>
+      <div class="fi" data-status="queued">
+        <div class="fi-bar fib-neutral"></div>Aline Connect Items · DSL/ECP Integration
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── WATCH ITEMS ────────────────────────────────────────────── -->
+<div class="watch-card">
+  <div class="watch-header">
+    <div class="watch-icon">⚠</div>
+    <div class="watch-title">Watch Items — Requires Attention</div>
+  </div>
+  <div class="watch-grid">
+    <a class="wi" href="https://alineops.atlassian.net/browse/EMAR-3062" target="_blank" style="text-decoration:none;color:inherit;">
+      <div class="wi-marker"></div>
+      <div class="wi-body">
+        <div class="wi-title">Pen Test Remediation Overdue</div>
+        <div class="wi-text">EMAR-3062 due Jan 31 is still In Review — security posture risk. Confirm close date with team.</div>
+      </div>
+    </a>
+    <a class="wi" href="https://alineops.atlassian.net/browse/AA-434" target="_blank" style="text-decoration:none;color:inherit;">
+      <div class="wi-marker"></div>
+      <div class="wi-body">
+        <div class="wi-title">Clara (Labs) Q1 Target at Risk</div>
+        <div class="wi-text">AA-434 remains in Backlog vs. a Q1 delivery target. If not moved to active dev this sprint, Q1 commitment slips.</div>
+      </div>
+    </a>
+    <a class="wi" href="https://alineops.atlassian.net/issues/?jql=project%3DEMAR%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22%20AND%20summary%20~%20%22UI%20Kit%22" target="_blank" style="text-decoration:none;color:inherit;">
+      <div class="wi-marker"></div>
+      <div class="wi-body">
+        <div class="wi-title">eMAR UI Kit QA Volume</div>
+        <div class="wi-text">10+ UI Kit phases are active in QA simultaneously. Confirm release sequencing to avoid regression overlap.</div>
+      </div>
+    </a>
+    <a class="wi" href="https://alineops.atlassian.net/issues/?jql=project%3DCRM%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Review%22%20ORDER%20BY%20updated%20ASC" target="_blank" style="text-decoration:none;color:inherit;">
+      <div class="wi-marker"></div>
+      <div class="wi-body">
+        <div class="wi-title">Stale CRM Integration Epics</div>
+        <div class="wi-text">Several older epics (Sherpa Relay, RMS, Vitals 2-way) have been "In Review" for months. Verify status or close.</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ── DETAIL DRAWER ──────────────────────────────────────────── -->
+<div id="drawer-overlay" onclick="closeDrawer()"></div>
+<div id="detail-drawer" role="dialog" aria-modal="true">
+  <div class="drw-header">
+    <div class="drw-header-top">
+      <div>
+        <div class="drw-title" id="drw-title">Loading…</div>
+        <div class="drw-meta" id="drw-meta"></div>
+      </div>
+      <button class="drw-close" onclick="closeDrawer()" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="drw-chips" id="drw-chips"></div>
+  </div>
+  <div class="drw-body" id="drw-body"></div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  Generated March 19, 2026 &nbsp;·&nbsp;
+  <a class="jira-link" href="https://alineops.atlassian.net/jira/plans/135/scenarios/135/timeline" target="_blank">Source: Jira Plan #135 — alineops.atlassian.net</a>
+  &nbsp;·&nbsp; Epic-level view only &nbsp;·&nbsp; Covers CRM · eMAR · Care · Analytics · AI · Grove · Platform &amp; QA
+</footer>
+
+<script>
+// ── MOR Detail Data ────────────────────────────────────────────
+// TODO: Replace with live Jira API fetch when integration is ready
+const MOR = {
+  mode: 'execution', // 'execution' | 'planning'
+  period: 'Q1 2026',
+  products: {
+    crm: {
+      label: 'Aline CRM',
+      sections: [
+        {
+          name: 'Integrations',
+          items: [
+            {s:'HubSpot 2.0: Activity Syncing',tm:'Forge',tg:'Q1',est:'550h',st:'off-track',pct:10,j:'CRMO-623',lk:'locked'},
+            {s:'Aline Connect: Activity/Notes Logging',tm:'IP',tg:'Feb 5',est:'S',st:'done',pct:100,j:'AI-920',lk:'locked'},
+            {s:'MxC enhancements (Bed Board, ADT support, repush ops)',tm:'SNF Pulse/IP',tg:'Q1',est:'L',st:'at-risk',pct:25,j:'CRMO-721',lk:'locked'},
+            {s:'DSL: CRM ↔ ECP ↔ Yardi integrations',tm:'CRM/IP',tg:'Late Mar/Early Apr',est:'650h',st:'at-risk',pct:10,j:'CRMO-656',lk:'locked'},
+            {s:'Yardi bidirectional (non-DSL customers) — Blocked (Vendor)',tm:'IP',tg:'March',est:'M',st:'blocked',pct:30,j:'CRMO-620',lk:'locked'},
+            {s:'EnquireIQ: DataFinder endpoint update',tm:'Forge',tg:'2/5 | 3/5',est:'S',st:'on-track',pct:98,j:'CRMO-622',lk:'locked'},
+            {s:'Outlook 365 Rearchitecture (pub/sub via Graph API)',tm:'Forge',tg:'Q1',est:'520h',st:'on-track',pct:50,j:'CRMO-524',lk:'locked'},
+            {s:'Grove ↔ L&B Integration Phase 2',tm:'Grove/IP',tg:'3/5',est:'M',st:'on-track',pct:99,j:'SAGE-101',lk:'locked'},
+            {s:'Twilio integration for Canada',tm:'CRM',tg:'Mid-March',est:'M',st:'on-track',pct:70,j:'CRM-8096',lk:'locked'},
+            {s:'CRM ↔ L&B fixes and enhancements — Blocked (Capacity)',tm:'CRM/L&B',tg:'Q2+',est:'XL',st:'blocked',pct:0,j:'CRMO-542',lk:'pending'},
+            {s:'Yardi bidirectional — Unit availability (non-DSL)',tm:'IP',tg:'Q2',est:'S',st:'requirements',pct:0,j:'CRMO-722',lk:'stretch'},
+            {s:'Integration Platform UI',tm:'IP',tg:'Q2',est:'L',st:'requirements',pct:0,j:'CRMO-724',lk:'stretch'},
+          ],
+          unplanned: [
+            {s:'Individual merge logic updates',tm:'Forge',tg:'Feb 5',est:'30h',st:'done',pct:100,j:'CRM-7851',lk:'unplanned'},
+            {s:'HubSpot 2.0 — second customer implementation (edge cases)',tm:'Forge',tg:'Multiple',est:'300h',st:'on-track',pct:90,j:'CRM-8016',lk:'unplanned'},
+            {s:'Aline Connect – Activity cancellation & updates',tm:'IP',tg:'March 5',est:'30h',st:'on-track',pct:80,j:'AI-1066',lk:'unplanned'},
+            {s:'IP Alerting/Logging: Slack notifications HIPAA compliant',tm:'IP',tg:'March 5',est:'20h',st:'on-track',pct:95,j:'AI-980',lk:'unplanned'},
+          ],
+          notes: 'Unplanned HubSpot work delayed start on Activity Syncing enhancements — will not complete in Q1. Individual merge logic updates required after Q4 work. Biggest impact from unplanned HubSpot 2.0 second customer implementation.'
+        },
+        {
+          name: 'Core + Enterprise',
+          items: [
+            {s:'Prospect & Relationship Management (Dual Prospect Remediation)',tm:'CRM',tg:'Q1',est:'NA',st:'on-track',pct:40,j:'CRMO-723',lk:'locked'},
+            {s:'Bulk Email & Lists: Shared Lists',tm:'CRM',tg:'Q1',est:'M',st:'done',pct:100,j:'CRMO-648',lk:'locked'},
+            {s:'Saved Lists for Pre-Lead',tm:'CRM',tg:'February',est:'200h',st:'done',pct:100,j:'CRMO-664',lk:'locked'},
+            {s:'Saved Lists for Contacts',tm:'CRM',tg:'March',est:'150h',st:'on-track',pct:95,j:'CRMO-729',lk:'added'},
+            {s:'Rich Text Editor Email Templates',tm:'CRM',tg:'March',est:'100h',st:'on-track',pct:95,j:'CRMO-661',lk:'locked'},
+            {s:'Widget Dashboard: Community/User Toggle',tm:'CRM',tg:'February',est:'100h',st:'done',pct:100,j:'CRMO-717',lk:'locked'},
+            {s:'Widget Dashboard: Display Trends on Widgets (11 KPIs)',tm:'CRM',tg:'Q1',est:'250h',st:'on-track',pct:60,j:'CRMO-693',lk:'locked'},
+            {s:'Widget Dashboard: Monthly Goal Targets on Widgets (12 KPIs)',tm:'CRM',tg:'Q1',est:'150h',st:'on-track',pct:30,j:'CRMO-681',lk:'locked'},
+            {s:'Platform Foundations: Sunset Entity Framework (partial)',tm:'CRM',tg:'Q1',est:'200h',st:'done',pct:100,j:'CRMO-533',lk:'locked'},
+            {s:'Script insertion for In-app User Analytics & Tracking',tm:'CRM',tg:'February',est:'S',st:'done',pct:100,j:'CRMO-716',lk:'locked'},
+            {s:'Foundational work for Auth0/Okta Integration into Aline CRM',tm:'CRM',tg:'Q1/Q2',est:'L',st:'off-track',pct:0,j:'CRMO-720',lk:'locked'},
+            {s:'API Enablement for SL, SNF & PCS Mobile App',tm:'CRM',tg:'March',est:'100h',st:'on-track',pct:85,j:'CRMO-645',lk:'locked'},
+            {s:'Canada Phase 2 — 4 items completed',tm:'CRM',tg:'Q1/Q2',est:'125h',st:'on-track',pct:100,j:'CRMO-541',lk:'added'},
+            {s:'Pen Test – Vulnerability Remediation (High, 8 items)',tm:'CRM',tg:'March',est:'150h',st:'on-track',pct:85,j:'CRMO-719',lk:'locked'},
+            {s:'Goals Redesign: User Goals & Performance Goals',tm:'CRM',tg:'Q1',est:'700h',st:'on-track',pct:75,j:'CRMO-691',lk:'locked'},
+            {s:'Admin Default Dashboard Creator & Editor',tm:'CRM',tg:'Q1/Q2',est:'M',st:'to-do',pct:0,j:'CRMO-862',lk:'stretch'},
+            {s:'Scheduled List Alerts',tm:'CRM',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-727',lk:'stretch'},
+            {s:'Contact Linking Guardrails',tm:'CRM',tg:'Q2',est:'L',st:'to-do',pct:0,j:null,lk:'stretch'},
+          ]
+        },
+        {
+          name: 'CRM SNF',
+          items: [
+            {s:'Sex Offender Registry via AIM Processing (Background Check)',tm:'CRM/Curiflow',tg:'Q1',est:'300h',st:'done',pct:100,j:'CRMO-319',lk:'locked'},
+            {s:'Insurance Eligibility Verification — Waystar',tm:'Curiflow',tg:'Q1',est:'—',st:'at-risk',pct:0,j:'CRMO-708',lk:'locked'},
+            {s:'Document Management & eSignature — SSO/iFrame Connect',tm:'eAdmit',tg:'Q1',est:'400–600h',st:'on-track',pct:40,j:'CRMO-317',lk:'locked'},
+            {s:'SNF New UI Feedback — Refined widget placement & labeling',tm:'CRM',tg:'Q1',est:'—',st:'on-track',pct:85,j:'CRM-7585',lk:'added'},
+            {s:'Tech Debt — Referral Engine Stability & Reliability',tm:'CRM',tg:'Q1',est:'—',st:'on-track',pct:95,j:'CRM-8112',lk:'added'},
+            {s:'Insurance Eligibility — Availity',tm:'Curiflow',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'stretch'},
+            {s:'Insurance Eligibility — Inovalon',tm:'Curiflow',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'stretch'},
+            {s:'Referral Partner Integration — Allscripts',tm:'Curiflow',tg:'—',est:'—',st:'to-do',pct:0,j:'CRMO-315',lk:'stretch'},
+            {s:'Referral Partner Integration — NaviHealth',tm:'Curiflow',tg:'—',est:'—',st:'to-do',pct:0,j:'CRMO-316',lk:'stretch'},
+            {s:'Referral Partner Integration — Aida',tm:'Curiflow',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'added'},
+            {s:'Referral Partner Integration — Aidin',tm:'Curiflow',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'added'},
+            {s:'Referral Partner Integration — Ensocare',tm:'Curiflow',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'added'},
+          ],
+          outOfScope: [
+            {s:'Brightree Referral Integration',tm:'ResMed/Brightree',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+            {s:'Watershed Integration',tm:'Watershed',tg:'—',est:'—',st:'to-do',pct:0,j:'CRMO-468',lk:'out-of-scope'},
+          ]
+        },
+        {
+          name: 'CRM + PCS / Sherpa',
+          items: [
+            {s:'Enhanced Case Study to Sherpa Alignment (single column form)',tm:'CRM/Pulse',tg:'February',est:'100h',st:'done',pct:100,j:'CRMO-684',lk:'locked'},
+            {s:'Voice-to-Text Dictation for quick note capture',tm:'CRM/Pulse',tg:'February',est:'100h',st:'done',pct:100,j:'CRMO-647',lk:'locked'},
+            {s:'Voice-to-Text Dictation for Case Study Fields',tm:'CRM',tg:'Q1',est:'100h',st:'on-track',pct:60,j:'CRMO-684',lk:'added'},
+            {s:'Sherpa Feature Alignment — Activity logging, Tour task creation',tm:'CRM/Pulse',tg:'February',est:'300h',st:'done',pct:100,j:'CRMO-655',lk:'locked'},
+            {s:'Team Calendar View — Redesigned with team view',tm:'CRM/Pulse',tg:'Q1/Q2',est:'M',st:'off-track',pct:10,j:'CRMO-693',lk:'locked'},
+            {s:'Data Parity Phase 2b plus expanded scope',tm:'CRM/Pulse',tg:'Q1',est:'300h',st:'on-track',pct:90,j:'CRMO-700',lk:'locked'},
+            {s:'Lost Lead & Pre-Lead Management',tm:'CRM/Pulse',tg:'February',est:'120h',st:'done',pct:100,j:'CRMO-692',lk:'locked'},
+            {s:'Rich Text Editor for Email Templates',tm:'CRM/Pulse',tg:'March',est:'120h',st:'done',pct:100,j:'CRMO-661',lk:'locked'},
+            {s:'UI/UX CRM Upgrade: Quick Add Modal',tm:'CRM/Pulse',tg:'Q1',est:'M',st:'on-track',pct:25,j:'CRMO-547',lk:'locked'},
+            {s:'Update Note Section — Improved UI/UX',tm:'CRM/Pulse',tg:'February',est:'100h',st:'done',pct:100,j:'CRMO-654',lk:'locked'},
+            {s:'Print Prospect Profile',tm:'CRM/Pulse',tg:'Q1/Q2',est:'S',st:'off-track',pct:0,j:'CRMO-74',lk:'locked'},
+            {s:'Sherpa Widget Dashboard — Redefined Default with Trends & Goals',tm:'CRM/Pulse',tg:'Q1',est:'M',st:'on-track',pct:35,j:'CRMO-681',lk:'added'},
+          ]
+        }
+      ]
+    },
+
+    emar: {
+      label: 'eMAR & Care',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'Job Titles & Permissions',tm:'Clinical',tg:'Q1 2026',est:'—',st:'on-track',pct:54,j:'GPS-846',lk:'locked'},
+            {s:'Resource Task Assignment',tm:'Clinical',tg:'Q1/Q2 2026',est:'—',st:'at-risk',pct:0,j:'GPS-901',lk:'locked'},
+            {s:'Updated Aline UI',tm:'Clinical',tg:'Q1 2026',est:'—',st:'on-track',pct:67,j:'GPS-757',lk:'locked'},
+            {s:'New Diet Module',tm:'Clinical',tg:'Q1 2026',est:'—',st:'done',pct:100,j:'GPS-654',lk:'locked'},
+            {s:'New Diagnosis Module',tm:'Clinical',tg:'Q1 2026',est:'—',st:'done',pct:100,j:'GPS-793',lk:'locked'},
+            {s:'Resident Progress Notes Config / Follow Ups / Dashboard',tm:'Clinical',tg:'Q1 2026',est:'—',st:'at-risk',pct:40,j:'GPS-868',lk:'locked'},
+          ],
+          notes: 'Q2 projected lock requires all Q2 initiatives to be released together. Third team not at full capacity until March.'
+        }
+      ]
+    },
+
+    analytics: {
+      label: 'Analytics & Insights',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'Upgrade CRM Customers to Fabric-based Reporting',tm:'BI',tg:'Q1',est:'M',st:'on-track',pct:44,j:'CRMO-685',lk:'locked'},
+            {s:'Initiating Full-suite Self-service Library for Compass (CRM)',tm:'BI',tg:'Q1',est:'M',st:'on-track',pct:63,j:'CRMO-701',lk:'locked'},
+            {s:'Enable Custom CRM Fields in Fabric Reporting',tm:'BI',tg:'Q1',est:'L',st:'to-do',pct:0,j:'CRMO-535',lk:'locked'},
+            {s:'Report Work to Support Sherpa Migration',tm:'BI',tg:'Q1',est:'M',st:'on-track',pct:60,j:'CRMO-703',lk:'locked'},
+            {s:'Fabric Performance and Optimization Improvements',tm:'BI',tg:'Q1',est:'M',st:'on-track',pct:86,j:'CRMO-705',lk:'locked'},
+            {s:'Modernization Plan for Top BI Reports (Sherpa Reporting)',tm:'BI',tg:'Q1',est:'M',st:'on-track',pct:20,j:'CRMO-706',lk:'locked'},
+            {s:'DSL Custom Reporting Post-Fabric Upgrade',tm:'BI',tg:'Q1',est:'L',st:'on-track',pct:70,j:'CRMO-707',lk:'locked'},
+            {s:'Finalize 2025 Benchmark Reporting Data',tm:'BI',tg:'Q1',est:'S',st:'done',pct:100,j:'CRMO-709',lk:'locked'},
+            {s:'Migrate Nonstandard Model CRM Reports to Fabric',tm:'BI',tg:'Q1',est:'L',st:'to-do',pct:0,j:'CRMO-536',lk:'stretch'},
+            {s:'New CRM Product Performance Report, Version One',tm:'BI',tg:'Q1',est:'M',st:'to-do',pct:0,j:'CRMO-702',lk:'stretch'},
+          ],
+          outOfScope: [
+            {s:'DSL Custom Reporting — Yardi reports to replace Vitals',tm:'BI',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+            {s:'Contact Center Report Enhancements (incl. Regal data)',tm:'BI',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+            {s:'Fully self-service semantic reporting (independent reports tool)',tm:'BI',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+            {s:'Near real-time reporting for all CRM reports',tm:'BI',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+            {s:'Power BI self-service reporting enablement for Atria',tm:'BI',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+          ]
+        }
+      ]
+    },
+
+    ai: {
+      label: 'Aline AI',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'Daily Lineup — Complete development (Q4 rollover)',tm:'AI',tg:'Q1',est:'M',st:'at-risk',pct:50,j:'CRMO-637',lk:'stretch'},
+            {s:'Enhanced Opportunity Scoring — Labs release',tm:'AI',tg:'Q1',est:'XL',st:'at-risk',pct:15,j:'CRMO-667',lk:'stretch'},
+            {s:'Company-level AI Feature Controls in Existing CRM UI',tm:'AI',tg:'Q1',est:'M',st:'to-do',pct:0,j:'CRMO-687',lk:'locked'},
+            {s:'AI Feature Engagement Insights, Early Analysis Framework',tm:'AI',tg:'Q1',est:'M',st:'on-track',pct:92,j:'CRMO-688',lk:'locked'},
+            {s:'Clara Prospect Assistant (Chat) — Labs release',tm:'AI',tg:'Q1',est:'XL',st:'on-track',pct:38,j:'CRMO-689',lk:'locked'},
+            {s:'AI Pro features have separate models (load balancing)',tm:'AI',tg:'Q1',est:'M',st:'done',pct:100,j:'CRMO-694',lk:'locked'},
+            {s:'Smart Next Step in Call Summary',tm:'AI',tg:'Q1',est:'S',st:'on-track',pct:50,j:'CRMO-695',lk:'locked'},
+            {s:'AI Feature Improvements (profile summary, email drafts)',tm:'AI',tg:'Q1',est:'L',st:'on-track',pct:62,j:'CRMO-696',lk:'locked'},
+            {s:'Data Vectorization Foundations for BI Agent Use',tm:'AI',tg:'Q1',est:'L',st:'on-track',pct:20,j:'CRMO-697',lk:'locked'},
+          ],
+          outOfScope: [
+            {s:'Community-Level AI Feature Controls in Existing CRM UI',tm:'AI',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+            {s:'CRM-wide Chat (ask questions about any prospect)',tm:'AI',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+            {s:'Configurable Opportunity Score (focus customization)',tm:'AI',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+          ]
+        }
+      ]
+    },
+
+    grove: {
+      label: 'Grove by Aline',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'Grove Menus ↔ Aline Leasing & Billing and Care Integration',tm:'Grove',tg:'Q1',est:'120h',st:'on-track',pct:95,j:'GRO-65',lk:'locked'},
+            {s:'Enhancing Daily Menu Printouts — Support tools',tm:'Grove',tg:'Q1',est:'70h',st:'done',pct:100,j:'GRO-33',lk:'locked'},
+            {s:'Enhancing Daily Menu Printouts — Customer-facing',tm:'Grove',tg:'Q1',est:'240h',st:'on-track',pct:5,j:'GRO-212',lk:'locked'},
+            {s:'Self-Serve POS Kiosk — Resident self-ordering',tm:'Grove',tg:'Q1',est:'100h',st:'on-track',pct:57,j:'GRO-32',lk:'locked'},
+            {s:'POS Server Specific Logins',tm:'Grove',tg:'Q1',est:'250h',st:'done',pct:100,j:'GRO-155',lk:'locked'},
+            {s:'POS for SNF — Expand ordering to skilled nursing',tm:'Grove',tg:'Q1',est:'240h',st:'on-track',pct:5,j:'GRO-208',lk:'locked'},
+            {s:'Nicholas Food Integration',tm:'Grove',tg:'Q1',est:'160h',st:'on-track',pct:60,j:'GRO-240',lk:'locked'},
+          ],
+          outOfScope: [
+            {s:'IDDSI Refinements — Menu & configuration updates',tm:'Grove',tg:'—',est:'70h',st:'to-do',pct:0,j:'GRO-202',lk:'out-of-scope'},
+            {s:'Migrate Grove from Authorize.net/Quickbooks to NetSuite',tm:'Grove',tg:'—',est:'400h',st:'to-do',pct:0,j:'GRO-277',lk:'out-of-scope'},
+          ]
+        }
+      ]
+    },
+
+    platform: {
+      label: 'Platform & Infrastructure',
+      sections: [
+        {
+          name: 'Platform & Compass',
+          items: [
+            {s:'Aline SSO — Platform Level (Global Login MVP)',tm:'Platform/Infra',tg:'Q1 MVP',est:'400h',st:'on-track',pct:90,j:'COM-4',lk:'locked'},
+            {s:'Aline SSO — Leasing & Billing',tm:'L&B/Platform',tg:'Q1',est:'200h',st:'on-track',pct:10,j:'ARMS-2034',lk:'locked'},
+            {s:'Aline SSO — Payments',tm:'Platform/Payments',tg:'Q1',est:'75h',st:'on-track',pct:85,j:'COMS-64',lk:'locked'},
+            {s:'Aline SSO — Roobrik',tm:'Roobrik/Platform',tg:'Q1',est:'200h',st:'on-track',pct:80,j:'RPR-92',lk:'locked'},
+            {s:'Foundational CRM SSO — Design and Migration Planning',tm:'CRM/Platform/Infra',tg:'Q1/Q2',est:'400h',st:'to-do',pct:0,j:null,lk:'locked'},
+            {s:'Dashboards: Admin Default Dashboard Creator & Editor',tm:'Platform/CRM',tg:'Q1/Q2',est:'M',st:'in-progress',pct:0,j:'CRMO-862',lk:'stretch'},
+            {s:'Dashboards: Display Trends on Widgets (11 KPIs)',tm:'Platform/CRM',tg:'Q1',est:'150h',st:'on-track',pct:60,j:'CRMO-693',lk:'locked'},
+            {s:'Dashboards: Monthly Goal Targets on Widgets',tm:'Platform/CRM',tg:'Q1',est:'250h',st:'on-track',pct:30,j:'CRMO-691',lk:'locked'},
+            {s:'Dashboards: L&B Widget Development',tm:'Platform/L&B',tg:'Q1',est:'180h',st:'on-track',pct:20,j:'ARMS-1785',lk:'locked'},
+            {s:'Compass Widget: CRM Executive Overview MVP',tm:'Data',tg:'Q1 MVP',est:'300h',st:'on-track',pct:63,j:'PBI-2264',lk:'locked'},
+            {s:'Compass Widget: L&B Executive Overview MVP',tm:'Data',tg:'Q1',est:'TBD',st:'on-track',pct:63,j:'PBI-2264',lk:'stretch'},
+            {s:'Compass Application Architecture (on-going)',tm:'Platform/CRM',tg:'Q1',est:'200h',st:'on-track',pct:null,j:'COM-6',lk:'locked'},
+            {s:'Aline Compass Design — Dashboard, Builder MVP',tm:'UI/UX',tg:'Q1',est:'L',st:'in-progress',pct:10,j:'COM-2',lk:'locked'},
+            {s:'Aline Compass Implementation — Dashboard, App Selector',tm:'Platform/CRM',tg:'Q1 MVP',est:'L',st:'in-progress',pct:10,j:'COM-1',lk:'stretch'},
+            {s:'Aline Compass Implementation — Global ID & User Role Mapping',tm:'Infra/Data',tg:'Q1 MVP',est:'XL',st:'in-progress',pct:10,j:'COM-3',lk:'stretch'},
+          ]
+        },
+        {
+          name: 'Roobrik',
+          items: [
+            {s:'Custom Lead Routing (send lead to specific CRM/MAPs)',tm:'Roobrik',tg:'Q1',est:'200h',st:'on-track',pct:75,j:'RPR-89',lk:'locked'},
+            {s:'Survey Click-throughs for Aline CRM use (SMS reminders)',tm:'Roobrik',tg:'Q1',est:'80h',st:'on-track',pct:25,j:'RPR-90',lk:'locked'},
+            {s:'Integrate core response data into Client Dashboard',tm:'Roobrik',tg:'Q1',est:'190h',st:'on-track',pct:92,j:'RPR-88',lk:'locked'},
+            {s:'Pen Test findings — Compliance (High and Medium severity)',tm:'Roobrik',tg:'Q1',est:'160h',st:'on-track',pct:98,j:'RPR-91',lk:'locked'},
+            {s:'Implement Aline SSO',tm:'Roobrik',tg:'Q1',est:'160h',st:'on-track',pct:80,j:'RPR-92',lk:'locked'},
+            {s:'Upgrade to new version of iText for PDF report generation',tm:'Roobrik',tg:'Q1',est:'80h',st:'to-do',pct:0,j:'RPR-93',lk:'locked'},
+            {s:'Tech debt — Migration from Framework to Core, move jobs from console to admin',tm:'Roobrik',tg:'Q1',est:'160h',st:'to-do',pct:0,j:'RPR-91',lk:'stretch'},
+          ],
+          outOfScope: [
+            {s:'Post-tour survey (for DSL)',tm:'Roobrik',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+            {s:'Lead funnel chat (for DSL)',tm:'Roobrik',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+          ]
+        },
+        {
+          name: 'Mobile',
+          items: [
+            {s:'CRM Mobile for SNF Users',tm:'Mobile',tg:'Q1',est:'200h',st:'on-track',pct:75,j:'CRMO-679',lk:'locked'},
+            {s:'CRM Mobile for PCS Users',tm:'Mobile',tg:'Q1',est:'200h',st:'on-track',pct:45,j:'CRMO-645',lk:'locked'},
+            {s:'Feedback from Initial Release (feature enhancements & bugs)',tm:'Mobile',tg:'Q1',est:'160h',st:'to-do',pct:0,j:'MAC-352',lk:'locked'},
+            {s:'Sales feedback for Initial Deployment',tm:'Mobile',tg:'Q1',est:'150h',st:'on-track',pct:95,j:'MAC-323',lk:'locked'},
+            {s:'Code Cleanup — Refactoring, HIPAA compliance tasks',tm:'Mobile',tg:'Q1',est:'120h',st:'on-track',pct:60,j:'MAC-356',lk:'stretch'},
+            {s:'Q4 Rollover: In-app chat & calling (on hold — Twilio roadblocks)',tm:'Mobile',tg:'Q1',est:'90h',st:'on-track',pct:50,j:'MAC-223',lk:'locked'},
+            {s:'Initial App Release — Submitting week of 3/2',tm:'Mobile',tg:'March',est:'—',st:'on-track',pct:null,j:null,lk:'locked'},
+            {s:'Q4 Rollover: QA Bug Fixes/Enhancements (MedPass)',tm:'Mobile',tg:'Q1',est:'24h',st:'on-track',pct:100,j:'MMP-248',lk:'locked'},
+            {s:'Expanded Mobile Customization — Deprioritized',tm:'Mobile',tg:'Q1/Q2',est:'200h',st:'off-track',pct:0,j:'MAC-318',lk:'locked'},
+            {s:'Reusable Dashboard Component — Deprioritized',tm:'Mobile',tg:'Q1/Q2',est:'150h',st:'off-track',pct:0,j:null,lk:'locked'},
+            {s:'Q4 Rollover: Incident Reporting (Care Mobile) — Blocked',tm:'Mobile',tg:'Q1/Q2',est:'40h',st:'at-risk',pct:80,j:'EMAR-2352',lk:'locked'},
+          ]
+        },
+        {
+          name: 'Leasing & Billing',
+          items: [
+            {s:'Platform UI/UX — 15 modules committed for Q1',tm:'L&B',tg:'Q1',est:'L',st:'on-track',pct:90,j:'ARMS-2058',lk:'locked'},
+            {s:'Client Upgrades Q1',tm:'L&B',tg:'Q1',est:'L',st:'on-track',pct:10,j:'ARMS-2059',lk:'locked'},
+            {s:'Atria L&B Upgrade — Discovery Only for Q1',tm:'L&B',tg:'Q1',est:'XXL',st:'on-track',pct:null,j:'ARMS-2060',lk:'locked'},
+            {s:'System Stabilization',tm:'L&B',tg:'Q1',est:'M',st:'on-track',pct:66,j:'ARMS-2061',lk:'locked'},
+            {s:'Billing Workflow Optimization — Supplemental Payor Hardening',tm:'L&B',tg:'Q1',est:'L',st:'at-risk',pct:45,j:'ARMS-2062',lk:'locked'},
+            {s:'Grove POS Integration Q1 — Adjustments',tm:'L&B',tg:'Q1',est:'M',st:'on-track',pct:99,j:'ARMS-2063',lk:'locked'},
+            {s:'Compass Widget Development',tm:'L&B',tg:'Q1',est:'M',st:'on-track',pct:10,j:'ARMS-2065',lk:'locked'},
+            {s:'SSO Integration',tm:'L&B',tg:'Q1',est:'M',st:'on-track',pct:5,j:'ARMS-2034',lk:'locked'},
+            {s:'Remediation of Pen Test Issues',tm:'L&B',tg:'Q1',est:'M',st:'on-track',pct:20,j:'ARMS-2072',lk:'locked'},
+            {s:'Aline CRM — L&B Integration',tm:'L&B',tg:'Q1',est:'L',st:'to-do',pct:null,j:'ARMS-2066',lk:'stretch'},
+            {s:'GL Integration (Sage Intacct) — UI, Integration & Onboarding',tm:'L&B',tg:'Q1',est:'L',st:'to-do',pct:null,j:'ARMS-2064',lk:'stretch'},
+          ]
+        }
+      ]
+    }
+  }
+};
+
+// ── Drawer helpers ──────────────────────────────────────────────
+function jiraUrl(key) {
+  if (!key || key === '—' || key === '-') return null;
+  return 'https://alineops.atlassian.net/browse/' + key.trim();
+}
+
+const STATUS_LABELS = {
+  'on-track':     'On Track',
+  'done':         'Done',
+  'at-risk':      'At Risk',
+  'off-track':    'Off Track',
+  'blocked':      'Blocked',
+  'to-do':        'To Do',
+  'in-progress':  'In Progress',
+  'requirements': 'Requirements',
+};
+
+const LOCK_LABELS = {
+  'locked':       'Locked',
+  'stretch':      'Stretch',
+  'added':        'Added',
+  'unplanned':    'Unplanned',
+  'out-of-scope': 'Out of Scope',
+  'pending':      'Pending',
+};
+
+function scChip(status) {
+  const lbl = STATUS_LABELS[status] || status;
+  return `<span class="sc sc-${status}">${lbl}</span>`;
+}
+function lockPill(lk) {
+  const lbl = LOCK_LABELS[lk] || lk;
+  return `<span class="lp lp-${lk}">${lbl}</span>`;
+}
+function pctCell(pct) {
+  if (pct === null || pct === undefined) return '<td class="pct-wrap"><span class="pct-num">—</span></td>';
+  const fill = Math.max(0, Math.min(100, pct));
+  return `<td class="pct-wrap"><span class="pct-num">${pct}%</span><div class="pct-bar"><div class="pct-fill" style="width:${fill}%"></div></div></td>`;
+}
+function jiraCell(key) {
+  const url = jiraUrl(key);
+  if (!url) return '<td>—</td>';
+  return `<td><a class="jira-badge" href="${url}" target="_blank">${key}</a></td>`;
+}
+
+function buildTable(items, isPlanning) {
+  if (!items || !items.length) return '';
+  const statusCol = !isPlanning ? `<th>Status</th>` : '';
+  const pctCol    = !isPlanning ? `<th>%</th>` : '';
+  const priorityCol = isPlanning ? `<th>#</th>` : '';
+  let html = `<table class="dt"><thead><tr>
+    ${priorityCol}
+    <th>Summary</th><th>Team</th><th>Target</th><th>Est.</th>
+    ${statusCol}${pctCol}
+    <th>Jira</th><th>Lock</th>
+  </tr></thead><tbody>`;
+  items.forEach((item, idx) => {
+    const statusKey = item.st || 'to-do';
+    html += `<tr data-status="${statusKey}" data-lock="${item.lk}">
+      ${isPlanning ? `<td style="color:var(--text-3);font-size:11px;">${idx+1}</td>` : ''}
+      <td class="td-sum">${item.s}</td>
+      <td class="td-team">${item.tm||'—'}</td>
+      <td class="td-tgt">${item.tg||'—'}</td>
+      <td class="td-team">${item.est||'—'}</td>
+      ${!isPlanning ? `<td>${scChip(statusKey)}</td>` : ''}
+      ${!isPlanning ? pctCell(item.pct) : ''}
+      ${jiraCell(item.j)}
+      <td>${lockPill(item.lk)}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  return html;
+}
+
+function buildSection(sec, isPlanning) {
+  let html = '';
+  if (sec.name) html += `<div class="drw-section">${sec.name}</div>`;
+  html += buildTable(sec.items, isPlanning);
+  if (sec.notes) html += `<div class="drw-notes">${sec.notes}</div>`;
+  if (sec.unplanned && sec.unplanned.length) {
+    html += `<details class="drw-details"><summary>Unplanned items (${sec.unplanned.length})</summary>${buildTable(sec.unplanned, isPlanning)}</details>`;
+  }
+  if (sec.outOfScope && sec.outOfScope.length) {
+    html += `<details class="drw-details"><summary>Out of scope (${sec.outOfScope.length})</summary>${buildTable(sec.outOfScope, isPlanning)}</details>`;
+  }
+  return html;
+}
+
+let activeDrawerFilter = 'all';
+
+function renderDrawer(productKey) {
+  const prod = MOR.products[productKey];
+  if (!prod) return;
+  const isPlanning = MOR.mode === 'planning';
+
+  // Count total items
+  let total = 0;
+  prod.sections.forEach(sec => { total += (sec.items||[]).length; });
+
+  document.getElementById('drw-title').textContent = prod.label + ' — ' + MOR.period + ' Commitments';
+  document.getElementById('drw-meta').innerHTML = `${total} committed items` +
+    (isPlanning ? ' &nbsp;<span class="planning-badge">PROPOSED</span>' : '');
+
+  // Chips
+  const chipsEl = document.getElementById('drw-chips');
+  if (isPlanning) {
+    chipsEl.innerHTML = `<span class="drw-chip active" data-f="all" onclick="filterDrawer('all',this)">All items</span>
+      <span class="drw-chip" data-f="locked" onclick="filterDrawer('locked',this)">Locked</span>
+      <span class="drw-chip" data-f="stretch" onclick="filterDrawer('stretch',this)">Stretch</span>
+      <span class="drw-chip" data-f="added" onclick="filterDrawer('added',this)">Added</span>`;
+  } else {
+    chipsEl.innerHTML = `<span class="drw-chip active" data-f="all" onclick="filterDrawer('all',this)">All</span>
+      <span class="drw-chip" data-f="on-track" onclick="filterDrawer('on-track',this)">On Track</span>
+      <span class="drw-chip" data-f="at-risk" onclick="filterDrawer('at-risk',this)">At Risk</span>
+      <span class="drw-chip" data-f="off-track" onclick="filterDrawer('off-track',this)">Off Track</span>
+      <span class="drw-chip" data-f="blocked" onclick="filterDrawer('blocked',this)">Blocked</span>
+      <span class="drw-chip" data-f="done" onclick="filterDrawer('done',this)">Done</span>
+      <span class="drw-chip" data-f="to-do" onclick="filterDrawer('to-do',this)">To Do</span>`;
+  }
+
+  // Body
+  let body = '';
+  prod.sections.forEach(sec => { body += buildSection(sec, isPlanning); });
+  document.getElementById('drw-body').innerHTML = body;
+  activeDrawerFilter = 'all';
+}
+
+function filterDrawer(f, chipEl) {
+  activeDrawerFilter = f;
+  document.querySelectorAll('#drw-chips .drw-chip').forEach(c => c.classList.remove('active'));
+  if (chipEl) chipEl.classList.add('active');
+  const isLockFilter = ['locked','stretch','added','unplanned','out-of-scope','pending'].includes(f);
+  document.querySelectorAll('#drw-body .dt tbody tr').forEach(row => {
+    if (f === 'all') { row.classList.remove('row-hidden'); return; }
+    const attr = isLockFilter ? row.dataset.lock : row.dataset.status;
+    row.classList.toggle('row-hidden', attr !== f);
+  });
+}
+
+function openDrawer(productKey) {
+  renderDrawer(productKey);
+  document.getElementById('drawer-overlay').classList.add('open');
+  document.getElementById('detail-drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.getElementById('detail-drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// ── Counter animation ──────────────────────────────────────────
+function countUp(el, target, delay = 0) {
+  setTimeout(() => {
+    const duration = 900;
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target);
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    };
+    requestAnimationFrame(tick);
+  }, delay);
+}
+
+document.querySelectorAll('.kpi-num[data-target]').forEach((el, i) => {
+  countUp(el, +el.dataset.target, 150 + i * 120);
+});
+
+// ── Status filter ──────────────────────────────────────────────
+let activeFilter = 'all';
+
+const filterMap = {
+  done:   { flightCol: 0, statClass: 'pcs-done' },
+  qa:     { flightCol: 1, statClass: 'pcs-qa'   },
+  dev:    { flightCol: 2, statClass: 'pcs-dev'   },
+  queued: { flightCol: 2, statClass: 'pcs-back'  },
+};
+
+function activateFilter(f) {
+  if (activeFilter === f && f !== 'all') f = 'all'; // toggle off
+  activeFilter = f;
+
+  // Update chip active state
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.classList.toggle('active', chip.dataset.filter === f);
+  });
+
+  // Product card dim: dim cards that have 0 in the targeted stat
+  const cards = document.querySelectorAll('.pc');
+  if (f === 'all') {
+    cards.forEach(c => c.classList.remove('dimmed'));
+  } else {
+    const sc = filterMap[f]?.statClass;
+    cards.forEach(card => {
+      if (!sc) return;
+      const statEl = card.querySelector('.' + sc + ' .pcs-num');
+      const val = statEl ? parseInt(statEl.textContent, 10) : 0;
+      card.classList.toggle('dimmed', val === 0);
+    });
+  }
+
+  // Flight grid: show only matching items
+  document.querySelectorAll('.fi').forEach(item => {
+    if (f === 'all') {
+      item.classList.remove('hidden');
+    } else {
+      item.classList.toggle('hidden', item.dataset.status !== f);
+    }
+  });
+
+  // Flight cards: if all items hidden, reduce opacity on the card header
+  document.querySelectorAll('.flight-card').forEach(card => {
+    const visible = card.querySelectorAll('.fi:not(.hidden)').length;
+    card.style.opacity = (f !== 'all' && visible === 0) ? '0.4' : '1';
+  });
+}
+</script>
+
+</body>
+</html>
