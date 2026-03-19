@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="../favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
 <title>Aline Roadmap Report Card — Q1 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -677,6 +677,9 @@ a.jira-ref:hover { background: var(--teal-25); }
   .watch-grid { grid-template-columns: 1fr; }
 }
 
+/* ── At-risk RAG badge ──────────────────────────────────────── */
+.rag-red { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+
 /* ── Drill-down button ──────────────────────────────────────── */
 .drill-btn {
   display: block;
@@ -997,7 +1000,7 @@ a.jira-badge:hover { background: var(--teal-25); }
           <div class="pc-sub">Sales &amp; Marketing · CRM / SHCRM</div>
         </a>
       </div>
-      <span class="rag rag-orange">Active</span>
+      <span class="rag rag-orange" id="rag-crm">Active</span>
     </div>
     <div class="pc-stats">
       <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
@@ -1045,7 +1048,7 @@ a.jira-badge:hover { background: var(--teal-25); }
           <div class="pc-sub">Care &amp; Engagement · EMAR / CARE</div>
         </a>
       </div>
-      <span class="rag rag-orange">Active</span>
+      <span class="rag rag-orange" id="rag-emar">Active</span>
     </div>
     <div class="pc-stats">
       <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
@@ -1091,7 +1094,7 @@ a.jira-badge:hover { background: var(--teal-25); }
           <div class="pc-sub">Fabric / PowerBI · PBI</div>
         </a>
       </div>
-      <span class="rag rag-teal">On Track</span>
+      <span class="rag rag-teal" id="rag-analytics">On Track</span>
     </div>
     <div class="pc-stats">
       <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
@@ -1136,7 +1139,7 @@ a.jira-badge:hover { background: var(--teal-25); }
           <div class="pc-sub">AI Features &amp; Intelligence · AA / AI</div>
         </a>
       </div>
-      <span class="rag rag-purple">In Flight</span>
+      <span class="rag rag-purple" id="rag-ai">In Flight</span>
     </div>
     <div class="pc-stats">
       <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
@@ -1180,7 +1183,7 @@ a.jira-badge:hover { background: var(--teal-25); }
           <div class="pc-sub">Dining &amp; Engagement · GRO</div>
         </a>
       </div>
-      <span class="rag rag-teal">Delivered</span>
+      <span class="rag rag-teal" id="rag-grove">Delivered</span>
     </div>
     <div class="pc-stats">
       <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
@@ -1219,7 +1222,7 @@ a.jira-badge:hover { background: var(--teal-25); }
           <div class="pc-sub">Engineering + QA Automation · OPS / AUT / ROOB</div>
         </a>
       </div>
-      <span class="rag rag-teal">On Track</span>
+      <span class="rag rag-teal" id="rag-platform">On Track</span>
     </div>
     <div class="pc-stats">
       <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
@@ -1754,7 +1757,7 @@ const MOR = {
         {
           name: null,
           items: [
-            {s:'Daily Lineup — Complete development (Q4 rollover)',tm:'AI',tg:'Q1',est:'M',st:'at-risk',pct:50,j:'CRMO-637',lk:'stretch'},
+            {s:'Daily Lineup — Complete development (Q4 rollover)',tm:'AI',tg:'Q1',est:'M',st:'on-track',pct:50,j:'CRMO-637',lk:'stretch'},
             {s:'Enhanced Opportunity Scoring — Labs release',tm:'AI',tg:'Q1',est:'XL',st:'at-risk',pct:15,j:'CRMO-667',lk:'stretch'},
             {s:'Company-level AI Feature Controls in Existing CRM UI',tm:'AI',tg:'Q1',est:'M',st:'to-do',pct:0,j:'CRMO-687',lk:'locked'},
             {s:'AI Feature Engagement Insights, Early Analysis Framework',tm:'AI',tg:'Q1',est:'M',st:'on-track',pct:92,j:'CRMO-688',lk:'locked'},
@@ -1762,7 +1765,7 @@ const MOR = {
             {s:'AI Pro features have separate models (load balancing)',tm:'AI',tg:'Q1',est:'M',st:'done',pct:100,j:'CRMO-694',lk:'locked'},
             {s:'Smart Next Step in Call Summary',tm:'AI',tg:'Q1',est:'S',st:'on-track',pct:50,j:'CRMO-695',lk:'locked'},
             {s:'AI Feature Improvements (profile summary, email drafts)',tm:'AI',tg:'Q1',est:'L',st:'on-track',pct:62,j:'CRMO-696',lk:'locked'},
-            {s:'Data Vectorization Foundations for BI Agent Use',tm:'AI',tg:'Q1',est:'L',st:'on-track',pct:20,j:'CRMO-697',lk:'locked'},
+            {s:'Data Vectorization Foundations for BI Agent Use',tm:'AI',tg:'Q1',est:'L',st:'to-do',pct:0,j:'CRMO-697',lk:'locked'},
           ],
           outOfScope: [
             {s:'Community-Level AI Feature Controls in Existing CRM UI',tm:'AI',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
@@ -2025,6 +2028,46 @@ function closeDrawer() {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
+// ── Scorecard health badge ──────────────────────────────────────
+// Formula: healthy locked items / total locked items
+// Healthy = done, on-track, in-progress, requirements
+// Countable = locked + added + pending (not stretch, oos, unplanned)
+// Thresholds: ≥75% On Track, 50–74% At Risk, <50% Off Track
+// Override: any off-track OR blocked item → cap at "At Risk" max
+function computeHealth(productKey) {
+  const prod = MOR.products[productKey];
+  if (!prod) return null;
+  const countable  = new Set(['locked','added','pending']);
+  const healthy    = new Set(['done','on-track','in-progress','requirements']);
+  let total = 0, h = 0, hasBlocker = false;
+  prod.sections.forEach(sec => {
+    (sec.items || []).forEach(item => {
+      if (!countable.has(item.lk)) return;
+      total++;
+      if (healthy.has(item.st)) h++;
+      if (item.st === 'blocked' || item.st === 'off-track') hasBlocker = true;
+    });
+  });
+  if (!total) return { label: 'On Track', cls: 'rag-teal', pct: null };
+  const pct = Math.round((h / total) * 100);
+  let label, cls;
+  if (hasBlocker || pct < 50)  { label = pct < 50 ? 'Off Track' : 'At Risk'; cls = 'rag-red'; }
+  else if (pct >= 75)          { label = 'On Track';  cls = 'rag-teal';   }
+  else                         { label = 'At Risk';   cls = 'rag-orange'; }
+  return { label, cls, pct };
+}
+
+function initHealthBadges() {
+  ['crm','emar','analytics','ai','grove','platform'].forEach(key => {
+    const el = document.getElementById('rag-' + key);
+    if (!el) return;
+    const h = computeHealth(key);
+    if (!h) return;
+    el.textContent = h.pct !== null ? `${h.label} · ${h.pct}%` : h.label;
+    el.className = 'rag ' + h.cls;
+  });
+}
+
 // ── Counter animation ──────────────────────────────────────────
 function countUp(el, target, delay = 0) {
   setTimeout(() => {
@@ -2044,6 +2087,8 @@ function countUp(el, target, delay = 0) {
 document.querySelectorAll('.kpi-num[data-target]').forEach((el, i) => {
   countUp(el, +el.dataset.target, 150 + i * 120);
 });
+
+initHealthBadges();
 
 // ── Status filter ──────────────────────────────────────────────
 let activeFilter = 'all';
