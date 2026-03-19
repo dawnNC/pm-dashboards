@@ -37,7 +37,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 4rem;
+    padding-top: calc(4rem + 40px);
 }
 h1 {
     font-size: 2rem;
@@ -108,7 +109,81 @@ h1 {
 </style>
 </head>
 <body>
-<h1>PM Dashboards</h1>
+
+<!-- ── PM Nav Bar ──────────────────────────────────────────────── -->
+<style>
+.pmnav-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 40px;
+  background: #ffffff;
+  border-bottom: 1.5px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 9999;
+  font-family: 'Manrope', system-ui, sans-serif;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.pmnav-wordmark {
+  font-size: 13px;
+  font-weight: 800;
+  color: #10A4D1;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+.pmnav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.pmnav-link {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #4A5C6E;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.pmnav-link:hover {
+  background: #EAF6FB;
+  color: #10A4D1;
+}
+.pmnav-link.pmnav-active {
+  color: #10A4D1;
+  border-bottom: 2px solid #10A4D1;
+  border-radius: 0;
+  padding-bottom: 3px;
+}
+.pmnav-link.pmnav-q2 {
+  background: #EAF6FB;
+  color: #10A4D1;
+  border: 1px solid #C3E8F4;
+  border-radius: 6px;
+  margin-left: 4px;
+}
+.pmnav-link.pmnav-q2:hover {
+  background: #C3E8F4;
+}
+@media (max-width: 600px) {
+  .pmnav-links { display: none; }
+}
+</style>
+<nav class="pmnav-bar">
+  <a class="pmnav-wordmark" href="/">Aline PM</a>
+  <div class="pmnav-links">
+    <a class="pmnav-link" href="/roadmap-report-card/">Roadmap</a>
+    <a class="pmnav-link" href="/feature-readiness/">Feature Readiness</a>
+    <a class="pmnav-link" href="/industry-intelligence/">Intelligence</a>
+    <a class="pmnav-link pmnav-q2" href="/roadmap-report-card-q2/">Q2 Preview</a>
+  </div>
+</nav>
+<!-- ── End PM Nav Bar ──────────────────────────────────────────── -->
+
+<h1 style="margin-top:40px;">PM Dashboards</h1>
 <p class="subtitle">Weekly automated insights for the support team</p>
 
 <div class="dashboard-grid">
@@ -135,6 +210,12 @@ h1 {
         <div class="card-title">Roadmap Report Card</div>
         <div class="card-desc">Q1 2026 roadmap grades — initiative progress, delivery confidence, and risk flags across all product teams.</div>
         <span class="card-badge">Updated March 2026</span>
+    </a>
+    <a href="roadmap-report-card-q2/" class="dashboard-card">
+        <div class="card-icon">&#128196;</div>
+        <div class="card-title">Q2 2026 Planning Preview</div>
+        <div class="card-desc">Proposed Q2 roadmap — locked commitments and stretch goals across all product lines. Planning mode, not a commitment.</div>
+        <span class="card-badge card-badge-soon">Planning Preview</span>
     </a>
 </div>
 

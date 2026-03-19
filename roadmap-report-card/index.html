@@ -47,6 +47,7 @@ body {
   font-size: 13.5px;
   line-height: 1.55;
   padding: 36px 40px;
+  padding-top: calc(36px + 40px);
 }
 
 /* ── Jira link styles ─────────────────────────────────────── */
@@ -211,21 +212,10 @@ a.jira-ref:hover { background: var(--teal-25); }
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }
-.kpi::after {
-  content: '';
-  position: absolute;
-  bottom: 0; right: 0;
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  opacity: 0.06;
-}
 .kpi.k-teal    { border-color: var(--teal); }
 .kpi.k-orange  { border-color: var(--orange); }
 .kpi.k-purple  { border-color: var(--purple); }
 .kpi.k-neutral { border-color: var(--border); }
-.kpi.k-teal::after    { background: var(--teal); }
-.kpi.k-orange::after  { background: var(--orange); }
-.kpi.k-purple::after  { background: var(--purple); }
 
 .kpi-num {
   font-size: 48px;
@@ -889,6 +879,75 @@ a.jira-badge:hover { background: var(--teal-25); }
 </head>
 <body>
 
+<!-- ── PM Nav Bar ──────────────────────────────────────────────── -->
+<style>
+.pmnav-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 40px;
+  background: #ffffff;
+  border-bottom: 1.5px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 9999;
+  font-family: 'Manrope', system-ui, sans-serif;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.pmnav-wordmark {
+  font-size: 13px;
+  font-weight: 800;
+  color: #10A4D1;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+.pmnav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.pmnav-link {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #4A5C6E;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.pmnav-link:hover {
+  background: #EAF6FB;
+  color: #10A4D1;
+}
+.pmnav-link.pmnav-active {
+  color: #10A4D1;
+  border-bottom: 2px solid #10A4D1;
+  border-radius: 0;
+  padding-bottom: 3px;
+}
+.pmnav-link.pmnav-q2 {
+  background: #EAF6FB;
+  color: #10A4D1;
+  border: 1px solid #C3E8F4;
+  border-radius: 6px;
+  margin-left: 4px;
+}
+.pmnav-link.pmnav-q2:hover { background: #C3E8F4; }
+@media (max-width: 600px) { .pmnav-links { display: none; } }
+</style>
+<nav class="pmnav-bar">
+  <a class="pmnav-wordmark" href="../">Aline PM</a>
+  <div class="pmnav-links">
+    <a class="pmnav-link pmnav-active" href="../roadmap-report-card/">Roadmap</a>
+    <a class="pmnav-link" href="../feature-readiness/">Feature Readiness</a>
+    <a class="pmnav-link" href="../industry-intelligence/">Intelligence</a>
+    <a class="pmnav-link pmnav-q2" href="../roadmap-report-card-q2/">Q2 Preview</a>
+  </div>
+</nav>
+<!-- ── End PM Nav Bar ──────────────────────────────────────────── -->
+
 <!-- ── HEADER ────────────────────────────────────────────────── -->
 <header class="header">
   <div class="header-accent"></div>
@@ -985,275 +1044,6 @@ a.jira-badge:hover { background: var(--teal-25); }
   <span class="filter-chip" data-filter="queued" onclick="activateFilter('queued')">
     <span class="chip-dot" style="background:var(--text-3)"></span>Queued
   </span>
-</div>
-
-<!-- ── PRODUCT SCORECARDS ─────────────────────────────────────── -->
-<div class="section-title">Product Area Scorecards</div>
-<div class="product-grid" id="product-grid">
-
-  <!-- Aline CRM -->
-  <div class="pc pc-orange" data-areas="crm">
-    <div class="pc-head">
-      <div>
-        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
-          <div class="pc-name">Aline CRM</div>
-          <div class="pc-sub">Sales &amp; Marketing · CRM / SHCRM</div>
-        </a>
-      </div>
-      <span class="rag rag-orange" id="rag-crm">Active</span>
-    </div>
-    <div class="pc-stats">
-      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
-        <div class="pcs-num">12</div><div class="pcs-lbl">Done</div>
-      </a>
-      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
-        <div class="pcs-num">14</div><div class="pcs-lbl">Dev</div>
-      </a>
-      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
-        <div class="pcs-num">6</div> <div class="pcs-lbl">QA</div>
-      </a>
-      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
-        <div class="pcs-num">8</div> <div class="pcs-lbl">Next</div>
-      </a>
-    </div>
-    <div class="pc-bar">
-      <div class="pcb" style="background:var(--teal);width:30%"></div>
-      <div class="pcb" style="background:var(--purple);width:35%"></div>
-      <div class="pcb" style="background:var(--orange);width:15%"></div>
-      <div class="pcb" style="background:#CBD5E1;width:20%"></div>
-    </div>
-    <div class="pc-items">
-      <div class="pci"><span class="tag t-done">Done</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-7804" target="_blank">Rich Text Email Templates</a>
-      </div>
-      <div class="pci"><span class="tag t-done">Done</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-7816" target="_blank">Performance + Activity Goals</a> ·
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-6200" target="_blank">SNF API Ph.1</a>
-      </div>
-      <div class="pci"><span class="tag t-dev">Dev</span>DSL Dashboard · Canada Init. · eAdmit</div>
-      <div class="pci"><span class="tag t-qa">QA</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-7811" target="_blank">Consent Management</a> ·
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-5641" target="_blank">AIM Phase 3</a>
-      </div>
-    </div>
-    <button class="drill-btn" onclick="openDrawer('crm')">View Q1 commitments →</button>
-  </div>
-
-  <!-- eMAR & Care -->
-  <div class="pc pc-orange" data-areas="emar">
-    <div class="pc-head">
-      <div>
-        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
-          <div class="pc-name">Aline eMAR &amp; Care</div>
-          <div class="pc-sub">Care &amp; Engagement · EMAR / CARE</div>
-        </a>
-      </div>
-      <span class="rag rag-orange" id="rag-emar">Active</span>
-    </div>
-    <div class="pc-stats">
-      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
-        <div class="pcs-num">3</div> <div class="pcs-lbl">Done</div>
-      </a>
-      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
-        <div class="pcs-num">10</div><div class="pcs-lbl">Dev</div>
-      </a>
-      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
-        <div class="pcs-num">9</div> <div class="pcs-lbl">QA</div>
-      </a>
-      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
-        <div class="pcs-num">9</div> <div class="pcs-lbl">Next</div>
-      </a>
-    </div>
-    <div class="pc-bar">
-      <div class="pcb" style="background:var(--teal);width:10%"></div>
-      <div class="pcb" style="background:var(--purple);width:32%"></div>
-      <div class="pcb" style="background:var(--orange);width:29%"></div>
-      <div class="pcb" style="background:#CBD5E1;width:29%"></div>
-    </div>
-    <div class="pc-items">
-      <div class="pci"><span class="tag t-qa">QA</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/EMAR-50" target="_blank">UI Kit Phases 1–4</a> ·
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/EMAR-52" target="_blank">Diagnosis Upgrade</a>
-      </div>
-      <div class="pci"><span class="tag t-qa">QA</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/EMAR-1437" target="_blank">King County SSO</a> ·
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/CARE-1489" target="_blank">FOIA Records Package</a>
-      </div>
-      <div class="pci"><span class="tag t-dev">Dev</span>Resident Notes + Clinical Workflows</div>
-      <div class="pci"><span class="tag t-dev">Dev</span>UI Kit Phases 5–10 · State Forms</div>
-    </div>
-    <button class="drill-btn" onclick="openDrawer('emar')">View Q1 commitments →</button>
-  </div>
-
-  <!-- Analytics -->
-  <div class="pc pc-teal" data-areas="analytics">
-    <div class="pc-head">
-      <div>
-        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
-          <div class="pc-name">Analytics &amp; Insights</div>
-          <div class="pc-sub">Fabric / PowerBI · PBI</div>
-        </a>
-      </div>
-      <span class="rag rag-teal" id="rag-analytics">On Track</span>
-    </div>
-    <div class="pc-stats">
-      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
-        <div class="pcs-num">11</div><div class="pcs-lbl">Done</div>
-      </a>
-      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
-        <div class="pcs-num">3</div> <div class="pcs-lbl">Dev</div>
-      </a>
-      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
-        <div class="pcs-num">2</div> <div class="pcs-lbl">QA</div>
-      </a>
-      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
-        <div class="pcs-num">2</div> <div class="pcs-lbl">Next</div>
-      </a>
-    </div>
-    <div class="pc-bar">
-      <div class="pcb" style="background:var(--teal);width:61%"></div>
-      <div class="pcb" style="background:var(--purple);width:17%"></div>
-      <div class="pcb" style="background:var(--orange);width:11%"></div>
-      <div class="pcb" style="background:#CBD5E1;width:11%"></div>
-    </div>
-    <div class="pc-items">
-      <div class="pci"><span class="tag t-done">Done</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-2325" target="_blank">Communities Table</a> ·
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-2313" target="_blank">Housing Contracts</a> ·
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-2294" target="_blank">Benchmark Data</a>
-      </div>
-      <div class="pci"><span class="tag t-dev">Dev</span>Snowflake Platform · Self-service Library for Compass</div>
-      <div class="pci"><span class="tag t-qa">QA</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-1868" target="_blank">Custom CRM Fields in Fabric</a> — due Mar 31
-      </div>
-    </div>
-    <button class="drill-btn" onclick="openDrawer('analytics')">View Q1 commitments →</button>
-  </div>
-
-  <!-- Aline AI -->
-  <div class="pc pc-purple" data-areas="ai">
-    <div class="pc-head">
-      <div>
-        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
-          <div class="pc-name">Aline AI</div>
-          <div class="pc-sub">AI Features &amp; Intelligence · AA / AI</div>
-        </a>
-      </div>
-      <span class="rag rag-purple" id="rag-ai">In Flight</span>
-    </div>
-    <div class="pc-stats">
-      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
-        <div class="pcs-num">2</div><div class="pcs-lbl">Done</div>
-      </a>
-      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
-        <div class="pcs-num">1</div><div class="pcs-lbl">Dev</div>
-      </a>
-      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
-        <div class="pcs-num">0</div><div class="pcs-lbl">QA</div>
-      </a>
-      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
-        <div class="pcs-num">4</div><div class="pcs-lbl">Next</div>
-      </a>
-    </div>
-    <div class="pc-bar">
-      <div class="pcb" style="background:var(--teal);width:29%"></div>
-      <div class="pcb" style="background:var(--purple);width:14%"></div>
-      <div class="pcb" style="background:var(--orange);width:0%"></div>
-      <div class="pcb" style="background:#CBD5E1;width:57%"></div>
-    </div>
-    <div class="pc-items">
-      <div class="pci"><span class="tag t-done">Done</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/AA-339" target="_blank">Profile Next Best Step Recommendation</a>
-      </div>
-      <div class="pci"><span class="tag t-done">Done</span>Sage API Summary Integration Phase 1</div>
-      <div class="pci"><span class="tag t-dev">Dev</span>Sage Integration Phase 2 (Detail Level)</div>
-      <div class="pci"><span class="tag t-next">Up Next</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/AA-434" target="_blank">Clara Prospect Assistant — Labs Release</a>
-      </div>
-    </div>
-    <button class="drill-btn" onclick="openDrawer('ai')">View Q1 commitments →</button>
-  </div>
-
-  <!-- Grove -->
-  <div class="pc pc-lime" data-areas="grove">
-    <div class="pc-head">
-      <div>
-        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
-          <div class="pc-name">Grove by Aline</div>
-          <div class="pc-sub">Dining &amp; Engagement · GRO</div>
-        </a>
-      </div>
-      <span class="rag rag-teal" id="rag-grove">Delivered</span>
-    </div>
-    <div class="pc-stats">
-      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
-        <div class="pcs-num">3</div><div class="pcs-lbl">Done</div>
-      </a>
-      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
-        <div class="pcs-num">1</div><div class="pcs-lbl">Dev</div>
-      </a>
-      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
-        <div class="pcs-num">0</div><div class="pcs-lbl">QA</div>
-      </a>
-      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
-        <div class="pcs-num">0</div><div class="pcs-lbl">Next</div>
-      </a>
-    </div>
-    <div class="pc-bar">
-      <div class="pcb" style="background:var(--teal);width:75%"></div>
-      <div class="pcb" style="background:var(--purple);width:25%"></div>
-    </div>
-    <div class="pc-items">
-      <div class="pci"><span class="tag t-done">Done</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/GRO-65" target="_blank">Grove ↔ Aline Systems Integration</a>
-      </div>
-      <div class="pci"><span class="tag t-done">Done</span>Daily Menu Printout · POS Server Logins</div>
-      <div class="pci"><span class="tag t-dev">Dev</span>Grove ↔ Resident Sync &amp; Charges (SAGE)</div>
-    </div>
-    <button class="drill-btn" onclick="openDrawer('grove')">View Q1 commitments →</button>
-  </div>
-
-  <!-- Platform -->
-  <div class="pc pc-teal" data-areas="platform">
-    <div class="pc-head">
-      <div>
-        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
-          <div class="pc-name">Platform &amp; Infrastructure</div>
-          <div class="pc-sub">Engineering + QA Automation · OPS / AUT / ROOB</div>
-        </a>
-      </div>
-      <span class="rag rag-teal" id="rag-platform">On Track</span>
-    </div>
-    <div class="pc-stats">
-      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
-        <div class="pcs-num">16</div><div class="pcs-lbl">Done</div>
-      </a>
-      <a class="pcs pcs-dev"  href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
-        <div class="pcs-num">2</div> <div class="pcs-lbl">Dev</div>
-      </a>
-      <a class="pcs pcs-qa"   href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
-        <div class="pcs-num">0</div> <div class="pcs-lbl">QA</div>
-      </a>
-      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CAUT%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
-        <div class="pcs-num">3</div> <div class="pcs-lbl">Next</div>
-      </a>
-    </div>
-    <div class="pc-bar">
-      <div class="pcb" style="background:var(--teal);width:76%"></div>
-      <div class="pcb" style="background:var(--purple);width:10%"></div>
-      <div class="pcb" style="background:#CBD5E1;width:14%"></div>
-    </div>
-    <div class="pc-items">
-      <div class="pci"><span class="tag t-done">Done ★</span>
-        <a class="jira-link" href="https://alineops.atlassian.net/browse/OPS-327" target="_blank">Full Suite AWS → Azure Migration (Critical)</a>
-      </div>
-      <div class="pci"><span class="tag t-done">Done</span>Vanta Compliance Ph.2 · 5 QA Automation epics</div>
-      <div class="pci"><span class="tag t-done">Done</span>6 Roobrik platform epics completed</div>
-      <div class="pci"><span class="tag t-dev">Dev</span>Respite Stay Automation · Leave Reports</div>
-    </div>
-    <button class="drill-btn" onclick="openDrawer('platform')">View Q1 commitments →</button>
-  </div>
-
 </div>
 
 <!-- ── WINS + IN QA ───────────────────────────────────────────── -->
@@ -1442,6 +1232,429 @@ a.jira-badge:hover { background: var(--teal-25); }
   </div>
 </div>
 
+<!-- ── WATCH ITEMS ────────────────────────────────────────────── -->
+<div class="watch-card">
+  <div class="watch-header">
+    <div class="watch-icon">⚠</div>
+    <div class="watch-title">Watch Items — Requires Attention</div>
+  </div>
+  <div class="watch-grid">
+    <a class="wi" href="https://alineops.atlassian.net/browse/EMAR-3062" target="_blank" style="text-decoration:none;color:inherit;">
+      <div class="wi-marker"></div>
+      <div class="wi-body">
+        <div class="wi-title">Pen Test Remediation Overdue</div>
+        <div class="wi-text">EMAR-3062 due Jan 31 is still In Review — security posture risk. Confirm close date with team.</div>
+      </div>
+    </a>
+    <a class="wi" href="https://alineops.atlassian.net/browse/AA-434" target="_blank" style="text-decoration:none;color:inherit;">
+      <div class="wi-marker"></div>
+      <div class="wi-body">
+        <div class="wi-title">Clara (Labs) Q1 Target at Risk</div>
+        <div class="wi-text">AA-434 remains in Backlog vs. a Q1 delivery target. If not moved to active dev this sprint, Q1 commitment slips.</div>
+      </div>
+    </a>
+    <a class="wi" href="https://alineops.atlassian.net/issues/?jql=project%3DEMAR%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22%20AND%20summary%20~%20%22UI%20Kit%22" target="_blank" style="text-decoration:none;color:inherit;">
+      <div class="wi-marker"></div>
+      <div class="wi-body">
+        <div class="wi-title">eMAR UI Kit QA Volume</div>
+        <div class="wi-text">10+ UI Kit phases are active in QA simultaneously. Confirm release sequencing to avoid regression overlap.</div>
+      </div>
+    </a>
+    <a class="wi" href="https://alineops.atlassian.net/issues/?jql=project%3DCRM%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Review%22%20ORDER%20BY%20updated%20ASC" target="_blank" style="text-decoration:none;color:inherit;">
+      <div class="wi-marker"></div>
+      <div class="wi-body">
+        <div class="wi-title">Stale CRM Integration Epics</div>
+        <div class="wi-text">Several older epics (Sherpa Relay, RMS, Vitals 2-way) have been "In Review" for months. Verify status or close.</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ── PRODUCT SCORECARDS ─────────────────────────────────────── -->
+<div class="section-title">Product Area Scorecards</div>
+<div class="product-grid" id="product-grid">
+
+  <!-- CRM — Sales & Leasing -->
+  <div class="pc pc-teal" data-areas="crm">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM%2CMAC%2CROOB)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">CRM — Sales &amp; Leasing</div>
+          <div class="pc-sub">Pipeline, tours, Sherpa migration, deal intelligence</div>
+        </a>
+      </div>
+      <span class="rag rag-teal" id="rag-crm">On Track</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM%2CMAC%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">14</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM%2CMAC%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">12</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM%2CMAC%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">5</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(CRM%2CSHCRM%2CMAC%2CROOB)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">9</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:35%"></div>
+      <div class="pcb" style="background:var(--purple);width:30%"></div>
+      <div class="pcb" style="background:var(--orange);width:13%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:22%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-7804" target="_blank">Rich Text Email Templates</a> ·
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRMO-684" target="_blank">Sherpa Case Study Alignment</a>
+      </div>
+      <div class="pci"><span class="tag t-done">Done</span>Initial Mobile App Release · Roobrik Pen Test (6 epics)</div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Goals Redesign · SNF eAdmit · Roobrik Lead Routing</div>
+      <div class="pci"><span class="tag t-qa">QA</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRM-7811" target="_blank">Consent Management</a> · Data Parity Ph.2b
+      </div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('crm')">View Q1 commitments →</button>
+  </div>
+
+  <!-- eMAR — Medication Management -->
+  <div class="pc pc-purple" data-areas="emar">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE%2CGPS)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">eMAR — Medication Management</div>
+          <div class="pc-sub">Med pass, pharmacy integration, compliance, mobile</div>
+        </a>
+      </div>
+      <span class="rag rag-orange" id="rag-emar">At Risk</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE%2CGPS)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE%2CGPS)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">10</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE%2CGPS)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">9</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(EMAR%2CCARE%2CGPS)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">9</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:10%"></div>
+      <div class="pcb" style="background:var(--purple);width:32%"></div>
+      <div class="pcb" style="background:var(--orange);width:29%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:29%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>New Diet Module · New Diagnosis Module</div>
+      <div class="pci"><span class="tag t-qa">QA</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/EMAR-50" target="_blank">UI Kit Phases 1–4</a> ·
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/EMAR-1437" target="_blank">King County SSO</a>
+      </div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Resident Notes · Clinical Workflows · State Forms</div>
+      <div class="pci"><span class="tag t-risk">At Risk</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/GPS-901" target="_blank">Resource Task Assignment</a>
+      </div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('emar')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Compass — Analytics & Reporting -->
+  <div class="pc pc-teal" data-areas="analytics">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Business Intelligence</div>
+          <div class="pc-sub">Fabric reporting, data modeling, benchmarking</div>
+        </a>
+      </div>
+      <span class="rag rag-teal" id="rag-analytics">On Track</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">11</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">2</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%3DPBI%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:61%"></div>
+      <div class="pcb" style="background:var(--purple);width:17%"></div>
+      <div class="pcb" style="background:var(--orange);width:11%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:11%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-2294" target="_blank">Benchmark Data</a> · Fabric Performance · DSL Reporting
+      </div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Snowflake Platform · Self-service Library for Compass</div>
+      <div class="pci"><span class="tag t-qa">QA</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/PBI-1868" target="_blank">Custom CRM Fields in Fabric</a> — due Mar 31
+      </div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('analytics')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Aline AI — Intelligence Layer -->
+  <div class="pc pc-purple" data-areas="ai">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Aline AI — Intelligence Layer</div>
+          <div class="pc-sub">Care notes, fall risk, occupancy prediction, insights</div>
+        </a>
+      </div>
+      <span class="rag rag-orange" id="rag-ai">At Risk</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">0</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(AA%2CAI)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">4</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:29%"></div>
+      <div class="pcb" style="background:var(--purple);width:14%"></div>
+      <div class="pcb" style="background:var(--orange);width:0%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:57%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/AA-339" target="_blank">Profile Next Best Step</a> · AI Pro Models
+      </div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Sage Integration Phase 2 · Clara Chat (Labs)</div>
+      <div class="pci"><span class="tag t-next">Up Next</span>Company AI Controls · AI Feature Engagement Insights</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('ai')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Integrations -->
+  <div class="pc pc-orange" data-areas="integrations">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%3DCRMO%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Integrations</div>
+          <div class="pc-sub">Curiflow, SNF interoperability, third-party APIs</div>
+        </a>
+      </div>
+      <span class="rag rag-orange" id="rag-integrations">At Risk</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DCRMO%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev" href="https://alineops.atlassian.net/issues/?jql=project%3DCRMO%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">4</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa" href="https://alineops.atlassian.net/issues/?jql=project%3DCRMO%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%3DCRMO%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:20%"></div>
+      <div class="pcb" style="background:var(--purple);width:40%"></div>
+      <div class="pcb" style="background:var(--orange);width:10%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:30%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/AI-920" target="_blank">Aline Connect: Activity Logging</a>
+      </div>
+      <div class="pci"><span class="tag t-dev">Dev</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRMO-524" target="_blank">Outlook 365 Rearchitecture</a> · Grove ↔ L&amp;B Ph.2
+      </div>
+      <div class="pci"><span class="tag t-risk">At Risk</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/CRMO-623" target="_blank">HubSpot 2.0 Activity Syncing</a>
+      </div>
+      <div class="pci"><span class="tag t-blocked">Blocked</span>Yardi Bidirectional · CRM↔L&amp;B Fixes</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('integrations')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Platform Engineering -->
+  <div class="pc pc-teal" data-areas="platform">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CCOM%2CCOMS)%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Platform Engineering</div>
+          <div class="pc-sub">SSO, infrastructure, security, DevOps</div>
+        </a>
+      </div>
+      <span class="rag rag-teal" id="rag-platform">On Track</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CCOM%2CCOMS)%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CCOM%2CCOMS)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">5</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CCOM%2CCOMS)%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%20in%20(OPS%2CCOM%2CCOMS)%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">4</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:23%"></div>
+      <div class="pcb" style="background:var(--purple);width:38%"></div>
+      <div class="pcb" style="background:var(--orange);width:8%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:31%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/COMS-64" target="_blank">Aline SSO — Payments</a> · Compass Architecture
+      </div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Aline SSO — Platform MVP · Compass Design &amp; Build</div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Dashboard Widgets — CRM Goals &amp; L&amp;B</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('platform')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Grove — Food & Dining -->
+  <div class="pc pc-lime" data-areas="grove">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Grove — Food &amp; Dining</div>
+          <div class="pc-sub">Menu planning, mobile app, supplier management</div>
+        </a>
+      </div>
+      <span class="rag rag-teal" id="rag-grove">On Track</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">0</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%3DGRO%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">0</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:75%"></div>
+      <div class="pcb" style="background:var(--purple);width:25%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/GRO-65" target="_blank">Grove ↔ Aline Systems Integration</a>
+      </div>
+      <div class="pci"><span class="tag t-done">Done</span>Daily Menu Printout · POS Server Logins</div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Grove ↔ Resident Sync &amp; Charges (SAGE)</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('grove')">View Q1 commitments →</button>
+  </div>
+
+  <!-- Leasing & Billing -->
+  <div class="pc pc-orange" data-areas="leasing">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%3DARMS%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">Leasing &amp; Billing</div>
+          <div class="pc-sub">Billing automation, late fees, resident ledger</div>
+        </a>
+      </div>
+      <span class="rag rag-teal" id="rag-leasing">On Track</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DARMS%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev" href="https://alineops.atlassian.net/issues/?jql=project%3DARMS%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa" href="https://alineops.atlassian.net/issues/?jql=project%3DARMS%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%3DARMS%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:11%"></div>
+      <div class="pcb" style="background:var(--purple);width:44%"></div>
+      <div class="pcb" style="background:var(--orange);width:22%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:23%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-dev">Dev</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/ARMS-2058" target="_blank">Platform UI/UX — 15 modules</a> · System Stabilization
+      </div>
+      <div class="pci"><span class="tag t-risk">At Risk</span>
+        <a class="jira-link" href="https://alineops.atlassian.net/browse/ARMS-2062" target="_blank">Billing Workflow Optimization</a>
+      </div>
+      <div class="pci"><span class="tag t-dev">Dev</span>Atria L&amp;B Upgrade (Discovery) · SSO Integration</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('leasing')">View Q1 commitments →</button>
+  </div>
+
+  <!-- QA Automation -->
+  <div class="pc pc-teal" data-areas="qa">
+    <div class="pc-head">
+      <div>
+        <a class="pc-name-link" href="https://alineops.atlassian.net/issues/?jql=project%3DAUT%20AND%20issuetype%3DEpic%20ORDER%20BY%20status" target="_blank">
+          <div class="pc-name">QA Automation</div>
+          <div class="pc-sub">Test frameworks, regression coverage, CI/CD integration</div>
+        </a>
+      </div>
+      <span class="rag rag-teal" id="rag-qa">On Track</span>
+    </div>
+    <div class="pc-stats">
+      <a class="pcs pcs-done" href="https://alineops.atlassian.net/issues/?jql=project%3DAUT%20AND%20issuetype%3DEpic%20AND%20status%3DDone" target="_blank">
+        <div class="pcs-num">5</div><div class="pcs-lbl">Done</div>
+      </a>
+      <a class="pcs pcs-dev" href="https://alineops.atlassian.net/issues/?jql=project%3DAUT%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Development%22" target="_blank">
+        <div class="pcs-num">0</div><div class="pcs-lbl">Dev</div>
+      </a>
+      <a class="pcs pcs-qa" href="https://alineops.atlassian.net/issues/?jql=project%3DAUT%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22" target="_blank">
+        <div class="pcs-num">0</div><div class="pcs-lbl">QA</div>
+      </a>
+      <a class="pcs pcs-back" href="https://alineops.atlassian.net/issues/?jql=project%3DAUT%20AND%20issuetype%3DEpic%20AND%20status%3DBacklog" target="_blank">
+        <div class="pcs-num">1</div><div class="pcs-lbl">Next</div>
+      </a>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:83%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:17%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-done">Done</span>5 QA Automation framework epics completed</div>
+      <div class="pci"><span class="tag t-next">Up Next</span>End-to-End Test Suite Expansion</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('qa')">View Q1 commitments →</button>
+  </div>
+
+</div>
+
 <!-- ── IN FLIGHT ─────────────────────────────────────────────── -->
 <div class="section-title">Active Development &amp; Pipeline</div>
 <div class="flight-grid">
@@ -1546,44 +1759,6 @@ a.jira-badge:hover { background: var(--teal-25); }
   </div>
 </div>
 
-<!-- ── WATCH ITEMS ────────────────────────────────────────────── -->
-<div class="watch-card">
-  <div class="watch-header">
-    <div class="watch-icon">⚠</div>
-    <div class="watch-title">Watch Items — Requires Attention</div>
-  </div>
-  <div class="watch-grid">
-    <a class="wi" href="https://alineops.atlassian.net/browse/EMAR-3062" target="_blank" style="text-decoration:none;color:inherit;">
-      <div class="wi-marker"></div>
-      <div class="wi-body">
-        <div class="wi-title">Pen Test Remediation Overdue</div>
-        <div class="wi-text">EMAR-3062 due Jan 31 is still In Review — security posture risk. Confirm close date with team.</div>
-      </div>
-    </a>
-    <a class="wi" href="https://alineops.atlassian.net/browse/AA-434" target="_blank" style="text-decoration:none;color:inherit;">
-      <div class="wi-marker"></div>
-      <div class="wi-body">
-        <div class="wi-title">Clara (Labs) Q1 Target at Risk</div>
-        <div class="wi-text">AA-434 remains in Backlog vs. a Q1 delivery target. If not moved to active dev this sprint, Q1 commitment slips.</div>
-      </div>
-    </a>
-    <a class="wi" href="https://alineops.atlassian.net/issues/?jql=project%3DEMAR%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20QA%22%20AND%20summary%20~%20%22UI%20Kit%22" target="_blank" style="text-decoration:none;color:inherit;">
-      <div class="wi-marker"></div>
-      <div class="wi-body">
-        <div class="wi-title">eMAR UI Kit QA Volume</div>
-        <div class="wi-text">10+ UI Kit phases are active in QA simultaneously. Confirm release sequencing to avoid regression overlap.</div>
-      </div>
-    </a>
-    <a class="wi" href="https://alineops.atlassian.net/issues/?jql=project%3DCRM%20AND%20issuetype%3DEpic%20AND%20status%3D%22In%20Review%22%20ORDER%20BY%20updated%20ASC" target="_blank" style="text-decoration:none;color:inherit;">
-      <div class="wi-marker"></div>
-      <div class="wi-body">
-        <div class="wi-title">Stale CRM Integration Epics</div>
-        <div class="wi-text">Several older epics (Sherpa Relay, RMS, Vitals 2-way) have been "In Review" for months. Verify status or close.</div>
-      </div>
-    </a>
-  </div>
-</div>
-
 <!-- ── DETAIL DRAWER ──────────────────────────────────────────── -->
 <div id="drawer-overlay" onclick="closeDrawer()"></div>
 <div id="detail-drawer" role="dialog" aria-modal="true">
@@ -1615,32 +1790,8 @@ const MOR = {
   period: 'Q1 2026',
   products: {
     crm: {
-      label: 'Aline CRM',
+      label: 'CRM — Sales & Leasing',
       sections: [
-        {
-          name: 'Integrations',
-          items: [
-            {s:'HubSpot 2.0: Activity Syncing',tm:'Forge',tg:'Q1',est:'550h',st:'off-track',pct:10,j:'CRMO-623',lk:'locked'},
-            {s:'Aline Connect: Activity/Notes Logging',tm:'IP',tg:'Feb 5',est:'S',st:'done',pct:100,j:'AI-920',lk:'locked'},
-            {s:'MxC enhancements (Bed Board, ADT support, repush ops)',tm:'SNF Pulse/IP',tg:'Q1',est:'L',st:'at-risk',pct:25,j:'CRMO-721',lk:'locked'},
-            {s:'DSL: CRM ↔ ECP ↔ Yardi integrations',tm:'CRM/IP',tg:'Late Mar/Early Apr',est:'650h',st:'at-risk',pct:10,j:'CRMO-656',lk:'locked'},
-            {s:'Yardi bidirectional (non-DSL customers) — Blocked (Vendor)',tm:'IP',tg:'March',est:'M',st:'blocked',pct:30,j:'CRMO-620',lk:'locked'},
-            {s:'EnquireIQ: DataFinder endpoint update',tm:'Forge',tg:'2/5 | 3/5',est:'S',st:'on-track',pct:98,j:'CRMO-622',lk:'locked'},
-            {s:'Outlook 365 Rearchitecture (pub/sub via Graph API)',tm:'Forge',tg:'Q1',est:'520h',st:'on-track',pct:50,j:'CRMO-524',lk:'locked'},
-            {s:'Grove ↔ L&B Integration Phase 2',tm:'Grove/IP',tg:'3/5',est:'M',st:'on-track',pct:99,j:'SAGE-101',lk:'locked'},
-            {s:'Twilio integration for Canada',tm:'CRM',tg:'Mid-March',est:'M',st:'on-track',pct:70,j:'CRM-8096',lk:'locked'},
-            {s:'CRM ↔ L&B fixes and enhancements — Blocked (Capacity)',tm:'CRM/L&B',tg:'Q2+',est:'XL',st:'blocked',pct:0,j:'CRMO-542',lk:'pending'},
-            {s:'Yardi bidirectional — Unit availability (non-DSL)',tm:'IP',tg:'Q2',est:'S',st:'requirements',pct:0,j:'CRMO-722',lk:'stretch'},
-            {s:'Integration Platform UI',tm:'IP',tg:'Q2',est:'L',st:'requirements',pct:0,j:'CRMO-724',lk:'stretch'},
-          ],
-          unplanned: [
-            {s:'Individual merge logic updates',tm:'Forge',tg:'Feb 5',est:'30h',st:'done',pct:100,j:'CRM-7851',lk:'unplanned'},
-            {s:'HubSpot 2.0 — second customer implementation (edge cases)',tm:'Forge',tg:'Multiple',est:'300h',st:'on-track',pct:90,j:'CRM-8016',lk:'unplanned'},
-            {s:'Aline Connect – Activity cancellation & updates',tm:'IP',tg:'March 5',est:'30h',st:'on-track',pct:80,j:'AI-1066',lk:'unplanned'},
-            {s:'IP Alerting/Logging: Slack notifications HIPAA compliant',tm:'IP',tg:'March 5',est:'20h',st:'on-track',pct:95,j:'AI-980',lk:'unplanned'},
-          ],
-          notes: 'Unplanned HubSpot work delayed start on Activity Syncing enhancements — will not complete in Q1. Individual merge logic updates required after Q4 work. Biggest impact from unplanned HubSpot 2.0 second customer implementation.'
-        },
         {
           name: 'Core + Enterprise',
           items: [
@@ -1701,12 +1852,74 @@ const MOR = {
             {s:'Print Prospect Profile',tm:'CRM/Pulse',tg:'Q1/Q2',est:'S',st:'off-track',pct:0,j:'CRMO-74',lk:'locked'},
             {s:'Sherpa Widget Dashboard — Redefined Default with Trends & Goals',tm:'CRM/Pulse',tg:'Q1',est:'M',st:'on-track',pct:35,j:'CRMO-681',lk:'added'},
           ]
+        },
+        {
+          name: 'Mobile',
+          items: [
+            {s:'CRM Mobile for SNF Users',tm:'Mobile',tg:'Q1',est:'200h',st:'on-track',pct:75,j:'CRMO-679',lk:'locked'},
+            {s:'CRM Mobile for PCS Users',tm:'Mobile',tg:'Q1',est:'200h',st:'on-track',pct:45,j:'CRMO-645',lk:'locked'},
+            {s:'Feedback from Initial Release (feature enhancements & bugs)',tm:'Mobile',tg:'Q1',est:'160h',st:'to-do',pct:0,j:'MAC-352',lk:'locked'},
+            {s:'Sales feedback for Initial Deployment',tm:'Mobile',tg:'Q1',est:'150h',st:'on-track',pct:95,j:'MAC-323',lk:'locked'},
+            {s:'Code Cleanup — Refactoring, HIPAA compliance tasks',tm:'Mobile',tg:'Q1',est:'120h',st:'on-track',pct:60,j:'MAC-356',lk:'stretch'},
+            {s:'Q4 Rollover: In-app chat & calling (on hold — Twilio roadblocks)',tm:'Mobile',tg:'Q1',est:'90h',st:'on-track',pct:50,j:'MAC-223',lk:'locked'},
+            {s:'Initial App Release — Submitting week of 3/2',tm:'Mobile',tg:'March',est:'—',st:'on-track',pct:null,j:null,lk:'locked'},
+            {s:'Q4 Rollover: QA Bug Fixes/Enhancements (MedPass)',tm:'Mobile',tg:'Q1',est:'24h',st:'on-track',pct:100,j:'MMP-248',lk:'locked'},
+            {s:'Expanded Mobile Customization — Deprioritized',tm:'Mobile',tg:'Q1/Q2',est:'200h',st:'off-track',pct:0,j:'MAC-318',lk:'locked'},
+            {s:'Reusable Dashboard Component — Deprioritized',tm:'Mobile',tg:'Q1/Q2',est:'150h',st:'off-track',pct:0,j:null,lk:'locked'},
+            {s:'Q4 Rollover: Incident Reporting (Care Mobile) — Blocked',tm:'Mobile',tg:'Q1/Q2',est:'40h',st:'at-risk',pct:80,j:'EMAR-2352',lk:'locked'},
+          ]
+        },
+        {
+          name: 'Roobrik',
+          items: [
+            {s:'Custom Lead Routing (send lead to specific CRM/MAPs)',tm:'Roobrik',tg:'Q1',est:'200h',st:'on-track',pct:75,j:'RPR-89',lk:'locked'},
+            {s:'Survey Click-throughs for Aline CRM use (SMS reminders)',tm:'Roobrik',tg:'Q1',est:'80h',st:'on-track',pct:25,j:'RPR-90',lk:'locked'},
+            {s:'Integrate core response data into Client Dashboard',tm:'Roobrik',tg:'Q1',est:'190h',st:'on-track',pct:92,j:'RPR-88',lk:'locked'},
+            {s:'Pen Test findings — Compliance (High and Medium severity)',tm:'Roobrik',tg:'Q1',est:'160h',st:'on-track',pct:98,j:'RPR-91',lk:'locked'},
+            {s:'Implement Aline SSO',tm:'Roobrik',tg:'Q1',est:'160h',st:'on-track',pct:80,j:'RPR-92',lk:'locked'},
+            {s:'Upgrade to new version of iText for PDF report generation',tm:'Roobrik',tg:'Q1',est:'80h',st:'to-do',pct:0,j:'RPR-93',lk:'locked'},
+            {s:'Tech debt — Migration from Framework to Core, move jobs from console to admin',tm:'Roobrik',tg:'Q1',est:'160h',st:'to-do',pct:0,j:'RPR-91',lk:'stretch'},
+          ],
+          outOfScope: [
+            {s:'Post-tour survey (for DSL)',tm:'Roobrik',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+            {s:'Lead funnel chat (for DSL)',tm:'Roobrik',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
+          ]
+        }
+      ]
+    },
+
+    integrations: {
+      label: 'Integrations',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'HubSpot 2.0: Activity Syncing',tm:'Forge',tg:'Q1',est:'550h',st:'off-track',pct:10,j:'CRMO-623',lk:'locked'},
+            {s:'Aline Connect: Activity/Notes Logging',tm:'IP',tg:'Feb 5',est:'S',st:'done',pct:100,j:'AI-920',lk:'locked'},
+            {s:'MxC enhancements (Bed Board, ADT support, repush ops)',tm:'SNF Pulse/IP',tg:'Q1',est:'L',st:'at-risk',pct:25,j:'CRMO-721',lk:'locked'},
+            {s:'DSL: CRM ↔ ECP ↔ Yardi integrations',tm:'CRM/IP',tg:'Late Mar/Early Apr',est:'650h',st:'at-risk',pct:10,j:'CRMO-656',lk:'locked'},
+            {s:'Yardi bidirectional (non-DSL customers) — Blocked (Vendor)',tm:'IP',tg:'March',est:'M',st:'blocked',pct:30,j:'CRMO-620',lk:'locked'},
+            {s:'EnquireIQ: DataFinder endpoint update',tm:'Forge',tg:'2/5 | 3/5',est:'S',st:'on-track',pct:98,j:'CRMO-622',lk:'locked'},
+            {s:'Outlook 365 Rearchitecture (pub/sub via Graph API)',tm:'Forge',tg:'Q1',est:'520h',st:'on-track',pct:50,j:'CRMO-524',lk:'locked'},
+            {s:'Grove ↔ L&B Integration Phase 2',tm:'Grove/IP',tg:'3/5',est:'M',st:'on-track',pct:99,j:'SAGE-101',lk:'locked'},
+            {s:'Twilio integration for Canada',tm:'CRM',tg:'Mid-March',est:'M',st:'on-track',pct:70,j:'CRM-8096',lk:'locked'},
+            {s:'CRM ↔ L&B fixes and enhancements — Blocked (Capacity)',tm:'CRM/L&B',tg:'Q2+',est:'XL',st:'blocked',pct:0,j:'CRMO-542',lk:'pending'},
+            {s:'Yardi bidirectional — Unit availability (non-DSL)',tm:'IP',tg:'Q2',est:'S',st:'requirements',pct:0,j:'CRMO-722',lk:'stretch'},
+            {s:'Integration Platform UI',tm:'IP',tg:'Q2',est:'L',st:'requirements',pct:0,j:'CRMO-724',lk:'stretch'},
+          ],
+          unplanned: [
+            {s:'Individual merge logic updates',tm:'Forge',tg:'Feb 5',est:'30h',st:'done',pct:100,j:'CRM-7851',lk:'unplanned'},
+            {s:'HubSpot 2.0 — second customer implementation (edge cases)',tm:'Forge',tg:'Multiple',est:'300h',st:'on-track',pct:90,j:'CRM-8016',lk:'unplanned'},
+            {s:'Aline Connect – Activity cancellation & updates',tm:'IP',tg:'March 5',est:'30h',st:'on-track',pct:80,j:'AI-1066',lk:'unplanned'},
+            {s:'IP Alerting/Logging: Slack notifications HIPAA compliant',tm:'IP',tg:'March 5',est:'20h',st:'on-track',pct:95,j:'AI-980',lk:'unplanned'},
+          ],
+          notes: 'Unplanned HubSpot work delayed start on Activity Syncing enhancements — will not complete in Q1. Individual merge logic updates required after Q4 work. Biggest impact from unplanned HubSpot 2.0 second customer implementation.'
         }
       ]
     },
 
     emar: {
-      label: 'eMAR & Care',
+      label: 'eMAR — Medication Management',
       sections: [
         {
           name: null,
@@ -1724,7 +1937,7 @@ const MOR = {
     },
 
     analytics: {
-      label: 'Analytics & Insights',
+      label: 'Business Intelligence',
       sections: [
         {
           name: null,
@@ -1752,7 +1965,7 @@ const MOR = {
     },
 
     ai: {
-      label: 'Aline AI',
+      label: 'Aline AI — Intelligence Layer',
       sections: [
         {
           name: null,
@@ -1777,7 +1990,7 @@ const MOR = {
     },
 
     grove: {
-      label: 'Grove by Aline',
+      label: 'Grove — Food & Dining',
       sections: [
         {
           name: null,
@@ -1799,10 +2012,10 @@ const MOR = {
     },
 
     platform: {
-      label: 'Platform & Infrastructure',
+      label: 'Platform Engineering',
       sections: [
         {
-          name: 'Platform & Compass',
+          name: null,
           items: [
             {s:'Aline SSO — Platform Level (Global Login MVP)',tm:'Platform/Infra',tg:'Q1 MVP',est:'400h',st:'on-track',pct:90,j:'COM-4',lk:'locked'},
             {s:'Aline SSO — Leasing & Billing',tm:'L&B/Platform',tg:'Q1',est:'200h',st:'on-track',pct:10,j:'ARMS-2034',lk:'locked'},
@@ -1820,41 +2033,15 @@ const MOR = {
             {s:'Aline Compass Implementation — Dashboard, App Selector',tm:'Platform/CRM',tg:'Q1 MVP',est:'L',st:'in-progress',pct:10,j:'COM-1',lk:'stretch'},
             {s:'Aline Compass Implementation — Global ID & User Role Mapping',tm:'Infra/Data',tg:'Q1 MVP',est:'XL',st:'in-progress',pct:10,j:'COM-3',lk:'stretch'},
           ]
-        },
+        }
+      ]
+    },
+
+    leasing: {
+      label: 'Leasing & Billing',
+      sections: [
         {
-          name: 'Roobrik',
-          items: [
-            {s:'Custom Lead Routing (send lead to specific CRM/MAPs)',tm:'Roobrik',tg:'Q1',est:'200h',st:'on-track',pct:75,j:'RPR-89',lk:'locked'},
-            {s:'Survey Click-throughs for Aline CRM use (SMS reminders)',tm:'Roobrik',tg:'Q1',est:'80h',st:'on-track',pct:25,j:'RPR-90',lk:'locked'},
-            {s:'Integrate core response data into Client Dashboard',tm:'Roobrik',tg:'Q1',est:'190h',st:'on-track',pct:92,j:'RPR-88',lk:'locked'},
-            {s:'Pen Test findings — Compliance (High and Medium severity)',tm:'Roobrik',tg:'Q1',est:'160h',st:'on-track',pct:98,j:'RPR-91',lk:'locked'},
-            {s:'Implement Aline SSO',tm:'Roobrik',tg:'Q1',est:'160h',st:'on-track',pct:80,j:'RPR-92',lk:'locked'},
-            {s:'Upgrade to new version of iText for PDF report generation',tm:'Roobrik',tg:'Q1',est:'80h',st:'to-do',pct:0,j:'RPR-93',lk:'locked'},
-            {s:'Tech debt — Migration from Framework to Core, move jobs from console to admin',tm:'Roobrik',tg:'Q1',est:'160h',st:'to-do',pct:0,j:'RPR-91',lk:'stretch'},
-          ],
-          outOfScope: [
-            {s:'Post-tour survey (for DSL)',tm:'Roobrik',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
-            {s:'Lead funnel chat (for DSL)',tm:'Roobrik',tg:'—',est:'—',st:'to-do',pct:0,j:null,lk:'out-of-scope'},
-          ]
-        },
-        {
-          name: 'Mobile',
-          items: [
-            {s:'CRM Mobile for SNF Users',tm:'Mobile',tg:'Q1',est:'200h',st:'on-track',pct:75,j:'CRMO-679',lk:'locked'},
-            {s:'CRM Mobile for PCS Users',tm:'Mobile',tg:'Q1',est:'200h',st:'on-track',pct:45,j:'CRMO-645',lk:'locked'},
-            {s:'Feedback from Initial Release (feature enhancements & bugs)',tm:'Mobile',tg:'Q1',est:'160h',st:'to-do',pct:0,j:'MAC-352',lk:'locked'},
-            {s:'Sales feedback for Initial Deployment',tm:'Mobile',tg:'Q1',est:'150h',st:'on-track',pct:95,j:'MAC-323',lk:'locked'},
-            {s:'Code Cleanup — Refactoring, HIPAA compliance tasks',tm:'Mobile',tg:'Q1',est:'120h',st:'on-track',pct:60,j:'MAC-356',lk:'stretch'},
-            {s:'Q4 Rollover: In-app chat & calling (on hold — Twilio roadblocks)',tm:'Mobile',tg:'Q1',est:'90h',st:'on-track',pct:50,j:'MAC-223',lk:'locked'},
-            {s:'Initial App Release — Submitting week of 3/2',tm:'Mobile',tg:'March',est:'—',st:'on-track',pct:null,j:null,lk:'locked'},
-            {s:'Q4 Rollover: QA Bug Fixes/Enhancements (MedPass)',tm:'Mobile',tg:'Q1',est:'24h',st:'on-track',pct:100,j:'MMP-248',lk:'locked'},
-            {s:'Expanded Mobile Customization — Deprioritized',tm:'Mobile',tg:'Q1/Q2',est:'200h',st:'off-track',pct:0,j:'MAC-318',lk:'locked'},
-            {s:'Reusable Dashboard Component — Deprioritized',tm:'Mobile',tg:'Q1/Q2',est:'150h',st:'off-track',pct:0,j:null,lk:'locked'},
-            {s:'Q4 Rollover: Incident Reporting (Care Mobile) — Blocked',tm:'Mobile',tg:'Q1/Q2',est:'40h',st:'at-risk',pct:80,j:'EMAR-2352',lk:'locked'},
-          ]
-        },
-        {
-          name: 'Leasing & Billing',
+          name: null,
           items: [
             {s:'Platform UI/UX — 15 modules committed for Q1',tm:'L&B',tg:'Q1',est:'L',st:'on-track',pct:90,j:'ARMS-2058',lk:'locked'},
             {s:'Client Upgrades Q1',tm:'L&B',tg:'Q1',est:'L',st:'on-track',pct:10,j:'ARMS-2059',lk:'locked'},
@@ -1869,6 +2056,13 @@ const MOR = {
             {s:'GL Integration (Sage Intacct) — UI, Integration & Onboarding',tm:'L&B',tg:'Q1',est:'L',st:'to-do',pct:null,j:'ARMS-2064',lk:'stretch'},
           ]
         }
+      ]
+    },
+
+    qa: {
+      label: 'QA Automation',
+      sections: [
+        { name: null, items: [] }
       ]
     }
   }
@@ -2058,7 +2252,7 @@ function computeHealth(productKey) {
 }
 
 function initHealthBadges() {
-  ['crm','emar','analytics','ai','grove','platform'].forEach(key => {
+  ['crm','integrations','emar','analytics','ai','grove','platform','leasing','qa'].forEach(key => {
     const el = document.getElementById('rag-' + key);
     if (!el) return;
     const h = computeHealth(key);

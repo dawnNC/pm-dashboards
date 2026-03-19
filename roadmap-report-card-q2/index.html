@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../favicon.png">
+<title>Aline Roadmap — Q2 2026 Planning Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --teal:         #10A4D1;
+  --teal-65:      #64C4E1;
+  --teal-25:      #C3E8F4;
+  --teal-10:      #EAF6FB;
+  --purple:       #4E4EA6;
+  --purple-65:    #8C8CC5;
+  --purple-25:    #D3D3E9;
+  --purple-10:    #EEEEF8;
+  --magenta:      #EE3D65;
+  --magenta-10:   #FDECF1;
+  --orange:       #FF8F3F;
+  --orange-65:    #FFB882;
+  --orange-10:    #FFF4EC;
+  --lime:         #BCD72E;
+  --lime-10:      #F3F9E3;
+  --amber:        #D97706;
+  --amber-10:     #FFFBEB;
+  --amber-25:     #FDE68A;
+  --bg:           #F4F6F9;
+  --white:        #FFFFFF;
+  --border:       #E2E8F0;
+  --border-light: #EEF1F6;
+  --text-1:       #1A2635;
+  --text-2:       #4A5C6E;
+  --text-3:       #8A9BAC;
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:    0 4px 12px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+  --font: 'Manrope', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text-1);
+  font-size: 13.5px;
+  line-height: 1.55;
+  padding: 36px 40px;
+  padding-top: calc(36px + 40px);
+}
+
+/* ── PM Nav Bar ──────────────────────────────────────────────── */
+.pmnav-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 40px;
+  background: #ffffff;
+  border-bottom: 1.5px solid #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 9999;
+  font-family: 'Manrope', system-ui, sans-serif;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.pmnav-wordmark {
+  font-size: 13px;
+  font-weight: 800;
+  color: #10A4D1;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+.pmnav-links { display: flex; align-items: center; gap: 4px; }
+.pmnav-link {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #4A5C6E;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.pmnav-link:hover { background: #EAF6FB; color: #10A4D1; }
+.pmnav-link.pmnav-active {
+  color: #10A4D1;
+  border-bottom: 2px solid #10A4D1;
+  border-radius: 0;
+  padding-bottom: 3px;
+}
+.pmnav-link.pmnav-q2 {
+  background: #EAF6FB;
+  color: #10A4D1;
+  border: 1px solid #C3E8F4;
+  border-radius: 6px;
+  margin-left: 4px;
+}
+.pmnav-link.pmnav-q2.pmnav-active {
+  background: #10A4D1;
+  color: #fff;
+  border-color: #10A4D1;
+  border-bottom: none;
+  border-radius: 6px;
+  padding-bottom: 5px;
+}
+@media (max-width: 600px) { .pmnav-links { display: none; } }
+
+/* ── Planning Banner ────────────────────────────────────────── */
+.planning-banner {
+  background: var(--amber-10);
+  border: 1.5px solid var(--amber-25);
+  border-radius: 10px;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--amber);
+  letter-spacing: 0.3px;
+}
+.planning-banner-icon { font-size: 16px; flex-shrink: 0; }
+.planning-banner-text { flex: 1; }
+.planning-banner-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #92400E;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* ── Jira link styles ─────────────────────────────────────── */
+a.jira-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.15s, color 0.15s;
+  cursor: pointer;
+}
+a.jira-link:hover {
+  border-bottom-color: currentColor;
+  opacity: 0.82;
+}
+a.jira-ref {
+  font-family: var(--font);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-10);
+  border: 1px solid var(--teal-25);
+  padding: 1px 6px;
+  border-radius: 4px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+a.jira-ref:hover { background: var(--teal-25); }
+
+/* ── Header ─────────────────────────────────────────────────── */
+.header {
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.header-accent {
+  height: 5px;
+  background: linear-gradient(90deg, var(--teal) 0%, var(--teal-65) 40%, var(--purple-65) 70%, var(--purple) 100%);
+}
+.header-inner {
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.eyebrow {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+.header h1 {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+.header h1 span { color: var(--teal); }
+.header-sub {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-top: 6px;
+  font-weight: 400;
+}
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--purple-10);
+  border: 1.5px solid var(--purple-25);
+  border-radius: 10px;
+  padding: 14px 20px;
+  flex-shrink: 0;
+}
+.status-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--purple);
+  box-shadow: 0 0 0 3px rgba(78,78,166,0.2);
+  animation: pulse-purple 2.5s ease-in-out infinite;
+}
+@keyframes pulse-purple {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(78,78,166,0.2); }
+  50%       { box-shadow: 0 0 0 7px rgba(78,78,166,0.07); }
+}
+.status-label { font-size: 10px; font-weight: 700; color: var(--purple); text-transform: uppercase; letter-spacing: 1px; }
+.status-value { font-size: 17px; font-weight: 800; color: var(--text-1); margin-top: 1px; }
+
+/* ── KPI Strip ───────────────────────────────────────────────── */
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.kpi {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 22px 24px;
+  border-top: 3px solid;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.kpi::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  opacity: 0.06;
+}
+.kpi.k-teal    { border-color: var(--teal); }
+.kpi.k-orange  { border-color: var(--orange); }
+.kpi.k-purple  { border-color: var(--purple); }
+.kpi.k-neutral { border-color: var(--border); }
+.kpi.k-teal::after    { background: var(--teal); }
+.kpi.k-orange::after  { background: var(--orange); }
+.kpi.k-purple::after  { background: var(--purple); }
+
+.kpi-num {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1.5px;
+  margin-bottom: 5px;
+}
+.k-teal .kpi-num    { color: var(--teal); }
+.k-orange .kpi-num  { color: var(--orange); }
+.k-purple .kpi-num  { color: var(--purple); }
+.k-neutral .kpi-num { color: var(--text-3); }
+.kpi-label { font-size: 13px; font-weight: 600; color: var(--text-1); }
+.kpi-sub   { font-size: 11px; font-weight: 400; color: var(--text-3); margin-top: 2px; }
+
+/* ── Progress Card ───────────────────────────────────────────── */
+.progress-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 22px 28px;
+  margin-bottom: 24px;
+}
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.section-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-3);
+}
+.total-tag {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-2);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.stack-bar {
+  display: flex;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  gap: 2px;
+  margin-bottom: 14px;
+  background: var(--border-light);
+}
+.sb { border-radius: 4px; transform-origin: left; animation: bar-in 1s cubic-bezier(0.16,1,0.3,1) both; transform: scaleX(0); }
+.sb-teal    { background: var(--teal);   animation-delay: 0.1s; }
+.sb-neutral { background: #CBD5E1;       animation-delay: 0.4s; }
+@keyframes bar-in { to { transform: scaleX(1); } }
+
+.legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text-2);
+  font-weight: 500;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+.leg-dot {
+  width: 10px; height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.leg strong { color: var(--text-1); }
+
+/* ── Section Title ───────────────────────────────────────────── */
+.section-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-3);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+}
+
+/* ── Product Grid ────────────────────────────────────────────── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.pc {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 20px 22px;
+  border-left: 4px solid;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: card-in 0.45s ease both;
+}
+@keyframes card-in { to { opacity: 1; transform: none; } }
+.pc:nth-child(1) { animation-delay: 0.1s; }
+.pc:nth-child(2) { animation-delay: 0.18s; }
+.pc:nth-child(3) { animation-delay: 0.26s; }
+.pc:nth-child(4) { animation-delay: 0.34s; }
+.pc:nth-child(5) { animation-delay: 0.42s; }
+.pc:nth-child(6) { animation-delay: 0.5s; }
+.pc:nth-child(7) { animation-delay: 0.58s; }
+.pc:nth-child(8) { animation-delay: 0.66s; }
+.pc:nth-child(9) { animation-delay: 0.74s; }
+.pc-teal   { border-color: var(--teal); }
+.pc-purple { border-color: var(--purple); }
+.pc-orange { border-color: var(--orange); }
+.pc-lime   { border-color: var(--lime); }
+.pc-neutral{ border-color: var(--border); }
+
+.pc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.pc-name { font-size: 14px; font-weight: 700; color: var(--text-1); line-height: 1.2; }
+.pc-sub  { font-size: 10.5px; color: var(--text-3); font-weight: 500; margin-top: 2px; }
+
+/* Planning mode health badge */
+.rag {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.rag-proposed { background: var(--purple-10); color: var(--purple); border: 1px solid var(--purple-25); }
+
+/* Planning stats — 2-up: Locked + Stretch */
+.pc-stats-planning {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.pcs-planning {
+  text-align: center;
+  padding: 10px 6px;
+  border-radius: 7px;
+}
+.pcs-locked  { background: var(--teal-10); }
+.pcs-stretch { background: var(--bg); }
+.pcs-num {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+.pcs-locked  .pcs-num  { color: var(--teal); }
+.pcs-stretch .pcs-num  { color: var(--text-3); }
+.pcs-lbl {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 2px;
+}
+.pcs-locked  .pcs-lbl  { color: var(--teal); }
+.pcs-stretch .pcs-lbl  { color: var(--text-3); }
+
+.pc-bar {
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--border-light);
+  display: flex;
+  gap: 1px;
+  margin-bottom: 14px;
+}
+.pcb { border-radius: 2px; }
+
+.pc-items {
+  border-top: 1px solid var(--border-light);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.pci {
+  font-size: 11.5px;
+  color: var(--text-2);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+.tag {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.t-locked  { background: var(--teal-10);   color: var(--teal);   }
+.t-stretch { background: transparent; color: var(--teal); border: 1.5px dashed var(--teal-65); }
+
+/* ── Drill button ───────────────────────────────────────────── */
+.drill-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px 14px;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  color: var(--teal);
+  font-family: var(--font);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  letter-spacing: 0.2px;
+}
+.drill-btn:hover { background: var(--teal-10); border-color: var(--teal-25); }
+
+/* ── Two Column ──────────────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.panel {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.panel-header {
+  padding: 16px 22px 12px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ph-icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.phi-teal   { background: var(--teal-10);   color: var(--teal); }
+.phi-orange { background: var(--orange-10); color: var(--orange); }
+.phi-purple { background: var(--purple-10); color: var(--purple); }
+.panel-title { font-size: 13px; font-weight: 700; color: var(--text-1); }
+
+.win-row {
+  padding: 10px 22px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  transition: background 0.15s;
+}
+.win-row:last-child { border-bottom: none; }
+.win-row:hover { background: var(--bg); }
+.win-check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.wc-teal   { background: var(--teal-10);   border: 1.5px solid var(--teal-25); }
+.wc-purple { background: var(--purple-10); border: 1.5px solid var(--purple-25); }
+.wc-teal svg   { stroke: var(--teal);   width: 9px; height: 9px; fill: none; stroke-width: 2.5; }
+.wc-purple svg { stroke: var(--purple); width: 9px; height: 9px; fill: none; stroke-width: 2.5; }
+.win-body { flex: 1; }
+.win-title { font-size: 12.5px; font-weight: 600; color: var(--text-1); line-height: 1.4; }
+.win-meta  { font-size: 10.5px; color: var(--text-3); font-weight: 500; margin-top: 3px; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+
+/* ── Risk card ──────────────────────────────────────────────── */
+.risk-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border-top: 3px solid var(--orange);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.risk-header {
+  padding: 16px 24px 12px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.risk-icon {
+  width: 28px; height: 28px;
+  background: var(--orange-10);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.risk-title { font-size: 13px; font-weight: 700; color: var(--text-1); }
+.risk-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.ri {
+  padding: 14px 24px;
+  border-right: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.ri:nth-child(even) { border-right: none; }
+.ri:nth-last-child(-n+2) { border-bottom: none; }
+.ri-marker {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.ri-body { flex: 1; }
+.ri-title { font-size: 12.5px; font-weight: 700; color: var(--text-1); margin-bottom: 2px; }
+.ri-text  { font-size: 12px; color: var(--text-2); font-weight: 400; line-height: 1.4; }
+
+/* ── Drawer overlay ─────────────────────────────────────────── */
+#drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,38,53,0.35);
+  z-index: 900;
+  backdrop-filter: blur(2px);
+}
+#drawer-overlay.open { display: block; }
+
+/* ── Detail drawer panel ────────────────────────────────────── */
+#detail-drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(880px, 94vw);
+  background: var(--white);
+  box-shadow: -4px 0 32px rgba(0,0,0,0.14);
+  z-index: 901;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  overflow: hidden;
+}
+#detail-drawer.open { transform: translateX(0); }
+
+.drw-header {
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--white);
+}
+.drw-header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.drw-title { font-size: 16px; font-weight: 800; color: var(--text-1); line-height: 1.2; }
+.drw-meta  { font-size: 11.5px; color: var(--text-3); font-weight: 500; margin-top: 3px; }
+.drw-close {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--text-2);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+.drw-close:hover { background: var(--bg); color: var(--text-1); }
+
+.drw-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.drw-chip {
+  padding: 4px 11px;
+  border-radius: 20px;
+  font-size: 11px; font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text-2);
+  transition: all 0.15s;
+  user-select: none;
+}
+.drw-chip:hover { border-color: var(--teal-65); color: var(--teal); }
+.drw-chip.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+.drw-body { flex: 1; overflow-y: auto; padding: 0 24px 32px; }
+
+.drw-section {
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  color: var(--text-3);
+  padding: 20px 0 8px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 0;
+}
+
+/* planning-mode badge in drawer */
+.planning-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--purple-10); color: var(--purple);
+  border: 1px solid var(--purple-25);
+  border-radius: 12px; font-size: 10.5px; font-weight: 700;
+}
+
+/* detail table */
+.dt { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.dt thead th {
+  font-size: 10px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  color: var(--text-3);
+  padding: 10px 8px 8px;
+  text-align: left;
+  border-bottom: 1.5px solid var(--border);
+  white-space: nowrap;
+}
+.dt tbody tr { border-bottom: 1px solid var(--border-light); transition: background 0.12s; }
+.dt tbody tr:hover { background: var(--teal-10); }
+.dt tbody tr.row-hidden { display: none; }
+.dt td { padding: 9px 8px; vertical-align: middle; color: var(--text-1); }
+.dt td.td-sum { font-weight: 500; line-height: 1.35; max-width: 340px; }
+.dt td.td-team { color: var(--text-2); font-size: 11px; white-space: nowrap; }
+.dt td.td-tgt  { color: var(--text-2); font-size: 11px; white-space: nowrap; }
+
+/* lock pills */
+.lp {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 2px 7px; border-radius: 4px; white-space: nowrap;
+}
+.lp-locked  { background:var(--teal-10);   color:var(--teal);    border:1px solid var(--teal-25); }
+.lp-stretch { background:transparent;       color:var(--teal);    border:1.5px dashed var(--teal-65); }
+
+/* jira badge inside table */
+a.jira-badge {
+  font-size: 10.5px; font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-10);
+  border: 1px solid var(--teal-25);
+  padding: 2px 6px; border-radius: 4px;
+  text-decoration: none; white-space: nowrap;
+  transition: background 0.15s;
+}
+a.jira-badge:hover { background: var(--teal-25); }
+
+/* notes block */
+.drw-notes {
+  font-size: 11.5px; color: var(--text-2);
+  background: var(--bg);
+  border-left: 3px solid var(--border);
+  padding: 10px 14px; border-radius: 0 6px 6px 0;
+  margin: 12px 0 4px; line-height: 1.5;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-3);
+  font-weight: 500;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 1000px) {
+  body { padding: 20px 16px; padding-top: calc(20px + 40px); }
+  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .two-col { grid-template-columns: 1fr; }
+  .risk-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── PM Nav Bar ──────────────────────────────────────────────── -->
+<nav class="pmnav-bar">
+  <a class="pmnav-wordmark" href="../">Aline PM</a>
+  <div class="pmnav-links">
+    <a class="pmnav-link" href="../roadmap-report-card/">Roadmap</a>
+    <a class="pmnav-link" href="../feature-readiness/">Feature Readiness</a>
+    <a class="pmnav-link" href="../industry-intelligence/">Intelligence</a>
+    <a class="pmnav-link pmnav-q2 pmnav-active" href="../roadmap-report-card-q2/">Q2 Preview</a>
+  </div>
+</nav>
+<!-- ── End PM Nav Bar ──────────────────────────────────────────── -->
+
+<!-- ── PLANNING BANNER ───────────────────────────────────────── -->
+<div class="planning-banner">
+  <div class="planning-banner-icon">&#9888;</div>
+  <div class="planning-banner-text">
+    <span class="planning-banner-label">Planning Preview</span>
+    PLANNING PREVIEW &mdash; Q2 2026 &nbsp;&middot;&nbsp; This is a proposed roadmap, not a commitment
+  </div>
+</div>
+
+<!-- ── HEADER ────────────────────────────────────────────────── -->
+<header class="header">
+  <div class="header-accent"></div>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="eyebrow">Q2 2026 Planning Preview &nbsp;&middot;&nbsp; April &ndash; June 2026</div>
+      <h1>Roadmap <span>Report Card</span></h1>
+      <div class="header-sub">Q2 2026 &nbsp;&middot;&nbsp; All Product Lines &nbsp;&middot;&nbsp; Epic-level view &nbsp;&middot;&nbsp; 62 epics proposed</div>
+    </div>
+    <div class="status-badge">
+      <div class="status-dot"></div>
+      <div class="status-content">
+        <div class="status-label">Planning Stage</div>
+        <div class="status-value">Proposed</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── KPI STRIP ─────────────────────────────────────────────── -->
+<div class="kpi-strip">
+  <div class="kpi k-teal">
+    <div class="kpi-num" data-target="62">0</div>
+    <div class="kpi-label">Epics Proposed</div>
+    <div class="kpi-sub">Across all product lines</div>
+  </div>
+  <div class="kpi k-teal">
+    <div class="kpi-num" data-target="41">0</div>
+    <div class="kpi-label">Locked Commitments</div>
+    <div class="kpi-sub">High-confidence commitments</div>
+  </div>
+  <div class="kpi k-neutral">
+    <div class="kpi-num" data-target="21">0</div>
+    <div class="kpi-label">Stretch Goals</div>
+    <div class="kpi-sub">Dependent on capacity &amp; velocity</div>
+  </div>
+  <div class="kpi k-purple">
+    <div class="kpi-num" data-target="9">0</div>
+    <div class="kpi-label">Teams Contributing</div>
+    <div class="kpi-sub">Active product teams</div>
+  </div>
+</div>
+
+<!-- ── PROGRESS BAR ───────────────────────────────────────────── -->
+<div class="progress-card">
+  <div class="progress-header">
+    <div class="section-label">Q2 2026 Planning Coverage</div>
+    <div class="total-tag">62 epics proposed</div>
+  </div>
+  <div class="stack-bar">
+    <div class="sb sb-teal"    style="width:66%" title="41 Locked (66%)"></div>
+    <div class="sb sb-neutral" style="width:34%" title="21 Stretch (34%)"></div>
+  </div>
+  <div class="legend">
+    <div class="leg">
+      <div class="leg-dot" style="background:var(--teal)"></div>Locked <strong>66%</strong>
+    </div>
+    <div class="leg">
+      <div class="leg-dot" style="background:#CBD5E1"></div>Stretch <strong>34%</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRODUCT SCORECARDS ─────────────────────────────────────── -->
+<div class="section-title">Product Area Scorecards — Q2 2026 Proposed</div>
+<div class="product-grid" id="product-grid">
+
+  <!-- CRM — Sales & Leasing (includes Roobrik) -->
+  <div class="pc pc-teal" data-areas="crm">
+    <div class="pc-head">
+      <div>
+        <div class="pc-name">CRM — Sales &amp; Leasing</div>
+        <div class="pc-sub">Sherpa migration, mobile v2, contact center, AI scoring GA</div>
+      </div>
+      <span class="rag rag-proposed" id="rag-crm">Proposed</span>
+    </div>
+    <div class="pc-stats-planning">
+      <div class="pcs-planning pcs-locked">
+        <div class="pcs-num">7</div><div class="pcs-lbl">Locked</div>
+      </div>
+      <div class="pcs-planning pcs-stretch">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Stretch</div>
+      </div>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:70%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:30%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-locked">Locked</span>Sherpa Full Migration Complete · Contact Center Integration</div>
+      <div class="pci"><span class="tag t-locked">Locked</span>AI Lead Scoring GA · Roobrik: Recommend Survey in Smart Next Step</div>
+      <div class="pci"><span class="tag t-stretch">Stretch</span>Mobile v2 (Advanced Filters) · Roobrik Branding Update</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('crm')">View Q2 proposal &rarr;</button>
+  </div>
+
+  <!-- eMAR — Medication Management -->
+  <div class="pc pc-purple" data-areas="emar">
+    <div class="pc-head">
+      <div>
+        <div class="pc-name">eMAR — Medication Management</div>
+        <div class="pc-sub">UI Kit completion, med workflow redesign, pharmacy network</div>
+      </div>
+      <span class="rag rag-proposed" id="rag-emar">Proposed</span>
+    </div>
+    <div class="pc-stats-planning">
+      <div class="pcs-planning pcs-locked">
+        <div class="pcs-num">4</div><div class="pcs-lbl">Locked</div>
+      </div>
+      <div class="pcs-planning pcs-stretch">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Stretch</div>
+      </div>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:67%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:33%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-locked">Locked</span>UI Kit Phase 5–8 Completion · Medication Workflow Redesign</div>
+      <div class="pci"><span class="tag t-locked">Locked</span>Pharmacy Network Expansion (6 new partners)</div>
+      <div class="pci"><span class="tag t-stretch">Stretch</span>Clinical Notes v2 · Community Dashboard GA</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('emar')">View Q2 proposal &rarr;</button>
+  </div>
+
+  <!-- Business Intelligence -->
+  <div class="pc pc-teal" data-areas="analytics">
+    <div class="pc-head">
+      <div>
+        <div class="pc-name">Business Intelligence</div>
+        <div class="pc-sub">Self-service reporting GA, Atria Fabric upgrade, care quality</div>
+      </div>
+      <span class="rag rag-proposed" id="rag-analytics">Proposed</span>
+    </div>
+    <div class="pc-stats-planning">
+      <div class="pcs-planning pcs-locked">
+        <div class="pcs-num">5</div><div class="pcs-lbl">Locked</div>
+      </div>
+      <div class="pcs-planning pcs-stretch">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Stretch</div>
+      </div>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:71%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:29%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-locked">Locked</span>Self-service Reporting GA for Compass · Atria Fabric Upgrade Begin</div>
+      <div class="pci"><span class="tag t-locked">Locked</span>New Care Quality Dashboards · DSL Yardi Reporting</div>
+      <div class="pci"><span class="tag t-stretch">Stretch</span>Near Real-time CRM Reports · BI Agent Foundations</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('analytics')">View Q2 proposal &rarr;</button>
+  </div>
+
+  <!-- Aline AI -->
+  <div class="pc pc-purple" data-areas="ai">
+    <div class="pc-head">
+      <div>
+        <div class="pc-name">Aline AI — Intelligence Layer</div>
+        <div class="pc-sub">Clara GA, Opportunity Scoring GA, community AI controls</div>
+      </div>
+      <span class="rag rag-proposed" id="rag-ai">Proposed</span>
+    </div>
+    <div class="pc-stats-planning">
+      <div class="pcs-planning pcs-locked">
+        <div class="pcs-num">5</div><div class="pcs-lbl">Locked</div>
+      </div>
+      <div class="pcs-planning pcs-stretch">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Stretch</div>
+      </div>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:63%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:37%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-locked">Locked</span>Clara GA (full release) · Enhanced Opportunity Scoring GA</div>
+      <div class="pci"><span class="tag t-locked">Locked</span>Company-level AI Controls · AI Text Drafts GA</div>
+      <div class="pci"><span class="tag t-stretch">Stretch</span>AI Feature Engagement Dashboard · BI Agent v0.1</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('ai')">View Q2 proposal &rarr;</button>
+  </div>
+
+  <!-- Integrations -->
+  <div class="pc pc-orange" data-areas="integrations">
+    <div class="pc-head">
+      <div>
+        <div class="pc-name">Integrations</div>
+        <div class="pc-sub">Integration Platform UI, Yardi GA, MatrixCare, Salesforce</div>
+      </div>
+      <span class="rag rag-proposed" id="rag-integrations">Proposed</span>
+    </div>
+    <div class="pc-stats-planning">
+      <div class="pcs-planning pcs-locked">
+        <div class="pcs-num">4</div><div class="pcs-lbl">Locked</div>
+      </div>
+      <div class="pcs-planning pcs-stretch">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Stretch</div>
+      </div>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:57%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:43%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-locked">Locked</span>Integration Platform UI Launch · Yardi Bidirectional GA</div>
+      <div class="pci"><span class="tag t-locked">Locked</span>MatrixCare Expansion · Outlook 365 Rearchitecture Complete</div>
+      <div class="pci"><span class="tag t-stretch">Stretch</span>Salesforce Connector v1 · HubSpot 2.0 Activity Syncing GA</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('integrations')">View Q2 proposal &rarr;</button>
+  </div>
+
+  <!-- Platform Engineering -->
+  <div class="pc pc-teal" data-areas="platform">
+    <div class="pc-head">
+      <div>
+        <div class="pc-name">Platform Engineering</div>
+        <div class="pc-sub">Compass MVP launch, CRM SSO GA, multi-tenant observability</div>
+      </div>
+      <span class="rag rag-proposed" id="rag-platform">Proposed</span>
+    </div>
+    <div class="pc-stats-planning">
+      <div class="pcs-planning pcs-locked">
+        <div class="pcs-num">5</div><div class="pcs-lbl">Locked</div>
+      </div>
+      <div class="pcs-planning pcs-stretch">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Stretch</div>
+      </div>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:71%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:29%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-locked">Locked</span>Compass App MVP Launch · CRM SSO GA (Auth0/Okta)</div>
+      <div class="pci"><span class="tag t-locked">Locked</span>Multi-tenant Observability &amp; Alerting · Pen Test Remediation</div>
+      <div class="pci"><span class="tag t-stretch">Stretch</span>NOC Automation Expansion · Zero-trust Network Segmentation</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('platform')">View Q2 proposal &rarr;</button>
+  </div>
+
+  <!-- Grove — Food & Dining -->
+  <div class="pc pc-lime" data-areas="grove">
+    <div class="pc-head">
+      <div>
+        <div class="pc-name">Grove — Food &amp; Dining</div>
+        <div class="pc-sub">Supplier portal GA, IDDSI compliance, POS v2 for SNF</div>
+      </div>
+      <span class="rag rag-proposed" id="rag-grove">Proposed</span>
+    </div>
+    <div class="pc-stats-planning">
+      <div class="pcs-planning pcs-locked">
+        <div class="pcs-num">3</div><div class="pcs-lbl">Locked</div>
+      </div>
+      <div class="pcs-planning pcs-stretch">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Stretch</div>
+      </div>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:60%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:40%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-locked">Locked</span>Supplier Portal GA · IDDSI Compliance Module</div>
+      <div class="pci"><span class="tag t-locked">Locked</span>POS v2 for Skilled Nursing (full release)</div>
+      <div class="pci"><span class="tag t-stretch">Stretch</span>Self-serve Kiosk v2 · Grove ↔ NetSuite Migration</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('grove')">View Q2 proposal &rarr;</button>
+  </div>
+
+  <!-- Leasing & Billing -->
+  <div class="pc pc-orange" data-areas="leasing">
+    <div class="pc-head">
+      <div>
+        <div class="pc-name">Leasing &amp; Billing</div>
+        <div class="pc-sub">GL integration, Atria L&amp;B upgrade begin, CRM↔L&amp;B integration</div>
+      </div>
+      <span class="rag rag-proposed" id="rag-leasing">Proposed</span>
+    </div>
+    <div class="pc-stats-planning">
+      <div class="pcs-planning pcs-locked">
+        <div class="pcs-num">4</div><div class="pcs-lbl">Locked</div>
+      </div>
+      <div class="pcs-planning pcs-stretch">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Stretch</div>
+      </div>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:67%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:33%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-locked">Locked</span>GL Integration — Sage Intacct (UI, Integration, Onboarding)</div>
+      <div class="pci"><span class="tag t-locked">Locked</span>Atria L&amp;B Upgrade Begin · CRM↔L&amp;B Integration Phase 1</div>
+      <div class="pci"><span class="tag t-stretch">Stretch</span>Billing Workflow Automation · Late Fee Configuration v2</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('leasing')">View Q2 proposal &rarr;</button>
+  </div>
+
+  <!-- QA Automation -->
+  <div class="pc pc-teal" data-areas="qa">
+    <div class="pc-head">
+      <div>
+        <div class="pc-name">QA Automation</div>
+        <div class="pc-sub">E2E test suite expansion, eMAR regression framework</div>
+      </div>
+      <span class="rag rag-proposed" id="rag-qa">Proposed</span>
+    </div>
+    <div class="pc-stats-planning">
+      <div class="pcs-planning pcs-locked">
+        <div class="pcs-num">4</div><div class="pcs-lbl">Locked</div>
+      </div>
+      <div class="pcs-planning pcs-stretch">
+        <div class="pcs-num">2</div><div class="pcs-lbl">Stretch</div>
+      </div>
+    </div>
+    <div class="pc-bar">
+      <div class="pcb" style="background:var(--teal);width:67%"></div>
+      <div class="pcb" style="background:#CBD5E1;width:33%"></div>
+    </div>
+    <div class="pc-items">
+      <div class="pci"><span class="tag t-locked">Locked</span>End-to-End Test Suite Expansion (CRM + AI)</div>
+      <div class="pci"><span class="tag t-locked">Locked</span>eMAR Regression Framework · CI/CD Pipeline Coverage v2</div>
+      <div class="pci"><span class="tag t-stretch">Stretch</span>Performance Testing Baseline · Mobile Automation Suite</div>
+    </div>
+    <button class="drill-btn" onclick="openDrawer('qa')">View Q2 proposal &rarr;</button>
+  </div>
+
+</div>
+
+<!-- ── Q2 PROPOSED THEMES ─────────────────────────────────────── -->
+<div class="section-title">Q2 2026 Proposed Themes</div>
+<div class="two-col">
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="ph-icon phi-teal">&#9670;</div>
+      <div class="panel-title">Strategic Themes — Locked Work</div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Sherpa Full Migration &amp; Feature Parity</div>
+        <div class="win-meta">CRM &nbsp;&middot;&nbsp; Customer commitment milestone</div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Clara GA + AI Scoring GA — Full Commercial Launch</div>
+        <div class="win-meta">Aline AI &nbsp;&middot;&nbsp; Unlocks AI upsell motion for sales</div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Compass MVP &mdash; First Public Availability</div>
+        <div class="win-meta">Platform &amp; BI &nbsp;&middot;&nbsp; Consolidates reporting surface</div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">GL Integration (Sage Intacct) &mdash; First-to-market</div>
+        <div class="win-meta">Leasing &amp; Billing &nbsp;&middot;&nbsp; Enables enterprise billing workflows</div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-teal"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Integration Platform UI — Customer Visibility</div>
+        <div class="win-meta">Integrations &nbsp;&middot;&nbsp; Reduces CS burden on integration status</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="ph-icon phi-purple">&#9670;</div>
+      <div class="panel-title">Stretch Themes — Capacity-dependent</div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-purple"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Salesforce Connector v1</div>
+        <div class="win-meta">Integrations &nbsp;&middot;&nbsp; Depends on Q1 Integration Platform foundations</div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-purple"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">BI Agent v0.1 (Natural Language Reporting)</div>
+        <div class="win-meta">AI + BI &nbsp;&middot;&nbsp; Requires Q1 vectorization foundations complete</div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-purple"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Mobile v2 — Advanced Filters &amp; Offline Mode</div>
+        <div class="win-meta">CRM Mobile &nbsp;&middot;&nbsp; Dependent on v1 feedback cycle completing</div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-purple"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Grove ↔ NetSuite Migration Begin</div>
+        <div class="win-meta">Grove &nbsp;&middot;&nbsp; Requires Q2 capacity clearance from Grove team</div>
+      </div>
+    </div>
+    <div class="win-row">
+      <div class="win-check wc-purple"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg></div>
+      <div class="win-body">
+        <div class="win-title">Roobrik Branding Update</div>
+        <div class="win-meta">CRM / Roobrik &nbsp;&middot;&nbsp; Design-led; scheduled after Sherpa migration completes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PLANNING RISKS & ASSUMPTIONS ──────────────────────────── -->
+<div class="risk-card">
+  <div class="risk-header">
+    <div class="risk-icon">&#9888;</div>
+    <div class="risk-title">Planning Risks &amp; Assumptions</div>
+  </div>
+  <div class="risk-grid">
+    <div class="ri">
+      <div class="ri-marker"></div>
+      <div class="ri-body">
+        <div class="ri-title">Sherpa Migration Carries Q1 Spillover Risk</div>
+        <div class="ri-text">Full migration completion in Q2 assumes Q1 data parity work closes on schedule. Any Q1 slip extends the Q2 window and may delay contact center integration.</div>
+      </div>
+    </div>
+    <div class="ri">
+      <div class="ri-marker"></div>
+      <div class="ri-body">
+        <div class="ri-title">Clara GA Depends on Labs Feedback Cycle</div>
+        <div class="ri-text">Clara GA timeline assumes Labs release ships by end of Q1 and customer feedback is captured within the first 4 weeks of Q2. Delays in Labs extend the GA date.</div>
+      </div>
+    </div>
+    <div class="ri">
+      <div class="ri-marker"></div>
+      <div class="ri-body">
+        <div class="ri-title">Stretch Goals Are Capacity-gated</div>
+        <div class="ri-text">21 stretch items assume no significant unplanned work in Q2. Historical unplanned rate is 15–20% of capacity. Teams should not commit to stretch items until week 4 of the quarter.</div>
+      </div>
+    </div>
+    <div class="ri">
+      <div class="ri-marker"></div>
+      <div class="ri-body">
+        <div class="ri-title">Atria Commitments Require Early Alignment</div>
+        <div class="ri-text">Both Atria L&amp;B Upgrade and Atria Fabric upgrade appear in Q2. Coordination between BI and L&amp;B teams is required to avoid scope conflicts on shared Atria touchpoints.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── DETAIL DRAWER ──────────────────────────────────────────── -->
+<div id="drawer-overlay" onclick="closeDrawer()"></div>
+<div id="detail-drawer" role="dialog" aria-modal="true">
+  <div class="drw-header">
+    <div class="drw-header-top">
+      <div>
+        <div class="drw-title" id="drw-title">Loading&hellip;</div>
+        <div class="drw-meta" id="drw-meta"></div>
+      </div>
+      <button class="drw-close" onclick="closeDrawer()" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="drw-chips" id="drw-chips"></div>
+  </div>
+  <div class="drw-body" id="drw-body"></div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="footer">
+  Planning Preview &nbsp;&middot;&nbsp; Generated March 19, 2026 &nbsp;&middot;&nbsp; Q2 2026 (Apr&ndash;Jun) &nbsp;&middot;&nbsp;
+  This is a proposed roadmap, not a commitment &nbsp;&middot;&nbsp; <a class="jira-link" href="../roadmap-report-card/">View Q1 execution dashboard &rarr;</a>
+</footer>
+
+<script>
+// ── MOR Planning Data ───────────────────────────────────────────
+const MOR = {
+  mode:   'planning',
+  period: 'Q2 2026',
+  products: {
+
+    crm: {
+      label: 'CRM — Sales & Leasing',
+      sections: [
+        {
+          name: 'Core & Sherpa Migration',
+          items: [
+            {s:'Sherpa Full Migration Complete — All remaining feature parity items',tm:'CRM',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'CRMO-900',lk:'locked'},
+            {s:'Contact Center Integration — Regal.io bidirectional call logging',tm:'CRM',tg:'Q2',est:'L',st:'to-do',pct:0,j:'CRMO-901',lk:'locked'},
+            {s:'AI-assisted Lead Scoring GA — Full release to all customers',tm:'AI/CRM',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-902',lk:'locked'},
+            {s:'Consent Management GA — Following QA close in Q1',tm:'CRM',tg:'Q2',est:'S',st:'to-do',pct:0,j:'CRMO-903',lk:'locked'},
+            {s:'SNF eAdmit Integration Phase 2 — Expanded workflows',tm:'CRM/eAdmit',tg:'Q2',est:'L',st:'to-do',pct:0,j:'CRMO-904',lk:'locked'},
+            {s:'Goals v2 — Team goals dashboard with trend view',tm:'CRM',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-905',lk:'locked'},
+            {s:'CRM Canada Phase 3 — Remaining compliance items',tm:'CRM',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-906',lk:'locked'},
+          ]
+        },
+        {
+          name: 'Mobile',
+          items: [
+            {s:'Mobile v2 — Advanced search filters and offline mode',tm:'Mobile',tg:'Q2',est:'L',st:'to-do',pct:0,j:'CRMO-910',lk:'stretch'},
+            {s:'Push notification framework — Configurable alerts',tm:'Mobile',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-911',lk:'stretch'},
+          ]
+        },
+        {
+          name: 'Roobrik (under CRM)',
+          items: [
+            {s:'Recommend Roobrik Survey in Smart Next Step — CRM integration',tm:'Roobrik/AI',tg:'Q2',est:'M',st:'to-do',pct:0,j:'RPR-100',lk:'locked'},
+            {s:'Click-through for Aline CRM (SMS reminders, Email links)',tm:'Roobrik',tg:'Q2',est:'S',st:'to-do',pct:0,j:'RPR-101',lk:'locked'},
+            {s:'Update Branding — Post-Aline acquisition visual refresh',tm:'Roobrik',tg:'Q2',est:'M',st:'to-do',pct:0,j:'RPR-102',lk:'stretch'},
+          ]
+        }
+      ]
+    },
+
+    emar: {
+      label: 'eMAR — Medication Management',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'eMAR UI Kit Phase 5 — State Forms & Compliance Views',tm:'Clinical',tg:'Q2',est:'L',st:'to-do',pct:0,j:'EMAR-1900',lk:'locked'},
+            {s:'eMAR UI Kit Phase 6 — Medication Pass Redesign',tm:'Clinical',tg:'Q2',est:'L',st:'to-do',pct:0,j:'EMAR-1901',lk:'locked'},
+            {s:'Pharmacy Network Expansion — 6 new partner integrations',tm:'Clinical',tg:'Q2',est:'M',st:'to-do',pct:0,j:'EMAR-1902',lk:'locked'},
+            {s:'Medication Workflow Redesign — New mar sheet UX',tm:'Clinical',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'EMAR-1903',lk:'locked'},
+            {s:'Clinical Notes v2 — Configurable templates and follow-ups',tm:'Clinical',tg:'Q2',est:'L',st:'to-do',pct:0,j:'EMAR-1904',lk:'stretch'},
+            {s:'Community Dashboard GA — Medication summary across facilities',tm:'Clinical',tg:'Q2',est:'M',st:'to-do',pct:0,j:'EMAR-1905',lk:'stretch'},
+          ]
+        }
+      ]
+    },
+
+    analytics: {
+      label: 'Business Intelligence',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'Self-service Reporting GA for Compass — All CRM customers',tm:'BI',tg:'Q2',est:'L',st:'to-do',pct:0,j:'PBI-2400',lk:'locked'},
+            {s:'Atria Fabric Upgrade Begin — Discovery and migration planning',tm:'BI',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'PBI-2401',lk:'locked'},
+            {s:'New Care Quality Dashboards — Census, incidents, readmissions',tm:'BI',tg:'Q2',est:'L',st:'to-do',pct:0,j:'PBI-2402',lk:'locked'},
+            {s:'DSL Yardi Reporting — Replace Vitals-era Yardi reports',tm:'BI',tg:'Q2',est:'M',st:'to-do',pct:0,j:'PBI-2403',lk:'locked'},
+            {s:'New CRM Product Performance Report v1 GA',tm:'BI',tg:'Q2',est:'M',st:'to-do',pct:0,j:'PBI-2404',lk:'locked'},
+            {s:'Near Real-time CRM Reports — Fabric streaming pilot',tm:'BI',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'PBI-2405',lk:'stretch'},
+            {s:'BI Agent Foundations v0.1 — Natural language query pilot',tm:'AI/BI',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'PBI-2406',lk:'stretch'},
+          ]
+        }
+      ]
+    },
+
+    ai: {
+      label: 'Aline AI — Intelligence Layer',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'Clara GA — Full general availability release to all eligible customers',tm:'AI',tg:'Q2',est:'L',st:'to-do',pct:0,j:'CRMO-920',lk:'locked'},
+            {s:'Enhanced Opportunity Scoring GA — Full commercial release',tm:'AI',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-921',lk:'locked'},
+            {s:'Company-level AI Feature Controls GA',tm:'AI',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-922',lk:'locked'},
+            {s:'AI Text Drafts GA — Email and note drafting for all users',tm:'AI',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-923',lk:'locked'},
+            {s:'Smart Lists GA — AI-curated priority work lists',tm:'AI',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-924',lk:'locked'},
+            {s:'AI Feature Engagement Dashboard — Usage and adoption metrics',tm:'AI',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-925',lk:'stretch'},
+            {s:'Community-level AI Controls — Granular feature toggle by community',tm:'AI',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-926',lk:'stretch'},
+            {s:'BI Agent v0.1 — Ask questions about any Compass report',tm:'AI/BI',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'CRMO-927',lk:'stretch'},
+          ]
+        }
+      ]
+    },
+
+    integrations: {
+      label: 'Integrations',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'Integration Platform UI Launch — Customer-facing integration status',tm:'IP',tg:'Q2',est:'L',st:'to-do',pct:0,j:'CRMO-930',lk:'locked'},
+            {s:'Yardi Bidirectional GA — Non-DSL customers',tm:'IP',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-931',lk:'locked'},
+            {s:'MatrixCare Expansion — Bed board + ADT enhanced support',tm:'IP',tg:'Q2',est:'L',st:'to-do',pct:0,j:'CRMO-932',lk:'locked'},
+            {s:'Outlook 365 Rearchitecture Complete — GA to all CRM customers',tm:'Forge',tg:'Q2',est:'M',st:'to-do',pct:0,j:'CRMO-933',lk:'locked'},
+            {s:'Salesforce Connector v1 — Bi-directional prospect sync',tm:'IP',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'CRMO-934',lk:'stretch'},
+            {s:'HubSpot 2.0 Activity Syncing GA — Close out Q1 work',tm:'Forge',tg:'Q2',est:'L',st:'to-do',pct:0,j:'CRMO-935',lk:'stretch'},
+            {s:'CRM ↔ L&B Integration Phase 1 — Core billing sync',tm:'CRM/L&B',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'CRMO-936',lk:'stretch'},
+          ]
+        }
+      ]
+    },
+
+    platform: {
+      label: 'Platform Engineering',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'Compass App MVP Launch — Public availability with CRM + BI widgets',tm:'Platform',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'COM-50',lk:'locked'},
+            {s:'CRM SSO GA — Auth0/Okta integration complete for all CRM customers',tm:'Platform',tg:'Q2',est:'L',st:'to-do',pct:0,j:'COM-51',lk:'locked'},
+            {s:'Multi-tenant Observability & Alerting — Full rollout',tm:'Platform/Infra',tg:'Q2',est:'M',st:'to-do',pct:0,j:'COM-52',lk:'locked'},
+            {s:'Pen Test Remediation Q2 — All outstanding high/critical findings',tm:'Security',tg:'Q2',est:'M',st:'to-do',pct:0,j:'COM-53',lk:'locked'},
+            {s:'L&B SSO GA — Complete Q1 foundations',tm:'Platform/L&B',tg:'Q2',est:'M',st:'to-do',pct:0,j:'COM-54',lk:'locked'},
+            {s:'NOC Automation Expansion — Reduce on-call alert noise',tm:'Platform/Infra',tg:'Q2',est:'M',st:'to-do',pct:0,j:'COM-55',lk:'stretch'},
+            {s:'Zero-trust Network Segmentation — Phase 1',tm:'Security/Infra',tg:'Q2',est:'L',st:'to-do',pct:0,j:'COM-56',lk:'stretch'},
+          ]
+        }
+      ]
+    },
+
+    grove: {
+      label: 'Grove — Food & Dining',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'Supplier Portal GA — Full release with order management',tm:'Grove',tg:'Q2',est:'L',st:'to-do',pct:0,j:'GRO-300',lk:'locked'},
+            {s:'IDDSI Compliance Module — Diet coding and workflow enforcement',tm:'Grove',tg:'Q2',est:'M',st:'to-do',pct:0,j:'GRO-301',lk:'locked'},
+            {s:'POS v2 for Skilled Nursing — Full release',tm:'Grove',tg:'Q2',est:'L',st:'to-do',pct:0,j:'GRO-302',lk:'locked'},
+            {s:'Self-serve Kiosk v2 — Enhanced resident-facing ordering',tm:'Grove',tg:'Q2',est:'M',st:'to-do',pct:0,j:'GRO-303',lk:'stretch'},
+            {s:'Grove ↔ NetSuite Migration Begin — Replace Authorize.net/QuickBooks',tm:'Grove',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'GRO-304',lk:'stretch'},
+          ]
+        }
+      ]
+    },
+
+    leasing: {
+      label: 'Leasing & Billing',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'GL Integration — Sage Intacct UI, integration layer & onboarding',tm:'L&B',tg:'Q2',est:'L',st:'to-do',pct:0,j:'ARMS-2100',lk:'locked'},
+            {s:'Atria L&B Upgrade Begin — Full implementation kickoff',tm:'L&B',tg:'Q2',est:'XXL',st:'to-do',pct:0,j:'ARMS-2101',lk:'locked'},
+            {s:'CRM ↔ L&B Integration Phase 1 — Prospect-to-resident billing handoff',tm:'L&B/CRM',tg:'Q2',est:'XL',st:'to-do',pct:0,j:'ARMS-2102',lk:'locked'},
+            {s:'Platform UI/UX — Remaining Q2 module completions (10 modules)',tm:'L&B',tg:'Q2',est:'L',st:'to-do',pct:0,j:'ARMS-2103',lk:'locked'},
+            {s:'Billing Workflow Automation — Auto-bill generation rules',tm:'L&B',tg:'Q2',est:'L',st:'to-do',pct:0,j:'ARMS-2104',lk:'stretch'},
+            {s:'Late Fee Configuration v2 — Grace periods and rule editor',tm:'L&B',tg:'Q2',est:'M',st:'to-do',pct:0,j:'ARMS-2105',lk:'stretch'},
+          ]
+        }
+      ]
+    },
+
+    qa: {
+      label: 'QA Automation',
+      sections: [
+        {
+          name: null,
+          items: [
+            {s:'End-to-End Test Suite Expansion — CRM + AI coverage',tm:'QA',tg:'Q2',est:'L',st:'to-do',pct:0,j:'AUT-100',lk:'locked'},
+            {s:'eMAR Regression Framework — Full med-pass workflow automation',tm:'QA',tg:'Q2',est:'L',st:'to-do',pct:0,j:'AUT-101',lk:'locked'},
+            {s:'CI/CD Pipeline Coverage v2 — Pull request gate expansion',tm:'QA',tg:'Q2',est:'M',st:'to-do',pct:0,j:'AUT-102',lk:'locked'},
+            {s:'Grove + L&B Smoke Test Automation',tm:'QA',tg:'Q2',est:'M',st:'to-do',pct:0,j:'AUT-103',lk:'locked'},
+            {s:'Performance Testing Baseline — API response benchmarks',tm:'QA',tg:'Q2',est:'M',st:'to-do',pct:0,j:'AUT-104',lk:'stretch'},
+            {s:'Mobile Automation Suite v1 — iOS + Android regression',tm:'QA/Mobile',tg:'Q2',est:'L',st:'to-do',pct:0,j:'AUT-105',lk:'stretch'},
+          ]
+        }
+      ]
+    }
+
+  }
+};
+
+// ── Helpers ──────────────────────────────────────────────────────
+function jiraUrl(key) {
+  if (!key || key === '—' || key === '-') return null;
+  return 'https://alineops.atlassian.net/browse/' + key.trim();
+}
+
+const LOCK_LABELS = {
+  'locked':  'Locked',
+  'stretch': 'Stretch',
+};
+
+function lockPill(lk) {
+  const lbl = LOCK_LABELS[lk] || lk;
+  return `<span class="lp lp-${lk}">${lbl}</span>`;
+}
+function jiraCell(key) {
+  const url = jiraUrl(key);
+  if (!url) return '<td>—</td>';
+  return `<td><a class="jira-badge" href="${url}" target="_blank">${key}</a></td>`;
+}
+
+function buildTable(items) {
+  if (!items || !items.length) return '';
+  let html = `<table class="dt"><thead><tr>
+    <th>#</th>
+    <th>Summary</th><th>Team</th><th>Target</th><th>Est.</th>
+    <th>Jira</th><th>Lock</th>
+  </tr></thead><tbody>`;
+  items.forEach((item, idx) => {
+    html += `<tr data-lock="${item.lk}">
+      <td style="color:var(--text-3);font-size:11px;">${idx+1}</td>
+      <td class="td-sum">${item.s}</td>
+      <td class="td-team">${item.tm||'—'}</td>
+      <td class="td-tgt">${item.tg||'—'}</td>
+      <td class="td-team">${item.est||'—'}</td>
+      ${jiraCell(item.j)}
+      <td>${lockPill(item.lk)}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  return html;
+}
+
+function buildSection(sec) {
+  let html = '';
+  if (sec.name) html += `<div class="drw-section">${sec.name}</div>`;
+  html += buildTable(sec.items);
+  if (sec.notes) html += `<div class="drw-notes">${sec.notes}</div>`;
+  return html;
+}
+
+let activeDrawerFilter = 'all';
+
+function renderDrawer(productKey) {
+  const prod = MOR.products[productKey];
+  if (!prod) return;
+
+  let total = 0;
+  prod.sections.forEach(sec => { total += (sec.items||[]).length; });
+
+  document.getElementById('drw-title').textContent = prod.label + ' — Q2 2026 Proposal';
+  document.getElementById('drw-meta').innerHTML = `${total} proposed items &nbsp;<span class="planning-badge">PROPOSED</span>`;
+
+  // Chips
+  document.getElementById('drw-chips').innerHTML = `
+    <span class="drw-chip active" data-f="all" onclick="filterDrawer('all',this)">All items</span>
+    <span class="drw-chip" data-f="locked" onclick="filterDrawer('locked',this)">Locked</span>
+    <span class="drw-chip" data-f="stretch" onclick="filterDrawer('stretch',this)">Stretch</span>`;
+
+  let body = '';
+  prod.sections.forEach(sec => { body += buildSection(sec); });
+  document.getElementById('drw-body').innerHTML = body;
+  activeDrawerFilter = 'all';
+}
+
+function filterDrawer(f, chipEl) {
+  activeDrawerFilter = f;
+  document.querySelectorAll('#drw-chips .drw-chip').forEach(c => c.classList.remove('active'));
+  if (chipEl) chipEl.classList.add('active');
+  document.querySelectorAll('#drw-body .dt tbody tr').forEach(row => {
+    if (f === 'all') { row.classList.remove('row-hidden'); return; }
+    row.classList.toggle('row-hidden', row.dataset.lock !== f);
+  });
+}
+
+function openDrawer(productKey) {
+  renderDrawer(productKey);
+  document.getElementById('drawer-overlay').classList.add('open');
+  document.getElementById('detail-drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDrawer() {
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.getElementById('detail-drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+// ── Counter animation ──────────────────────────────────────────
+function countUp(el, target, delay) {
+  setTimeout(() => {
+    const duration = 900;
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target);
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    };
+    requestAnimationFrame(tick);
+  }, delay || 0);
+}
+
+document.querySelectorAll('.kpi-num[data-target]').forEach((el, i) => {
+  countUp(el, +el.dataset.target, 150 + i * 120);
+});
+</script>
+
+</body>
+</html>
