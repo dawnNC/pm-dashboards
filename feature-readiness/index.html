@@ -5,532 +5,670 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="../favicon.png">
 <title>Feature Readiness Snapshot &mdash; Q4&ndash;Q1 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+
+/* ── Aline Brand Colors ── */
 :root {
-  --bg: #f1f5f9;
-  --surface: #ffffff;
-  --text: #1e293b;
-  --text-secondary: #64748b;
-  --border: #e2e8f0;
-  --accent: #0d6e8a;
-  --header-bg: #1e3a4c;
-  --header-text: #ffffff;
-  --shadow: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-  --radius: 8px;
+  /* Dark theme base */
+  --bg:          #080c11;
+  --surface:     #0c1018;
+  --surface-2:   #11171f;
+  --surface-3:   #172030;
 
-  /* Status colors */
-  --s-complete-bg: #1e3a4c;
-  --s-complete-text: #ffffff;
-  --s-inprogress-bg: #3b82f6;
-  --s-inprogress-text: #ffffff;
-  --s-notstarted-bg: #cbd5e1;
-  --s-notstarted-text: #475569;
-  --s-notready-bg: #cbd5e1;
-  --s-notready-text: #475569;
-  --s-targeted-bg: #6366f1;
-  --s-targeted-text: #ffffff;
-  --s-broadly-bg: #0891b2;
-  --s-broadly-text: #ffffff;
-  --s-late-bg: #f59e0b;
-  --s-late-text: #ffffff;
-  --s-hotready-bg: #16a34a;
-  --s-hotready-text: #ffffff;
+  /* Borders */
+  --border:      rgba(16,164,209,0.10);
+  --border-hi:   rgba(16,164,209,0.22);
 
-  /* GTM Confidence */
-  --conf-high-bg: #dcfce7;
-  --conf-high-text: #15803d;
-  --conf-high-border: #16a34a;
-  --conf-medium-bg: #fef3c7;
-  --conf-medium-text: #92400e;
-  --conf-medium-border: #d97706;
-  --conf-low-bg: #fee2e2;
-  --conf-low-text: #991b1b;
-  --conf-low-border: #dc2626;
+  /* Text */
+  --text:        #deeaf6;
+  --text-2:      #7a94b0;
+  --text-3:      #3e5470;
+
+  /* Aline Primary Palette */
+  --teal:        #10A4D1;
+  --teal-65:     #64C4E1;
+  --teal-25:     #C3E8F4;
+  --teal-bg:     rgba(16,164,209,0.10);
+  --teal-border: rgba(16,164,209,0.28);
+
+  --purple:      #4E4EA6;
+  --purple-light:#7272C0;
+  --purple-bg:   rgba(78,78,166,0.12);
+  --purple-border:rgba(78,78,166,0.32);
+
+  --magenta:     #EE3D65;
+  --magenta-bg:  rgba(238,61,101,0.10);
+  --magenta-border:rgba(238,61,101,0.28);
+
+  --orange:      #FF8B3F;
+  --orange-bg:   rgba(255,139,63,0.10);
+  --orange-border:rgba(255,139,63,0.28);
+
+  --green:       #BCD72E;
+  --green-bg:    rgba(188,215,46,0.09);
+  --green-border:rgba(188,215,46,0.28);
+
+  --slate-bg:    rgba(255,255,255,0.055);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f172a;
-    --surface: #1e293b;
-    --text: #e2e8f0;
-    --text-secondary: #94a3b8;
-    --border: #334155;
-    --header-bg: #0f2233;
-    --shadow: 0 1px 3px rgba(0,0,0,0.3);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
-    --s-notstarted-bg: #334155;
-    --s-notstarted-text: #94a3b8;
-    --s-notready-bg: #334155;
-    --s-notready-text: #94a3b8;
-    --conf-high-bg: rgba(22,163,74,0.15);
-    --conf-high-text: #4ade80;
-    --conf-medium-bg: rgba(217,119,6,0.15);
-    --conf-medium-text: #fbbf24;
-    --conf-low-bg: rgba(220,38,38,0.15);
-    --conf-low-text: #f87171;
-  }
-}
-
+/* ── Reset ── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
+html { scroll-behavior: smooth; }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Montserrat', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-5px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Back nav ── */
+.back-nav {
+  padding: 1rem 2rem 0;
+  animation: fadeUp 0.4s ease both;
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.69rem;
+  font-weight: 700;
+  color: var(--text-3);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--teal); }
+.back-link svg { width: 11px; height: 11px; }
 
 /* ── Header ── */
 .page-header {
-  background: var(--header-bg);
-  color: var(--header-text);
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 2rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp 0.5s 0.05s ease both;
+  position: relative;
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 80px; height: 2px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+}
+.header-inner {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 2rem;
 }
-
-.page-header-left h1 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.2rem;
+.page-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 0.4rem;
 }
-
-.page-header-left p {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.65);
+.page-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-2);
+  max-width: 500px;
+  line-height: 1.65;
 }
-
-.header-badge {
-  font-size: 0.75rem;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: rgba(255,255,255,0.85);
-  padding: 0.3rem 0.75rem;
-  border-radius: 20px;
-  white-space: nowrap;
-  margin-top: 0.2rem;
-}
-
-.back-link {
-  color: rgba(255,255,255,0.6);
-  text-decoration: none;
-  font-size: 0.82rem;
+.header-meta {
   display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.15rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  padding-top: 0.3rem;
 }
-.back-link:hover { color: rgba(255,255,255,0.9); }
+.header-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--surface-2);
+  border: 1px solid var(--border-hi);
+  padding: 0.3rem 0.75rem;
+  border-radius: 3px;
+}
+.header-badge {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-bg);
+  border: 1px solid var(--teal-border);
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 
 /* ── Note bar ── */
 .note-bar {
-  background: #1a4a5e;
-  color: rgba(255,255,255,0.75);
-  font-size: 0.78rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
   padding: 0.5rem 2rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  letter-spacing: 0.01em;
+  font-size: 0.75rem;
+  color: var(--text-3);
+  animation: fadeUp 0.5s 0.1s ease both;
+}
+.note-bar strong { color: var(--text-2); font-weight: 700; }
+
+/* ── Health strip ── */
+.health-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp 0.5s 0.15s ease both;
+}
+.health-stat {
+  padding: 1.1rem 2rem;
+  border-right: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.health-stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.health-stat.stat-total::before  { background: var(--teal); }
+.health-stat.stat-high::before   { background: var(--green); }
+.health-stat.stat-medium::before { background: var(--orange); }
+.health-stat.stat-low::before    { background: var(--magenta); }
+.health-stat:last-child { border-right: none; }
+.health-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  margin-bottom: 0.25rem;
+}
+.health-number.teal    { color: var(--teal); }
+.health-number.green   { color: var(--green); }
+.health-number.orange  { color: var(--orange); }
+.health-number.magenta { color: var(--magenta); }
+.health-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-3);
 }
 
-.note-bar strong { color: rgba(255,255,255,0.95); }
-
-/* ── Main content ── */
+/* ── Main ── */
 .main { padding: 1.5rem 2rem; }
 
 /* ── Legend panel ── */
 .legend-panel {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-bottom: 1.25rem;
-  box-shadow: var(--shadow);
+  border-radius: 6px;
+  margin-bottom: 1rem;
   overflow: hidden;
+  animation: fadeUp 0.5s 0.2s ease both;
 }
-
 .legend-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1.1rem;
   cursor: pointer;
   user-select: none;
   background: transparent;
   border: none;
   width: 100%;
-  color: var(--text);
-  font-size: 0.82rem;
-  font-weight: 600;
+  color: var(--text-3);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.67rem;
+  font-weight: 800;
   text-align: left;
-  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.15s;
 }
-
-.legend-toggle:hover { background: var(--bg); }
-
-.legend-toggle-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.legend-icon {
-  width: 16px;
-  height: 16px;
-  color: var(--text-secondary);
-  flex-shrink: 0;
-}
-
+.legend-toggle:hover { color: var(--teal); }
+.legend-toggle-label { display: flex; align-items: center; gap: 0.5rem; }
+.legend-icon { width: 14px; height: 14px; }
 .legend-chevron {
-  width: 16px;
-  height: 16px;
-  color: var(--text-secondary);
+  width: 14px; height: 14px;
+  color: var(--text-3);
   transition: transform 0.2s;
   flex-shrink: 0;
 }
-
 .legend-chevron.open { transform: rotate(180deg); }
-
 .legend-body {
   display: none;
-  padding: 0 1rem 1rem;
+  padding: 0 1.1rem 1.1rem;
   border-top: 1px solid var(--border);
 }
-
 .legend-body.open { display: block; }
-
 .legend-note {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  background: var(--bg);
-  border-left: 3px solid var(--accent);
-  padding: 0.5rem 0.75rem;
-  margin: 0.75rem 0;
+  font-size: 0.77rem;
+  color: var(--text-2);
+  background: var(--surface-2);
+  border-left: 3px solid var(--teal);
+  padding: 0.65rem 0.9rem;
+  margin: 0.9rem 0;
   border-radius: 0 4px 4px 0;
+  line-height: 1.65;
 }
-
 .legend-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  gap: 1.25rem;
   margin-top: 0.75rem;
 }
-
 .legend-section h4 {
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.64rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  color: var(--text-3);
   margin-bottom: 0.4rem;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--border);
 }
-
 .legend-section p {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
+  font-size: 0.73rem;
+  color: var(--text-3);
+  margin-bottom: 0.6rem;
   font-style: italic;
+  line-height: 1.5;
 }
-
-.legend-badges {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
+.legend-badges { display: flex; flex-direction: column; gap: 0.35rem; }
 .legend-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--text);
+  gap: 0.6rem;
+  font-size: 0.73rem;
+  color: var(--text-2);
 }
 
 /* ── Controls ── */
 .controls {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0.875rem 1rem;
-  margin-bottom: 1.25rem;
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   align-items: flex-end;
-  box-shadow: var(--shadow);
+  animation: fadeUp 0.5s 0.25s ease both;
 }
-
 .control-group {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.4rem;
   min-width: 0;
 }
-
 .control-group label {
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.64rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  color: var(--text-3);
 }
-
 .search-input {
-  padding: 0.45rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--border-hi);
+  border-radius: 4px;
   background: var(--bg);
   color: var(--text);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 500;
   width: 220px;
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-
-.search-input:focus { border-color: var(--accent); }
-
-.filter-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
+.search-input::placeholder { color: var(--text-3); }
+.search-input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(16,164,209,0.12);
 }
-
+.filter-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .chip {
+  font-family: 'Montserrat', sans-serif;
   display: inline-flex;
   align-items: center;
-  padding: 0.3rem 0.65rem;
+  padding: 0.28rem 0.72rem;
   border-radius: 20px;
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 700;
   cursor: pointer;
-  border: 1.5px solid var(--border);
-  background: var(--bg);
-  color: var(--text-secondary);
+  border: 1.5px solid var(--border-hi);
+  background: transparent;
+  color: var(--text-3);
   transition: all 0.15s;
   white-space: nowrap;
   user-select: none;
+  letter-spacing: 0.02em;
 }
-
-.chip:hover { border-color: var(--accent); color: var(--accent); }
-
-.chip.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #ffffff;
-}
-
-.chip.conf-high.active  { background: var(--conf-high-border); border-color: var(--conf-high-border); }
-.chip.conf-medium.active { background: var(--conf-medium-border); border-color: var(--conf-medium-border); }
-.chip.conf-low.active   { background: var(--conf-low-border); border-color: var(--conf-low-border); }
-
-.controls-right {
-  margin-left: auto;
-  display: flex;
-  align-items: flex-end;
-}
-
+.chip:hover  { border-color: var(--teal); color: var(--teal); background: var(--teal-bg); }
+.chip.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+.chip.conf-high:hover    { border-color: var(--green); color: var(--green); background: var(--green-bg); }
+.chip.conf-high.active   { background: var(--green); border-color: var(--green); color: #080c11; }
+.chip.conf-medium:hover  { border-color: var(--orange); color: var(--orange); background: var(--orange-bg); }
+.chip.conf-medium.active { background: var(--orange); border-color: var(--orange); color: #080c11; }
+.chip.conf-low:hover     { border-color: var(--magenta); color: var(--magenta); background: var(--magenta-bg); }
+.chip.conf-low.active    { background: var(--magenta); border-color: var(--magenta); color: #fff; }
+.controls-right { margin-left: auto; display: flex; align-items: flex-end; }
 .results-count {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-3);
   white-space: nowrap;
 }
 
-/* ── Table wrapper ── */
+/* ── Table ── */
 .table-wrapper {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border-radius: 6px;
   overflow-x: auto;
+  animation: fadeUp 0.5s 0.3s ease both;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.82rem;
 }
-
 thead th {
-  background: var(--header-bg);
-  color: rgba(255,255,255,0.85);
-  font-size: 0.72rem;
-  font-weight: 600;
+  background: var(--surface-2);
+  color: var(--text-3);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.63rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.65rem 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 0.7rem 1rem;
   text-align: left;
   white-space: nowrap;
   position: sticky;
   top: 0;
   z-index: 2;
-}
-
-thead th:first-child { border-radius: var(--radius) 0 0 0; }
-thead th:last-child  { border-radius: 0 var(--radius) 0 0; }
-
-tbody tr {
   border-bottom: 1px solid var(--border);
-  transition: background 0.1s;
+}
+thead th:first-child { padding-left: 1.5rem; }
+
+/* ── Product group header row ── */
+.group-header td {
+  padding: 0.65rem 1rem 0.65rem 1.5rem;
+  background: var(--surface-3);
+  border-bottom: 1px solid var(--border);
+  border-top: 2px solid var(--teal);
+  cursor: pointer;
+  user-select: none;
+}
+.group-header:first-child td { border-top-width: 0; }
+.group-header td:hover { background: var(--surface-2); }
+.group-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.group-product-name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+.group-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--teal);
+  background: var(--teal-bg);
+  border: 1px solid var(--teal-border);
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  letter-spacing: 0.04em;
+}
+.group-empty-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-left: auto;
+  padding-right: 0.5rem;
+}
+.group-chevron {
+  width: 13px; height: 13px;
+  color: var(--text-3);
+  transition: transform 0.2s;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.group-chevron.collapsed { transform: rotate(-90deg); }
+
+/* ── Empty group row ── */
+.group-empty-row td {
+  padding: 0.6rem 1rem 0.6rem 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-3);
+  font-style: italic;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
 }
 
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: var(--bg); }
+/* ── Data rows ── */
+tbody tr.data-row {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s;
+  position: relative;
+}
+tbody tr.data-row:last-child { border-bottom: none; }
+tbody tr.data-row:hover { background: var(--surface-2); }
+
+/* Left confidence strip */
+tbody tr.data-row td:first-child { padding-left: 1.5rem; position: relative; }
+tbody tr.data-row td:first-child::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: transparent;
+}
+tbody tr.data-row[data-confidence="high"]   td:first-child::before { background: var(--green); }
+tbody tr.data-row[data-confidence="medium"] td:first-child::before { background: var(--orange); }
+tbody tr.data-row[data-confidence="low"]    td:first-child::before { background: var(--magenta); }
 
 tbody td {
-  padding: 0.65rem 0.75rem;
+  padding: 0.8rem 1rem;
   vertical-align: top;
 }
 
-/* Product column */
-td.col-product {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+/* Column styles */
+td.col-subproduct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text-3);
   white-space: nowrap;
   min-width: 90px;
+  letter-spacing: 0.04em;
 }
-
-/* Feature column */
 td.col-feature {
-  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text);
   min-width: 160px;
   max-width: 200px;
 }
-
-/* Status columns */
-td.col-status { min-width: 90px; }
-td.col-gtm-window { white-space: nowrap; min-width: 70px; font-size: 0.8rem; }
-
-/* Next milestone */
-td.col-milestone {
-  min-width: 140px;
-  max-width: 180px;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+td.col-status  { min-width: 100px; }
+td.col-gtm-window {
+  white-space: nowrap;
+  min-width: 80px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-2);
 }
-
-/* Key gaps */
+td.col-milestone {
+  min-width: 150px;
+  max-width: 190px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.76rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
 td.col-gaps { min-width: 220px; max-width: 300px; }
 
 /* ── Status badges ── */
 .badge {
+  font-family: 'JetBrains Mono', monospace;
   display: inline-block;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.72rem;
+  padding: 0.18rem 0.52rem;
+  border-radius: 3px;
+  font-size: 0.63rem;
   font-weight: 600;
   white-space: nowrap;
-  line-height: 1.4;
+  line-height: 1.5;
+  border: 1px solid transparent;
+  letter-spacing: 0.02em;
 }
-
-.badge-complete    { background: var(--s-complete-bg);    color: var(--s-complete-text); }
-.badge-inprogress  { background: var(--s-inprogress-bg);  color: var(--s-inprogress-text); }
-.badge-notstarted  { background: var(--s-notstarted-bg);  color: var(--s-notstarted-text); }
-.badge-notready    { background: var(--s-notready-bg);    color: var(--s-notready-text); }
-.badge-targeted    { background: var(--s-targeted-bg);    color: var(--s-targeted-text); }
-.badge-broadly     { background: var(--s-broadly-bg);     color: var(--s-broadly-text); }
-.badge-late        { background: var(--s-late-bg);        color: var(--s-late-text); }
-.badge-hotready    { background: var(--s-hotready-bg);    color: var(--s-hotready-text); }
+.badge-complete   { background: var(--green-bg);   color: var(--green);    border-color: var(--green-border);   }
+.badge-inprogress { background: var(--teal-bg);     color: var(--teal);     border-color: var(--teal-border);    }
+.badge-notstarted { background: var(--slate-bg);    color: var(--text-3);   }
+.badge-notready   { background: var(--slate-bg);    color: var(--text-3);   }
+.badge-targeted   { background: var(--purple-bg);   color: var(--purple-light); border-color: var(--purple-border); }
+.badge-broadly    { background: var(--teal-bg);     color: var(--teal-65);  border-color: var(--teal-border);    }
+.badge-late       { background: var(--orange-bg);   color: var(--orange);   border-color: var(--orange-border);  }
+.badge-hotready   { background: var(--green-bg);    color: var(--green);    border-color: var(--green-border);   }
 
 /* ── GTM Confidence pills ── */
 .conf-pill {
-  display: inline-block;
-  padding: 0.25rem 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.22rem 0.6rem;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.63rem;
   font-weight: 700;
   border: 1.5px solid transparent;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }
+.conf-pill::before {
+  content: '';
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.conf-high   { background: var(--green-bg);   color: var(--green);    border-color: var(--green-border);   }
+.conf-high::before   { background: var(--green);   box-shadow: 0 0 4px var(--green); }
+.conf-medium { background: var(--orange-bg);  color: var(--orange);   border-color: var(--orange-border);  }
+.conf-medium::before { background: var(--orange);  box-shadow: 0 0 4px var(--orange); }
+.conf-low    { background: var(--magenta-bg); color: var(--magenta);  border-color: var(--magenta-border); }
+.conf-low::before    { background: var(--magenta); box-shadow: 0 0 4px var(--magenta); }
 
-.conf-high   { background: var(--conf-high-bg);   color: var(--conf-high-text);   border-color: var(--conf-high-border); }
-.conf-medium { background: var(--conf-medium-bg); color: var(--conf-medium-text); border-color: var(--conf-medium-border); }
-.conf-low    { background: var(--conf-low-bg);    color: var(--conf-low-text);    border-color: var(--conf-low-border); }
-
-/* ── Gaps expand/collapse ── */
+/* ── Gaps ── */
 .gaps-preview {
-  font-size: 0.78rem;
-  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-2);
   line-height: 1.5;
 }
-
 .gaps-bullets {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.35rem;
 }
-
 .gaps-bullets li {
-  display: flex;
-  gap: 0.4rem;
+  display: flex; gap: 0.5rem;
   align-items: flex-start;
-  font-size: 0.78rem;
-  line-height: 1.45;
+  font-size: 0.75rem; line-height: 1.5;
 }
-
 .gaps-bullets li::before {
-  content: '•';
-  color: var(--text-secondary);
+  content: '—';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--text-3);
   flex-shrink: 0;
-  margin-top: 0.05em;
+  margin-top: 0.15em;
 }
-
 .gap-blocked {
-  color: #dc2626;
-  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--magenta); font-weight: 700; font-size: 0.62rem;
 }
-
 .gap-risk {
-  color: #d97706;
-  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--orange); font-weight: 700; font-size: 0.62rem;
 }
-
 .gaps-toggle-btn {
-  background: none;
-  border: none;
-  color: var(--accent);
-  font-size: 0.72rem;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.2rem 0;
-  margin-top: 0.3rem;
-  display: block;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  background: none; border: none;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--teal); font-size: 0.62rem; font-weight: 600;
+  cursor: pointer; padding: 0.25rem 0; margin-top: 0.4rem;
+  display: block; letter-spacing: 0.02em; opacity: 0.75;
+  transition: opacity 0.15s;
 }
-
-.gaps-toggle-btn:hover { opacity: 0.8; }
-
+.gaps-toggle-btn:hover { opacity: 1; text-decoration: underline; text-underline-offset: 2px; }
 .gaps-extra { display: none; }
-.gaps-extra.open { display: flex; flex-direction: column; gap: 0.3rem; margin-top: 0.3rem; }
+.gaps-extra.open { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.35rem; }
 
 /* ── Empty state ── */
 .empty-state {
-  text-align: center;
-  padding: 3rem 1rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  text-align: center; padding: 3.5rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-3); font-size: 0.85rem; font-weight: 600;
 }
 
 /* ── Footer ── */
 .page-footer {
-  text-align: center;
-  padding: 1.5rem 2rem;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
+  text-align: center; padding: 1.5rem 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem; color: var(--text-3);
+  border-top: 1px solid var(--border); margin-top: 1.5rem;
 }
+.page-footer a { color: var(--text-3); text-decoration: none; transition: color 0.15s; }
+.page-footer a:hover { color: var(--teal); }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .page-header, .main { padding: 1rem; }
+  .back-nav, .page-header, .main { padding-left: 1rem; padding-right: 1rem; }
   .note-bar { padding: 0.5rem 1rem; }
+  .health-strip { grid-template-columns: repeat(2, 1fr); }
+  .health-stat { padding: 0.9rem 1rem; }
   .controls { flex-direction: column; align-items: stretch; }
   .search-input { width: 100%; }
   .controls-right { margin-left: 0; }
@@ -539,24 +677,59 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
 </head>
 <body>
 
+<!-- ── Back nav ── -->
+<nav class="back-nav">
+  <a class="back-link" href="../">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 1L3 6l5 5"/>
+    </svg>
+    Dashboards
+  </a>
+</nav>
+
 <!-- ── Header ── -->
 <header class="page-header">
-  <div class="page-header-left">
-    <a class="back-link" href="../">&#8592; Dashboards</a>
-    <h1>Feature Readiness Snapshot</h1>
-    <p>Build status, readiness gaps, and GTM timing for high-interest features &mdash; Q4&ndash;Q1 2026</p>
+  <div class="header-inner">
+    <div>
+      <h1 class="page-title">Feature Readiness Snapshot</h1>
+      <p class="page-subtitle">Build status, readiness gaps, and GTM timing across the Aline product portfolio &mdash; Q4&ndash;Q1 2026</p>
+    </div>
+    <div class="header-meta">
+      <span class="header-period">Q4&ndash;Q1 2026</span>
+      <span class="header-badge">Shipping &ne; Commercialization</span>
+    </div>
   </div>
-  <div class="header-badge">Shipping &ne; Commercialization</div>
 </header>
 
+<!-- ── Note bar ── -->
 <div class="note-bar">
   <strong>Note:</strong> Promotion aligns to commercial readiness, but does not block build completion.
+</div>
+
+<!-- ── Health strip ── -->
+<div class="health-strip">
+  <div class="health-stat stat-total">
+    <div class="health-number teal" id="statTotal">—</div>
+    <div class="health-label">Features Tracked</div>
+  </div>
+  <div class="health-stat stat-high">
+    <div class="health-number green" id="statHigh">—</div>
+    <div class="health-label">High Confidence</div>
+  </div>
+  <div class="health-stat stat-medium">
+    <div class="health-number orange" id="statMedium">—</div>
+    <div class="health-label">Medium Confidence</div>
+  </div>
+  <div class="health-stat stat-low">
+    <div class="health-number magenta" id="statLow">—</div>
+    <div class="health-label">Low Confidence</div>
+  </div>
 </div>
 
 <!-- ── Main ── -->
 <main class="main">
 
-  <!-- Legend Panel -->
+  <!-- Legend -->
   <div class="legend-panel">
     <button class="legend-toggle" onclick="toggleLegend()" id="legendToggleBtn" aria-expanded="false">
       <span class="legend-toggle-label">
@@ -576,7 +749,6 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
         GTM readiness requires completed product definition, customer enablement, and commercial preparation.
       </div>
       <div class="legend-grid">
-
         <div class="legend-section">
           <h4>Product Definition Status</h4>
           <p>Are requirements, UX, and acceptance criteria complete and validated?</p>
@@ -586,7 +758,6 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
             <div class="legend-row"><span class="badge badge-notstarted">Not Started</span> Definition work has not begun</div>
           </div>
         </div>
-
         <div class="legend-section">
           <h4>Build Status</h4>
           <p>Is core development work complete today?</p>
@@ -596,7 +767,6 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
             <div class="legend-row"><span class="badge badge-notstarted">Not Started</span> Dev has not yet begun</div>
           </div>
         </div>
-
         <div class="legend-section">
           <h4>Customer Readiness</h4>
           <p>Is the feature ready to be released to customers?</p>
@@ -604,12 +774,10 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
             <div class="legend-row"><span class="badge badge-complete">Complete</span> Ready for customer release</div>
             <div class="legend-row"><span class="badge badge-hotready">Hot Ready</span> Fully ready, deploy immediately</div>
             <div class="legend-row"><span class="badge badge-broadly">Broadly Ready</span> Ready with minor caveats</div>
-            <div class="legend-row"><span class="badge badge-broadly">QA Broadly Ready</span> QA complete, broadly cleared</div>
             <div class="legend-row"><span class="badge badge-late">Late</span> High risk to derail readiness</div>
-            <div class="legend-row"><span class="badge badge-notready">Not Ready</span> Not yet prepared for customers</div>
+            <div class="legend-row"><span class="badge badge-notready">Not Ready</span> Not yet prepared</div>
           </div>
         </div>
-
         <div class="legend-section">
           <h4>Commercial Readiness</h4>
           <p>Is the feature ready to be commercially promoted?</p>
@@ -620,7 +788,6 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
             <div class="legend-row"><span class="badge badge-notready">Not Ready</span> Not yet prepared for promotion</div>
           </div>
         </div>
-
         <div class="legend-section">
           <h4>GTM Confidence</h4>
           <p>Current confidence in hitting the GTM window given known dependencies and readiness gaps.</p>
@@ -630,15 +797,15 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
             <div class="legend-row"><span class="conf-pill conf-low">Low</span> Significant blockers or unknowns</div>
           </div>
         </div>
-
         <div class="legend-section">
           <h4>GTM Target Window</h4>
           <p>The earliest expected timeframe for marketing, assuming readiness criteria are met.</p>
           <div class="legend-badges">
-            <div class="legend-row" style="font-size:0.75rem;color:var(--text-secondary);">Q1 = Jan–Mar &nbsp;|&nbsp; Q2 = Apr–Jun &nbsp;|&nbsp; Q3 = Jul–Sep &nbsp;|&nbsp; Q4 = Oct–Dec</div>
+            <div class="legend-row" style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--text-3);">
+              Q1 = Jan–Mar &nbsp;|&nbsp; Q2 = Apr–Jun &nbsp;|&nbsp; Q3 = Jul–Sep &nbsp;|&nbsp; Q4 = Oct–Dec
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -652,22 +819,18 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
     <div class="control-group">
       <label>Product</label>
       <div class="filter-chips" id="productChips">
-        <span class="chip active" data-filter="product" data-value="all" onclick="toggleChip(this,'product')">All</span>
-        <span class="chip" data-filter="product" data-value="AI Essential" onclick="toggleChip(this,'product')">AI Essential</span>
-        <span class="chip" data-filter="product" data-value="AI Pro" onclick="toggleChip(this,'product')">AI Pro</span>
-        <span class="chip" data-filter="product" data-value="AI + BI" onclick="toggleChip(this,'product')">AI + BI</span>
-        <span class="chip" data-filter="product" data-value="CRM + BI" onclick="toggleChip(this,'product')">CRM + BI</span>
-        <span class="chip" data-filter="product" data-value="Roobrik" onclick="toggleChip(this,'product')">Roobrik</span>
-        <span class="chip" data-filter="product" data-value="Roobrik CRM &amp; AI" onclick="toggleChip(this,'product')">Roobrik CRM &amp; AI</span>
+        <span class="chip active" data-filter="product" data-value="all" onclick="toggleChip(this,'product')">All Products</span>
+        <span class="chip" data-filter="product" data-value="Aline CRM" onclick="toggleChip(this,'product')">Aline CRM</span>
+        <span class="chip" data-filter="product" data-value="Aline Discover by Roobrik" onclick="toggleChip(this,'product')">Discover by Roobrik</span>
       </div>
     </div>
     <div class="control-group">
       <label>GTM Confidence</label>
-      <div class="filter-chips" id="confChips">
+      <div class="filter-chips">
         <span class="chip active" data-filter="conf" data-value="all" onclick="toggleChip(this,'conf')">All</span>
-        <span class="chip conf-high" data-filter="conf" data-value="High" onclick="toggleChip(this,'conf')">High</span>
+        <span class="chip conf-high"   data-filter="conf" data-value="High"   onclick="toggleChip(this,'conf')">High</span>
         <span class="chip conf-medium" data-filter="conf" data-value="Medium" onclick="toggleChip(this,'conf')">Medium</span>
-        <span class="chip conf-low" data-filter="conf" data-value="Low" onclick="toggleChip(this,'conf')">Low</span>
+        <span class="chip conf-low"    data-filter="conf" data-value="Low"    onclick="toggleChip(this,'conf')">Low</span>
       </div>
     </div>
     <div class="controls-right">
@@ -680,7 +843,7 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
     <table id="featureTable">
       <thead>
         <tr>
-          <th>Product</th>
+          <th>Sub-Product</th>
           <th>Feature</th>
           <th>Product Def</th>
           <th>Build</th>
@@ -692,8 +855,7 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
           <th>Key Readiness Gaps</th>
         </tr>
       </thead>
-      <tbody id="tableBody">
-      </tbody>
+      <tbody id="tableBody"></tbody>
     </table>
     <div class="empty-state" id="emptyState" style="display:none;">
       No features match your current filters.
@@ -703,16 +865,40 @@ td.col-gaps { min-width: 220px; max-width: 300px; }
 </main>
 
 <footer class="page-footer">
-  Last updated: March 10, 2026 &nbsp;&middot;&nbsp; <a href="../" style="color:var(--text-secondary);">All Dashboards</a>
+  Last updated: March 10, 2026 &nbsp;&middot;&nbsp; <a href="../">All Dashboards</a>
 </footer>
 
 <script>
-// ── Data ──────────────────────────────────────────────────────────────────────
+// ── Product Portfolio ─────────────────────────────────────────────────────────
+// All Aline products. Products with no features show an empty placeholder row.
+
+const ALL_PRODUCTS = [
+  "Aline CRM",
+  "Aline Leasing & Billing",
+  "Aline Payments",
+  "Aline Accounting",
+  "Aline Compass",
+  "Aline Quality",
+  "Aline Care",
+  "Aline eMAR",
+  "Aline Smart Referral CRM",
+  "Aline Discover by Roobrik",
+  "Aline Nurture",
+  "Aline Contact Center",
+  "Aline Connect",
+  "Aline Menus by Grove",
+  "Aline Point-of-Sale by Grove"
+];
+
+// ── Feature Data ──────────────────────────────────────────────────────────────
+// parentProduct: Aline product suite name
+// subProduct: sub-category label shown within the group (AI, BI, etc.)
 
 const features = [
-  // AI Essential
+  // ── Aline CRM / AI ──────────────────────────────────────────────────────────
   {
-    product: "AI Essential",
+    parentProduct: "Aline CRM",
+    subProduct: "AI",
     feature: "Improved Opportunity (Lead) Score",
     productDef: "In Progress",
     build: "Not Started",
@@ -726,7 +912,8 @@ const features = [
     ]
   },
   {
-    product: "AI Essential",
+    parentProduct: "Aline CRM",
+    subProduct: "AI",
     feature: "AI Text Drafts",
     productDef: "In Progress",
     build: "Not Started",
@@ -742,7 +929,8 @@ const features = [
     ]
   },
   {
-    product: "AI Essential",
+    parentProduct: "Aline CRM",
+    subProduct: "AI",
     feature: "Smart Next Step + Roobrik",
     productDef: "Not Started",
     build: "Not Started",
@@ -756,10 +944,9 @@ const features = [
       "Dependency on Roobrik delivering functionality before CRM/AI integration is possible."
     ]
   },
-
-  // AI Pro
   {
-    product: "AI Pro",
+    parentProduct: "Aline CRM",
+    subProduct: "AI",
     feature: "Daily Lineup",
     productDef: "Complete",
     build: "In Progress",
@@ -774,7 +961,8 @@ const features = [
     ]
   },
   {
-    product: "AI Pro",
+    parentProduct: "Aline CRM",
+    subProduct: "AI",
     feature: "Smart Lists",
     productDef: "In Progress",
     build: "Not Started",
@@ -789,7 +977,8 @@ const features = [
     ]
   },
   {
-    product: "AI Pro",
+    parentProduct: "Aline CRM",
+    subProduct: "AI",
     feature: "Clara Prospect Agent (Chat) — Labs release",
     productDef: "Complete",
     build: "Not Started",
@@ -804,7 +993,8 @@ const features = [
     ]
   },
   {
-    product: "AI Pro",
+    parentProduct: "Aline CRM",
+    subProduct: "AI",
     feature: "AI Content Builder",
     productDef: "Not Started",
     build: "Not Started",
@@ -817,10 +1007,10 @@ const features = [
       "Feature definition has not yet started."
     ]
   },
-
-  // AI + BI
+  // ── Aline CRM / AI + BI ─────────────────────────────────────────────────────
   {
-    product: "AI + BI",
+    parentProduct: "Aline CRM",
+    subProduct: "AI + BI",
     feature: "BI Agent",
     productDef: "In Progress",
     build: "Not Started",
@@ -836,10 +1026,10 @@ const features = [
       "RISK: Possible change in scope pending decision on model direction."
     ]
   },
-
-  // CRM + BI
+  // ── Aline CRM / BI ──────────────────────────────────────────────────────────
   {
-    product: "CRM + BI",
+    parentProduct: "Aline CRM",
+    subProduct: "BI",
     feature: "Sharpe Reporting (Space, Schedule & Share)",
     productDef: "In Progress",
     build: "Not Started",
@@ -854,8 +1044,9 @@ const features = [
     ]
   },
   {
-    product: "CRM + BI",
-    feature: "Incorporate Benchmark Data into Dashboard & Goals (Pro feature)",
+    parentProduct: "Aline CRM",
+    subProduct: "BI",
+    feature: "Incorporate Benchmark Data into Dashboard & Goals",
     productDef: "Not Started",
     build: "Not Started",
     customerReadiness: "Not Ready",
@@ -868,27 +1059,10 @@ const features = [
       "Product definition kickoff has not yet occurred."
     ]
   },
-
-  // Roobrik
+  // ── Aline CRM / CRM + Roobrik ───────────────────────────────────────────────
   {
-    product: "Roobrik",
-    feature: "Custom Lead Routing",
-    productDef: "Complete",
-    build: "In Progress",
-    customerReadiness: "Not Ready",
-    commercialReadiness: "Not Ready",
-    nextMilestone: "Build Complete",
-    gtmWindow: "Q2",
-    gtmConfidence: "High",
-    gaps: [
-      "Front end development of the configuration pages is in progress.",
-      "Extensive QA is required after development is complete to ensure leads can be delivered as expected."
-    ]
-  },
-
-  // Roobrik CRM & AI
-  {
-    product: "Roobrik CRM & AI",
+    parentProduct: "Aline CRM",
+    subProduct: "CRM + Roobrik",
     feature: "Roobrik Survey Click-to-Send",
     productDef: "In Progress",
     build: "Not Started",
@@ -901,13 +1075,30 @@ const features = [
       "Roobrik needs to deliver the survey click-through functionality before it can be integrated into the CRM and AI stack.",
       "Survey Click-throughs for Aline CRM use (RPR-90) is a prerequisite."
     ]
+  },
+  // ── Aline Discover by Roobrik ────────────────────────────────────────────────
+  {
+    parentProduct: "Aline Discover by Roobrik",
+    subProduct: "Roobrik",
+    feature: "Custom Lead Routing",
+    productDef: "Complete",
+    build: "In Progress",
+    customerReadiness: "Not Ready",
+    commercialReadiness: "Not Ready",
+    nextMilestone: "Build Complete",
+    gtmWindow: "Q2",
+    gtmConfidence: "High",
+    gaps: [
+      "Front end development of the configuration pages is in progress.",
+      "Extensive QA is required after development is complete to ensure leads can be delivered as expected."
+    ]
   }
 ];
 
-// ── Status badge helper ────────────────────────────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────────────────────
 
-function badgeClass(status) {
-  switch ((status || '').toLowerCase().replace(/\s+/g, '')) {
+function badgeClass(s) {
+  switch ((s || '').toLowerCase().replace(/\s+/g, '')) {
     case 'complete':        return 'badge-complete';
     case 'inprogress':      return 'badge-inprogress';
     case 'notstarted':      return 'badge-notstarted';
@@ -920,98 +1111,166 @@ function badgeClass(status) {
     default:                return 'badge-notready';
   }
 }
-
-function statusLabel(status) {
-  switch ((status || '').toLowerCase().replace(/\s+/g, '')) {
+function statusLabel(s) {
+  switch ((s || '').toLowerCase().replace(/\s+/g, '')) {
     case 'qabroadlyready': return 'QA Broadly Ready';
     case 'broadlyready':   return 'Broadly Ready';
     case 'notstarted':     return 'Not Started';
     case 'notready':       return 'Not Ready';
     case 'inprogress':     return 'In Progress';
     case 'hotready':       return 'Hot Ready';
-    default:               return status || '—';
+    default:               return s || '—';
   }
 }
-
-function badge(status) {
-  if (!status) return '<span style="color:var(--text-secondary);font-size:0.72rem;">—</span>';
-  return `<span class="badge ${badgeClass(status)}">${statusLabel(status)}</span>`;
+function badge(s) {
+  if (!s) return '<span style="color:var(--text-3);font-family:\'JetBrains Mono\',monospace;font-size:0.62rem;">—</span>';
+  return `<span class="badge ${badgeClass(s)}">${statusLabel(s)}</span>`;
 }
-
-function confPill(conf) {
-  if (!conf) return '<span style="color:var(--text-secondary);font-size:0.72rem;">—</span>';
-  const cls = conf.toLowerCase();
-  return `<span class="conf-pill conf-${cls}">${conf}</span>`;
+function confPill(c) {
+  if (!c) return '<span style="color:var(--text-3);font-family:\'JetBrains Mono\',monospace;font-size:0.62rem;">—</span>';
+  return `<span class="conf-pill conf-${c.toLowerCase()}">${c}</span>`;
 }
-
-// ── Render gaps with expand/collapse ──────────────────────────────────────────
-
-let gapStates = {};
-
 function renderGaps(gaps, rowId) {
-  if (!gaps || gaps.length === 0) {
-    return '<span style="color:var(--text-secondary);font-size:0.72rem;">—</span>';
-  }
-
-  const formatGap = (g) => {
-    let text = g;
-    text = text.replace(/^(BLOCKED:)/i, '<span class="gap-blocked">BLOCKED:</span>');
-    text = text.replace(/^(RISK:)/i, '<span class="gap-risk">RISK:</span>');
-    return text;
-  };
-
-  const PREVIEW_COUNT = 1;
-  const preview = gaps.slice(0, PREVIEW_COUNT);
-  const extra = gaps.slice(PREVIEW_COUNT);
-  const hasMore = extra.length > 0;
-
-  const previewHtml = preview.map(g => `<li><span>${formatGap(g)}</span></li>`).join('');
-  const extraHtml = extra.map(g => `<li><span>${formatGap(g)}</span></li>`).join('');
-
+  if (!gaps || !gaps.length) return '<span style="color:var(--text-3);font-size:0.72rem;">—</span>';
+  const fmt = g => g
+    .replace(/^(BLOCKED:)/i, '<span class="gap-blocked">BLOCKED:</span>')
+    .replace(/^(RISK:)/i,    '<span class="gap-risk">RISK:</span>');
+  const pre   = gaps.slice(0, 1);
+  const extra = gaps.slice(1);
+  const preHtml   = pre.map(g => `<li><span>${fmt(g)}</span></li>`).join('');
+  const extraHtml = extra.map(g => `<li><span>${fmt(g)}</span></li>`).join('');
   return `
     <div class="gaps-preview">
-      <ul class="gaps-bullets">${previewHtml}</ul>
-      ${hasMore ? `
+      <ul class="gaps-bullets">${preHtml}</ul>
+      ${extra.length ? `
         <ul class="gaps-bullets gaps-extra" id="gaps-extra-${rowId}">${extraHtml}</ul>
-        <button class="gaps-toggle-btn" id="gaps-btn-${rowId}" onclick="toggleGaps('${rowId}', ${extra.length})">
+        <button class="gaps-toggle-btn" id="gaps-btn-${rowId}" onclick="toggleGaps('${rowId}',${extra.length})">
           +${extra.length} more
-        </button>
-      ` : ''}
+        </button>` : ''}
     </div>`;
 }
-
-function toggleGaps(rowId, count) {
-  const extra = document.getElementById(`gaps-extra-${rowId}`);
-  const btn   = document.getElementById(`gaps-btn-${rowId}`);
-  if (!extra || !btn) return;
-  const isOpen = extra.classList.toggle('open');
-  btn.textContent = isOpen ? 'Show less' : `+${count} more`;
+function toggleGaps(id, count) {
+  const el  = document.getElementById(`gaps-extra-${id}`);
+  const btn = document.getElementById(`gaps-btn-${id}`);
+  if (!el || !btn) return;
+  const open = el.classList.toggle('open');
+  btn.textContent = open ? 'Show less' : `+${count} more`;
 }
 
-// ── Render table ──────────────────────────────────────────────────────────────
+// ── Health strip ──────────────────────────────────────────────────────────────
+function updateHealth(filtered) {
+  document.getElementById('statTotal').textContent  = filtered.length;
+  document.getElementById('statHigh').textContent   = filtered.filter(f => f.gtmConfidence === 'High').length;
+  document.getElementById('statMedium').textContent = filtered.filter(f => f.gtmConfidence === 'Medium').length;
+  document.getElementById('statLow').textContent    = filtered.filter(f => f.gtmConfidence === 'Low').length;
+}
 
+// ── Group collapse state ──────────────────────────────────────────────────────
+const collapsedGroups = new Set();
+
+function toggleGroup(productName) {
+  if (collapsedGroups.has(productName)) {
+    collapsedGroups.delete(productName);
+  } else {
+    collapsedGroups.add(productName);
+  }
+  renderTable();
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
 let activeProduct = 'all';
 let activeConf    = 'all';
 let searchTerm    = '';
 
 function renderTable() {
-  const tbody = document.getElementById('tableBody');
-  const empty = document.getElementById('emptyState');
+  const tbody   = document.getElementById('tableBody');
+  const empty   = document.getElementById('emptyState');
   const counter = document.getElementById('resultsCount');
+  const search  = searchTerm.toLowerCase();
 
-  const search = searchTerm.toLowerCase();
-
+  // Apply filters
   const filtered = features.filter(f => {
-    const matchProduct = activeProduct === 'all' || f.product === activeProduct;
+    const matchProduct = activeProduct === 'all' || f.parentProduct === activeProduct;
     const matchConf    = activeConf === 'all' || f.gtmConfidence === activeConf;
     const matchSearch  = !search ||
       f.feature.toLowerCase().includes(search) ||
-      f.product.toLowerCase().includes(search) ||
+      f.parentProduct.toLowerCase().includes(search) ||
+      f.subProduct.toLowerCase().includes(search) ||
       (f.nextMilestone || '').toLowerCase().includes(search);
     return matchProduct && matchConf && matchSearch;
   });
 
-  if (filtered.length === 0) {
+  updateHealth(filtered);
+
+  // Determine which products to show
+  const productsToShow = activeProduct === 'all'
+    ? ALL_PRODUCTS
+    : ALL_PRODUCTS.filter(p => p === activeProduct);
+
+  // Build HTML grouped by product
+  let html = '';
+  let globalRowIdx = 0;
+  let totalVisible = 0;
+
+  productsToShow.forEach(productName => {
+    const productFeatures = filtered.filter(f => f.parentProduct === productName);
+    const isCollapsed = collapsedGroups.has(productName);
+    const escapedName = productName.replace(/'/g, "\\'");
+
+    // Group header
+    const countBadge = productFeatures.length
+      ? `<span class="group-count">${productFeatures.length} feature${productFeatures.length !== 1 ? 's' : ''}</span>`
+      : '';
+    const emptyLabel = !productFeatures.length
+      ? `<span class="group-empty-label">No features tracked</span>`
+      : '';
+    const chevronClass = isCollapsed ? 'group-chevron collapsed' : 'group-chevron';
+
+    html += `
+      <tr class="group-header" onclick="toggleGroup('${escapedName}')">
+        <td colspan="10">
+          <div class="group-header-inner">
+            <span class="group-product-name">${productName}</span>
+            ${countBadge}
+            ${emptyLabel}
+            <svg class="${chevronClass}" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </td>
+      </tr>`;
+
+    if (!isCollapsed) {
+      if (productFeatures.length === 0) {
+        html += `
+          <tr class="group-empty-row">
+            <td colspan="10">No features currently tracked for this product.</td>
+          </tr>`;
+      } else {
+        productFeatures.forEach((f, i) => {
+          const rowId    = `r${globalRowIdx++}`;
+          const confAttr = f.gtmConfidence ? f.gtmConfidence.toLowerCase() : '';
+          const delay    = i * 30;
+          totalVisible++;
+          html += `
+            <tr class="data-row" data-confidence="${confAttr}" style="animation: rowIn 0.25s ${delay}ms ease both;">
+              <td class="col-subproduct">${f.subProduct}</td>
+              <td class="col-feature">${f.feature}</td>
+              <td class="col-status">${badge(f.productDef)}</td>
+              <td class="col-status">${badge(f.build)}</td>
+              <td class="col-status">${badge(f.customerReadiness)}</td>
+              <td class="col-status">${badge(f.commercialReadiness)}</td>
+              <td class="col-milestone">${f.nextMilestone || '—'}</td>
+              <td class="col-gtm-window">${f.gtmWindow || '—'}</td>
+              <td>${confPill(f.gtmConfidence)}</td>
+              <td class="col-gaps">${renderGaps(f.gaps, rowId)}</td>
+            </tr>`;
+        });
+      }
+    }
+  });
+
+  if (!filtered.length && productsToShow.every(p => !filtered.find(f => f.parentProduct === p))) {
     tbody.innerHTML = '';
     empty.style.display = 'block';
     counter.textContent = '0 features';
@@ -1019,51 +1278,25 @@ function renderTable() {
   }
 
   empty.style.display = 'none';
-  counter.textContent = `${filtered.length} of ${features.length} features`;
-
-  tbody.innerHTML = filtered.map((f, i) => {
-    const rowId = `r${i}-${Date.now()}`;
-    return `
-      <tr>
-        <td class="col-product">${f.product}</td>
-        <td class="col-feature">${f.feature}</td>
-        <td class="col-status">${badge(f.productDef)}</td>
-        <td class="col-status">${badge(f.build)}</td>
-        <td class="col-status">${badge(f.customerReadiness)}</td>
-        <td class="col-status">${badge(f.commercialReadiness)}</td>
-        <td class="col-milestone">${f.nextMilestone || '—'}</td>
-        <td class="col-gtm-window">${f.gtmWindow || '—'}</td>
-        <td>${confPill(f.gtmConfidence)}</td>
-        <td class="col-gaps">${renderGaps(f.gaps, rowId)}</td>
-      </tr>`;
-  }).join('');
+  tbody.innerHTML = html;
+  counter.textContent = `${filtered.length} of ${features.length}`;
 }
 
 // ── Filter controls ───────────────────────────────────────────────────────────
-
 function toggleChip(el, filterType) {
   const value = el.dataset.value;
-
-  if (filterType === 'product') {
-    document.querySelectorAll('[data-filter="product"]').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-    activeProduct = value;
-  } else if (filterType === 'conf') {
-    document.querySelectorAll('[data-filter="conf"]').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-    activeConf = value;
-  }
-
+  document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  if (filterType === 'product') activeProduct = value;
+  else activeConf = value;
   applyFilters();
 }
-
 function applyFilters() {
   searchTerm = document.getElementById('searchInput').value;
   renderTable();
 }
 
 // ── Legend toggle ─────────────────────────────────────────────────────────────
-
 function toggleLegend() {
   const body    = document.getElementById('legendBody');
   const chevron = document.getElementById('legendChevron');
@@ -1074,7 +1307,6 @@ function toggleLegend() {
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-
 renderTable();
 </script>
 
