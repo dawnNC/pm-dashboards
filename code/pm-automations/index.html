@@ -66,7 +66,6 @@ body {
   background: var(--bg);
   color: var(--text-1);
   min-height: 100vh;
-  padding-top: 40px;
 }
 
 /* ── PM Nav Bar ───────────────────────────────────────────────── */
@@ -195,6 +194,16 @@ body {
 .hero-wave { display: block; width: 100%; line-height: 0; margin-bottom: -2px; }
 .hero-wave svg { display: block; width: 100%; }
 
+/* ── Internal-use notice ──────────────────────────────────────── */
+.use-notice {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 40px;
+  font-size: 12px;
+  color: #8898A8;
+  text-align: center;
+}
+
 /* ── Main ─────────────────────────────────────────────────────── */
 .main {
   max-width: 980px;
@@ -249,6 +258,16 @@ body {
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 2px 4px rgba(15,45,61,0.05), 0 12px 32px rgba(15,45,61,0.11);
+}
+
+/* Work-in-progress cards — muted until the report is ready */
+.card.wip {
+  opacity: 0.62;
+  filter: grayscale(0.35);
+}
+.card.wip:hover {
+  opacity: 0.85;
+  filter: grayscale(0.15);
 }
 
 /* Card tags — border + tint style matching feature-readiness badges */
@@ -316,6 +335,7 @@ body {
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.35} }
 .badge-updated  { background: var(--slate-lt);  color: var(--text-3);   border-color: var(--slate-border); }
 .badge-planning { background: var(--purp-lt);   color: var(--purp-dk);  border-color: var(--purp-border); }
+.badge-wip      { background: var(--org-lt);    color: var(--org-dk);   border-color: var(--org-border); }
 
 .card-cta {
   font-size: 12.5px;
@@ -359,16 +379,6 @@ body {
 </head>
 <body>
 
-<nav class="pmnav-bar">
-  <a class="pmnav-wordmark" href="/">Aline PM</a>
-  <div class="pmnav-links">
-    <a class="pmnav-link" href="roadmap-report-card/">Roadmap</a>
-    <a class="pmnav-link" href="feature-readiness/">Feature Readiness</a>
-    <a class="pmnav-link" href="industry-intelligence/">Intelligence</a>
-    <a class="pmnav-link pmnav-q2" href="roadmap-report-card-q2/">Q2 Preview</a>
-  </div>
-</nav>
-
 <div class="hero">
   <div class="hero-blob hero-blob-1"></div>
   <div class="hero-blob hero-blob-2"></div>
@@ -387,6 +397,8 @@ body {
   </svg>
 </div>
 
+<p class="use-notice">For internal use only. Not approved for sharing with customers or external partners.</p>
+
 <main class="main">
 
   <!-- Roadmap and Readiness -->
@@ -395,53 +407,77 @@ body {
     <p class="section-desc">Where we're going and whether we're ready to ship it.</p>
     <div class="card-grid">
 
-      <a href="roadmap-report-card/" class="card">
+      <a href="svp-product-report/" class="card">
         <span class="card-tag teal">All Products</span>
-        <div class="card-title">Product Development Roadmap</div>
-        <div class="card-desc">Portfolio Gantt across all teams, Product One List initiatives, linked epics by board, and stories. Live from Jira.</div>
+        <div class="card-title">Product Roadmap</div>
+        <div class="card-desc">An executive-level snapshot of the product roadmap - featuring targets by quarter, status, and a per-product breakdown. Filter by quarter, product, and status, export to PDF or PPTX.</div>
         <div class="card-footer">
           <span class="badge badge-live">Live</span>
           <span class="card-cta">View →</span>
         </div>
       </a>
 
-      <a href="feature-readiness/" class="card">
+      <!-- Hidden per Dawn's request 2026-07-20: renamed for draft status, removed from hub listing
+      <a href="product-development-roadmap/" class="card wip">
         <span class="card-tag teal">All Products</span>
-        <div class="card-title">Feature Readiness Tracker</div>
-        <div class="card-desc">Readiness gaps and GTM timing for high-interest features across all product lines.</div>
+        <div class="card-title">Product Development Roadmap - Gantt - (DRAFT)</div>
+        <div class="card-desc">Portfolio Gantt across all teams — Product One List initiatives, linked epics by board, and stories. Live from Jira.</div>
         <div class="card-footer">
-          <span class="badge badge-updated">Updated June 11, 2026</span>
+          <span class="badge badge-wip">Work in progress</span>
           <span class="card-cta">View →</span>
         </div>
       </a>
+      -->
+
+      <!-- Hidden per Dawn's request 2026-07-20: renamed for draft status, removed from hub listing
+      <a href="feature-readiness/" class="card wip">
+        <span class="card-tag magenta">All Products</span>
+        <div class="card-title">Feature Readiness Tracker (DRAFT)</div>
+        <div class="card-desc">Readiness gaps and GTM timing for high-interest features across all product lines.</div>
+        <div class="card-footer">
+          <span class="badge badge-wip">Work in progress</span>
+          <span class="card-cta">View →</span>
+        </div>
+      </a>
+      -->
 
     </div>
   </section>
 
   <hr class="divider">
 
-  <!-- Intelligence -->
+  <!-- Product Team Resources -->
   <section class="section">
-    <div class="section-label orange">Market & Customer Intelligence</div>
-    <p class="section-desc">What's happening in the market and what customers are telling us.</p>
+    <div class="section-label orange">Product Team Resources</div>
+    <p class="section-desc">Dashboards and analysis used by the product team to track performance, support trends, and AI behavior.</p>
     <div class="card-grid">
 
       <a href="industry-intelligence/" class="card">
-        <span class="card-tag orange">Market Intel</span>
+        <span class="card-tag orange">External Research</span>
         <div class="card-title">Industry Intelligence</div>
         <div class="card-desc">Senior living SaaS, AI developments, and business tool trends — curated weekly with source links and priority ratings.</div>
         <div class="card-footer">
-          <span class="badge badge-updated">Updated April 23, 2026</span>
+          <span class="badge badge-updated">Updated July 14, 2026</span>
           <span class="card-cta">View →</span>
         </div>
       </a>
 
       <a href="support-insights/latest.html" class="card">
-        <span class="card-tag orange">Customer Intel</span>
-        <div class="card-title">Support Insights</div>
+        <span class="card-tag orange">Support Ops</span>
+        <div class="card-title">BI and DBA Support Trends</div>
         <div class="card-desc">Weekly Jira triage analysis — ticket volumes, priorities, recurring themes, and triage metrics from the support queue.</div>
         <div class="card-footer">
           <span class="badge badge-live">Live</span>
+          <span class="card-cta">View →</span>
+        </div>
+      </a>
+
+      <a href="ai-usage/" class="card">
+        <span class="card-tag orange">Product Ops</span>
+        <div class="card-title">AI Feature Usage</div>
+        <div class="card-desc">How sales reps use Aline's AI features — usage trends, feedback themes by feature, and AI pattern analysis of what the generated content actually looks like.</div>
+        <div class="card-footer">
+          <span class="badge badge-updated">Updated July 14, 2026</span>
           <span class="card-cta">View →</span>
         </div>
       </a>
